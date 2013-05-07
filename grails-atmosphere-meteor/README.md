@@ -1,4 +1,3 @@
-README.md
 ## grails-atmosphere-meteor
 
 grails-atmosphere-meteor is a plugin written for the Grails framework. However, it can be run as a standalone application:
@@ -12,8 +11,8 @@ grails run-app
 ```
 
 ### The source code:
-	https://github.com/kensiprell/grails-atmosphere-meteor
+[a link](https://github.com/kensiprell/grails-atmosphere-meteor)
 
 ### The official plugin page:
-	http://www.grails.org/plugin/atmosphere-meteor
+[a link](http://www.grails.org/plugin/atmosphere-meteor)
 
