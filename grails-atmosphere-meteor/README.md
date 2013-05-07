@@ -11,8 +11,8 @@ grails run-app
 ```
 
 ### The source code:
-[a link](https://github.com/kensiprell/grails-atmosphere-meteor)
+[https://github.com/kensiprell/grails-atmosphere-meteor](https://github.com/kensiprell/grails-atmosphere-meteor)
 
 ### The official plugin page:
-[a link](http://www.grails.org/plugin/atmosphere-meteor)
+[http://www.grails.org/plugin/atmosphere-meteor](http://www.grails.org/plugin/atmosphere-meteor)
 
