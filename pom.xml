@@ -10,13 +10,13 @@
     <groupId>org.atmosphere</groupId>
     <artifactId>atmosphere-sample-project</artifactId>
     <packaging>pom</packaging>
-    <name>atmosphere-sampleproject</name>
+    <name>atmosphere-sample-project</name>
     <version>2.0.0-SNAPSHOT</version>
-    <url>http://github.com/Atmosphere/atmosphere</url>
+    <url>http://github.com/Atmosphere/atmosphere-samples</url>
     <scm>
-        <connection>scm:git:git@github.com:Atmosphere/atmosphere.git</connection>
-        <developerConnection>scm:git:git@github.com:Atmosphere/atmosphere.git</developerConnection>
-        <url>http://github.com/Atmosphere/atmosphere</url>
+        <connection>scm:git:git@github.com:Atmosphere/atmosphere-samples.git</connection>
+        <developerConnection>scm:git:git@github.com:Atmosphere/atmosphere-samples.git</developerConnection>
+        <url>http://github.com/Atmosphere/atmosphere-samples</url>
     </scm>
     <prerequisites>
         <maven>2.2.0</maven>
@@ -27,27 +27,19 @@
             <name>Jeanfrancois Arcand</name>
             <email>jfarcand@apache.org</email>
         </developer>
-        <developer>
-            <id>psandoz</id>
-            <name>Paul Sandoz</name>
-        </developer>
-        <developer>
-            <id>neotyk</id>
-            <name>Hubert Iwaniuk</name>
-        </developer>
     </developers>
     <issueManagement>
         <system>bugzilla</system>
-        <url>https://github.com/Atmosphere/atmosphere/servlets/ProjectIssues</url>
+        <url>https://github.com/Atmosphere/atmosphere/issues</url>
     </issueManagement>
     <mailingLists>
         <mailingList>
             <name>atmosphere Dev List</name>
-            <archive>dev@github.com/Atmosphere/atmosphere</archive>
+            <archive>https://groups.google.com/group/atmosphere-framework</archive>
         </mailingList>
         <mailingList>
             <name>atmosphere Support List</name>
-            <archive>users@github.com/Atmosphere/atmosphere</archive>
+            <archive>https://groups.google.com/group/atmosphere-framework</archive>
         </mailingList>
     </mailingLists>
     <licenses>
