@@ -8,9 +8,9 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.atmosphere</groupId>
-    <artifactId>atmosphere-sample-project</artifactId>
+    <artifactId>atmosphere-samples-project</artifactId>
     <packaging>pom</packaging>
-    <name>atmosphere-sample-project</name>
+    <name>atmosphere-samples-project</name>
     <version>2.0.0-SNAPSHOT</version>
     <url>http://github.com/Atmosphere/atmosphere-samples</url>
     <scm>
@@ -262,6 +262,7 @@
     </profiles>
     <modules>
         <module>samples</module>
+        <module>nettosphere-samples</module>
     </modules>
     <reporting>
         <outputDirectory>target/site</outputDirectory>
@@ -381,5 +382,6 @@
         <logback-version>1.0.13</logback-version>
         <client-version>2.0.1</client-version>
         <compat-version>2.0.0</compat-version>
+        <nettosphere-version>2.0.0-SNAPSHOT</nettosphere-version>
     </properties>
 </project>
