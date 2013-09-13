@@ -30,10 +30,13 @@ $(function () {
         transport = response.transport;
     };
 
-    request.onClientTimeout = function(request) {
-        content.html($('<p>', { text: 'Client closed the connection after a timeout' }));
-        subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: 'is inactive and closed the connection' }));
+    request.onClientTimeout = function(r) {
+        content.html($('<p>', { text: 'Client closed the connection after a timeout. Reconnecting in ' + request.reconnectInterval }));
+        subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: 'is inactive and closed the connection. Will reconnect in ' + request.reconnectInterval }));
         input.attr('disabled', 'disabled');
+        setTimeout(function (){
+            subSocket = socket.subscribe(request);
+        }, request.reconnectInterval);
     };
 
     request.onReopen = function(response) {
