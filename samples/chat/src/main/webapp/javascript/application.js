@@ -19,6 +19,7 @@ $(function () {
         transport : transport ,
         trackMessageLength : true,
         reconnectInterval : 5000,
+        timeout : 60000,
         fallbackTransport: 'long-polling'};
 
 
@@ -27,6 +28,12 @@ $(function () {
         input.removeAttr('disabled').focus();
         status.text('Choose name:');
         transport = response.transport;
+    };
+
+    request.onClientTimeout = function(request) {
+        content.html($('<p>', { text: 'Client closed the connection after a timeout' }));
+        subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: 'is inactive and closed the connection' }));
+        input.attr('disabled', 'disabled');
     };
 
     request.onReopen = function(response) {
@@ -65,7 +72,7 @@ $(function () {
     };
 
     request.onClose = function(response) {
-        content.html($('<p>', { text: 'Client closed the connection after a timeout' }));
+        content.html($('<p>', { text: 'Server closed the connection after a timeout' }));
         subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: 'disconnecting' }));
         input.attr('disabled', 'disabled');
     };
