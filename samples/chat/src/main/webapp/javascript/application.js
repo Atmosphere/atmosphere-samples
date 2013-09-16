@@ -10,7 +10,7 @@ $(function () {
     var logged = false;
     var socket = atmosphere;
     var subSocket;
-    var transport = 'websocket';
+    var transport = 'long-polling';
 
     // We are now ready to cut the request
     var request = { url: document.location.toString() + 'chat',
@@ -19,6 +19,7 @@ $(function () {
         transport : transport ,
         trackMessageLength : true,
         reconnectInterval : 5000,
+        enableXDR: true,
         timeout : 60000,
         fallbackTransport: 'long-polling'};
 
