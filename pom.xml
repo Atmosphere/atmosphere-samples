@@ -262,7 +262,9 @@
     </profiles>
     <modules>
         <module>samples</module>
+        <module>extensions-samples</module>
         <module>nettosphere-samples</module>
+        <module>wasync-samples</module>
     </modules>
     <reporting>
         <outputDirectory>target/site</outputDirectory>
@@ -383,5 +385,15 @@
         <client-version>2.0.2-SNAPSHOT</client-version>
         <compat-version>2.0.0</compat-version>
         <nettosphere-version>2.0.0-SNAPSHOT</nettosphere-version>
+        <extensions-version>2.0.0-SNAPSHOT</extensions-version>
+        <wasync-version>1.0.0-SNAPSHOT</wasync-version>
+
+        <compat-version>2.0.0</compat-version>
+        <jgroups-version>3.1.0.Final</jgroups-version>
+        <jms-version>1.1</jms-version>
+        <guice-version>2.0</guice-version>
+        <spring-version>3.0.6.RELEASE</spring-version>
+        <ahc.version>1.7.6</ahc.version>
+        <jedis.version>2.0.0</jedis.version>
     </properties>
 </project>

@@ -16,7 +16,7 @@
         <dependency>
             <groupId>org.atmosphere</groupId>
             <artifactId>atmosphere-runtime</artifactId>
-            <version>${project.version}</version>
+            <version>${atmosphere-version}</version>
         </dependency>
 
         <dependency>

@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.atmosphere</groupId>
             <artifactId>atmosphere-socketio</artifactId>
-            <version>1.1.0.beta3</version>
+            <version>${extensions-version}</version>
         </dependency>
         <dependency>
             <groupId>org.atmosphere</groupId>

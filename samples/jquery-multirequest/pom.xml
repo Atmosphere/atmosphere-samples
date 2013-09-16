@@ -39,7 +39,7 @@
 		<dependency>
 			<groupId>org.atmosphere</groupId>
 			<artifactId>atmosphere-jersey</artifactId>
-			<version>${project.version}</version>
+            <version>${atmosphere-version}</version>
 		</dependency>
 
 		<dependency>
