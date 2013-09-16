@@ -6,7 +6,6 @@
         <groupId>org.atmosphere.extensions</groupId>
         <artifactId>atmosphere-gwt-project</artifactId>
         <version>2.0.0-SNAPSHOT</version>
-        <relativePath>../..</relativePath>
     </parent>
 
     <groupId>org.atmosphere.samples</groupId>
