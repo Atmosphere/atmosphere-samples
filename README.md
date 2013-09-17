@@ -41,8 +41,8 @@ If you plan to use Spring or GWT, take a look at their specific samples.
     <tr>
         <td>[chat-guice](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.atmosphere.samples%22%20AND%20a%3A%22atmosphere-guice-chat%22)</td>
         <td>This sample demonstrate the use of Google Guice with Atmosphere. The Chat application is implemented using @Suspend and @Broadcast annotation</td>
-        <td>[Guice](https://github.com/Atmosphere/atmosphere-extensions/blob/master/guice/samples/chat-guice/src/main/java/org/atmosphere/samples/guice/GuiceChatModule.java) [Jersey Resource](https://github.com/Atmosphere/atmosphere-extensions/blob/master/guice/samples/chat-guice/src/main/java/org/atmosphere/samples/guice/ResourceChat.java#L31)</td>
-        <td>Javascript Functions demonstrating [WebSocket, falling back to Long-Polling](https://github.com/Atmosphere/atmosphere-extensions/blob/master/guice/samples/chat-guice/src/main/webapp/jquery/application.js)</td>
+        <td>[Guice](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/guice/chat-guice/src/main/java/org/atmosphere/samples/guice/GuiceChatModule.java) [Jersey Resource](https://github.com/Atmosphere/atmosphere-extensions/blob/master/guice/samples/chat-guice/src/main/java/org/atmosphere/samples/guice/ResourceChat.java#L31)</td>
+        <td>Javascript Functions demonstrating [WebSocket, falling back to Long-Polling](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/guice/chat-guice/src/main/webapp/jquery/application.js)</td>
     </tr>
     <tr>
         <td>[chat](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.atmosphere.samples%22%20AND%20a%3A%22atmosphere-chat%22)</td>
@@ -59,8 +59,8 @@ If you plan to use Spring or GWT, take a look at their specific samples.
     <tr>
         <td>[di-guice-sample](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.atmosphere.samples%22%20AND%20a%3A%22atmosphere-di-guice-sample%22)</td>
         <td>The sample demonstrates the use of Atmosphere's Dependencies Injection using Guice</td>
-        <td>[Jersey Resource](https://github.com/Atmosphere/atmosphere-extensions/blob/master/guice/samples/di-guice-sample/src/main/java/org/atmosphere/samples/di/guice/MessageResource.java) [Guice](https://github.com/Atmosphere/atmosphere-samples/blob/master/samples/di-guice-sample/src/main/java/org/atmosphere/samples/di/guice/GuiceContextListener.java)</td>
-        <td>[Javascript Callback](https://github.com/Atmosphere/atmosphere-extensions/blob/master/guice/samples/di-guice-sample/src/main/webapp/index.html#L46)</td>
+        <td>[Jersey Resource](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/guice/di-guice-sample/src/main/java/org/atmosphere/samples/di/guice/MessageResource.java) [Guice](https://github.com/Atmosphere/atmosphere-samples/blob/master/samples/di-guice-sample/src/main/java/org/atmosphere/samples/di/guice/GuiceContextListener.java)</td>
+        <td>[Javascript Callback](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/guice/di-guice-sample/src/main/webapp/index.html#L46)</td>
     </tr>
     <tr>
         <td>[jersey2-chat](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22atmosphere-jersey2-chat%22)</td>
@@ -131,14 +131,14 @@ If you plan to use Spring or GWT, take a look at their specific samples.
     <tr>
         <td>[spring-tiles](http://search.maven.org/#search|gav|1|g%3A%22org.atmosphere.samples%22%20AND%20a%3A%22atmosphere-spring-tiles%22)</td>
         <td>This sample demonstrates how to use the Spring and Tiles Framework with AtmosphereHandler. The sample implements a pubsub application</td>
-        <td>[Spring Controller](https://github.com/Atmosphere/atmosphere-extensions/blob/master/spring/samples/spring-tiles/src/main/java/org/atmosphere/samples/pubsub/spring/PubSubController.java)</td>
-        <td>[Javascript Function](https://github.com/Atmosphere/atmosphere-extensions/blob/master/spring/samples/spring-tiles/src/main/webapp/pages/pubsubHeader.jsp#L6)</td>
+        <td>[Spring Controller](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/spring/spring-tiles/src/main/java/org/atmosphere/samples/pubsub/spring/PubSubController.java)</td>
+        <td>[Javascript Function](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/spring/spring-tiles/src/main/webapp/pages/pubsubHeader.jsp#L6)</td>
     </tr>
     <tr>
         <td>[spring-websocket](http://search.maven.org/#search|gav|1|g%3A%22org.atmosphere.samples%22%20AND%20a%3A%22atmosphere-spring-websocket%22)</td>
         <td>This sample demonstrates the use of Spring with Atmosphere WebSocketHandler, Meteor and AtmosphereHandler</td>
-        <td>[Meteor](https://github.com/Atmosphere/atmosphere-extensions/blob/master/spring/samples/spring-websocket/src/main/java/org/atmosphere/samples/pubsub/utils/AtmosphereUtils.java#L31) [Service](https://github.com/Atmosphere/atmosphere-samples/blob/master/samples/spring-websocket/src/main/java/org/atmosphere/samples/pubsub/services/ChatService.java) [WebSocketProtocol](https://github.com/Atmosphere/atmosphere-samples/blob/master/samples/spring-websocket/src/main/java/org/atmosphere/samples/pubsub/config/protocol/DelegatingWebSocketProtocol.java)</td>
-        <td>[Spring View](https://github.com/Atmosphere/atmosphere-extensions/blob/master/spring/samples/spring-websocket/src/main/webapp/WEB-INF/views/home.jsp#L9)</td>
+        <td>[Meteor](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/spring/spring-websocket/src/main/java/org/atmosphere/samples/pubsub/utils/AtmosphereUtils.java#L31) [Service](https://github.com/Atmosphere/atmosphere-samples/blob/master/samples/spring-websocket/src/main/java/org/atmosphere/samples/pubsub/services/ChatService.java) [WebSocketProtocol](https://github.com/Atmosphere/atmosphere-samples/blob/master/samples/spring-websocket/src/main/java/org/atmosphere/samples/pubsub/config/protocol/DelegatingWebSocketProtocol.java)</td>
+        <td>[Spring View](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/spring/spring-websocket/src/main/webapp/WEB-INF/views/home.jsp#L9)</td>
     </tr>
     <tr>
         <td>[sse-chat](http://search.maven.org/#search|gav|1|g%3A%22org.atmosphere.samples%22%20AND%20a%3A%22atmosphere-chat-sse%22)</td>
@@ -161,15 +161,15 @@ If you plan to use Spring or GWT, take a look at their specific samples.
     <tr>
         <td>[socketio-chat](http://search.maven.org/#search|gav|1|g%3A%22org.atmosphere.samples%22%20AND%20a%3A%22atmosphere-socketio%22)</td>
         <td>This sample demonstrates how the SocketIO library can be used, trsnaparently, using an AtmosphereHandler</td>
-        <td>[AtmosphereHandler](https://github.com/Atmosphere/atmosphere-extensions/blob/master/socketio/samples/socketio-chat/src/main/java/org/atmosphere/samples/chat/SocketIOChatAtmosphere.java)</td>
-        <td>[SocketIO](https://github.com/Atmosphere/atmosphere-extensions/blob/master/socketio/samples/socketio-chat/src/main/webapp/javascript/application.js#L1)</td>
+        <td>[AtmosphereHandler](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/socketio/socketio-chat/src/main/java/org/atmosphere/samples/chat/SocketIOChatAtmosphere.java)</td>
+        <td>[SocketIO](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/socketio/socketio-chat/src/main/webapp/javascript/application.js#L1)</td>
     </tr>
     </tr>
         <tr>
         <td>[native-socketio-chat](http://search.maven.org/#search|gav|1|g%3A%22org.atmosphere.samples%22%20AND%20a%3A%22atmosphere-socketio%22)</td>
         <td>This sample demonstrates how the SocketIO library and natively extending the SocketIO protocol on the server side</td>
-        <td>[AtmosphereHandler](https://github.com/Atmosphere/atmosphere-extensions/blob/master/socketio/samples/native-socketio-chat/src/main/java/org/atmosphere/samples/chat/ChatAtmosphereHandler.java)</td>
-        <td>[SocketIO](https://github.com/Atmosphere/atmosphere-extensions/blob/master/socketio/samples/native-socketio-chat/src/main/webapp/index.html#L1)</td>
+        <td>[AtmosphereHandler](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/socketio/native-socketio-chat/src/main/java/org/atmosphere/samples/chat/ChatAtmosphereHandler.java)</td>
+        <td>[SocketIO](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/socketio/native-socketio-chat/src/main/webapp/index.html#L1)</td>
     </tr>
     </tr>
         <tr>
@@ -188,27 +188,27 @@ If you plan to use Spring or GWT, take a look at their specific samples.
         <tr>
         <td>[gwt2-jersey-rpc](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.atmosphere.samples%22%20AND%20a%3A%22gwt20-jersey-rpc%22)</td>
         <td>GWT RPC with Jersey</td>
-        <td>[Server](https://github.com/Atmosphere/atmosphere-extensions/blob/master/gwt20/samples/gwt20-jersey-rpc/src/main/java/org/atmosphere/samples/server/JerseyGwtRpc.java)</td>
-        <td>[Client](https://github.com/Atmosphere/atmosphere-extensions/blob/master/gwt20/samples/gwt20-jersey-rpc/src/main/java/org/atmosphere/samples/client/GwtJerseyDemo.java)</td>
+        <td>[Server](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/gwt/gwt20-json/src/main/java/org/atmosphere/samples/client/GwtJsonDemo.java)</td>
+        <td>[Client](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/gwt/qwt20-jersey-rpc/src/main/java/org/atmosphere/samples/client/GwtJerseyDemo.java)</td>
     </tr>
     </tr>
         <tr>
         <td>[gwt20-json](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.atmosphere.samples%22%20AND%20a%3A%22gwt20-json%22)</td>
         <td>GWT with JSON</td>
-        <td>[Server](https://github.com/Atmosphere/atmosphere-extensions/blob/master/gwt20/samples/gwt20-jersey-rpc/src/main/java/org/atmosphere/samples/server/JerseyGwtRpc.java)</td>
-        <td>[Client](https://github.com/Atmosphere/atmosphere-extensions/blob/master/gwt20/samples/gwt20-json/src/main/java/org/atmosphere/samples/client/GwtJsonDemo.java)</td>
+        <td>[Server](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/gwt/gwt20-json/src/main/java/org/atmosphere/samples/server/JerseyGwtRpc.java)</td>
+        <td>[Client](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/gwt/gwt20-json/src/main/java/org/atmosphere/samples/client/GwtJsonDemo.java)</td>
     </tr>
      </tr>
          <tr>
          <td>[gwt20-managed-rpc](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.atmosphere.samples%22%20AND%20a%3A%22gwt20-json%22)</td>
          <td>GWT RPC using the [@ManagedService](http://atmosphere.github.io/atmosphere/apidocs/org/atmosphere/config/service/ManagedService.html) annotation</td>
-         <td>[Server](https://github.com/Atmosphere/atmosphere-extensions/blob/master/gwt20/samples/gwt20-managed-rpc/src/main/java/org/atmosphere/samples/server/ManagedGWTResource.java#L40)</td>
-         <td>[Client](https://github.com/Atmosphere/atmosphere-extensions/blob/master/gwt20/samples/gwt20-managed-rpc/src/main/java/org/atmosphere/samples/client/GwtRpcDemo.java#L82)</td>
+         <td>[Server](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/gwt/gwt20-managed-rpc/src/main/java/org/atmosphere/samples/server/ManagedGWTResource.java#L40)</td>
+         <td>[Client](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/gwt/gwt20-managed-rpc/src/main/java/org/atmosphere/samples/client/GwtRpcDemo.java#L82)</td>
      </tr>
       </tr>
           <tr>
           <td>[gwt20-rpc](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.atmosphere.samples%22%20AND%20a%3A%22gwt20-json%22)</td>
           <td>GWT RPC using the an AtmosphereHandler</td>
-          <td>[Server](https://github.com/Atmosphere/atmosphere-extensions/blob/master/gwt20/samples/gwt20-rpc/src/main/java/org/atmosphere/samples/server/GwtRpcAtmosphereHandler.java)</td>
-          <td>[Client](https://github.com/Atmosphere/atmosphere-extensions/blob/master/gwt20/samples/gwt20-rpc/src/main/java/org/atmosphere/samples/client/GwtRpcDemo.java)</td>
+          <td>[Server](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/gwt/gwt20-rpc/src/main/java/org/atmosphere/samples/server/GwtRpcAtmosphereHandler.java)</td>
+          <td>[Client](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/gwt/gwt20-rpc/src/main/java/org/atmosphere/samples/client/GwtRpcDemo.java)</td>
       </tr>
