@@ -262,9 +262,7 @@
     </profiles>
     <modules>
         <module>samples</module>
-        <!--
         <module>extensions-samples</module>
-        -->
         <module>nettosphere-samples</module>
         <module>wasync-samples</module>
     </modules>
