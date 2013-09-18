@@ -27,7 +27,9 @@
         <module>jersey-pubsub</module>
         <module>meteor-pubsub</module>
         <module>jquery-websockethandler-pubsub</module>
+        <!-- Need to update to newest Twitter API
         <module>twitter-live-feed</module>
+        -->
         <module>atmosphere-ee6</module>
         <module>channel</module>
         <module>async-annotation-pubsub</module>
