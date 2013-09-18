@@ -21,3 +21,4 @@ samples/gwt-demo/src/main/webapp/WEB-INF/classes/
 samples/gwt-chat/src/main/webapp/WEB-INF/classes/
 samples/gwt-conn-share/src/main/webapp/WEB-INF/classes/
 atlassian-ide-plugin.xml
+overlays
