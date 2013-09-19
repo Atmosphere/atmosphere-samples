@@ -382,13 +382,13 @@
         <slf4j-impl-version>1.6.1</slf4j-impl-version>
         <slf4j-version>1.6.1</slf4j-version>
         <logback-version>1.0.13</logback-version>
-        <client-version>2.0.2</client-version>
+        <client-version>2.0.3</client-version>
         <compat-version>2.0.0</compat-version>
         <nettosphere-version>2.0.0-SNAPSHOT</nettosphere-version>
         <extensions-version>2.0.0-SNAPSHOT</extensions-version>
         <wasync-version>1.0.0-SNAPSHOT</wasync-version>
 
-        <compat-version>2.0.0</compat-version>
+        <compat-version>2.0.1</compat-version>
         <jgroups-version>3.1.0.Final</jgroups-version>
         <jms-version>1.1</jms-version>
         <guice-version>2.0</guice-version>
