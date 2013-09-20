@@ -37,7 +37,7 @@
         <dependency>
             <groupId>org.atmosphere.samples</groupId>
             <artifactId>atmosphere-jersey-pubsub</artifactId>
-            <version>${atmosphere-version}</version>
+            <version>${project.version}</version>
             <type>war</type>
         </dependency>
         <dependency>
