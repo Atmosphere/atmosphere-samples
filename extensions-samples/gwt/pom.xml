@@ -54,28 +54,28 @@
             <dependency>
                 <groupId>org.atmosphere.extensions</groupId>
                 <artifactId>atmosphere-gwt20-common</artifactId>
-                <version>${project.version}</version>
+                <version>${extension-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.atmosphere.extensions</groupId>
                 <artifactId>atmosphere-gwt20-client</artifactId>
-                <version>${project.version}</version>
+                <version>${extension-version}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.atmosphere.extensions</groupId>
                 <artifactId>atmosphere-gwt20-server</artifactId>
-                <version>${project.version}</version>
+                <version>${extension-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.atmosphere.extensions</groupId>
                 <artifactId>atmosphere-gwt20-jersey</artifactId>
-                <version>${project.version}</version>
+                <version>${extension-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.atmosphere.extensions</groupId>
                 <artifactId>atmosphere-gwt20-jackson</artifactId>
-                <version>${project.version}</version>
+                <version>${extension-version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.gwt</groupId>
