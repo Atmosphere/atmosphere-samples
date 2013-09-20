@@ -32,7 +32,7 @@
         <dependency>
             <groupId>org.atmosphere</groupId>
             <artifactId>atmosphere-redis</artifactId>
-            <version>${project.version}</version>
+            <version>${extensions-version}</version>
         </dependency>
         <dependency>
             <groupId>org.atmosphere.samples</groupId>

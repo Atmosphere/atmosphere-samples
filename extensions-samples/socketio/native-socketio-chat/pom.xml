@@ -22,7 +22,7 @@
 		<dependency>
 			<groupId>org.atmosphere</groupId>
 			<artifactId>atmosphere-socketio</artifactId>
-            <version>${project.version}</version>
+            <version>${extensions-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
