@@ -36,7 +36,7 @@ public class NettosphereChat {
         b.resource(Chat.class)
                 .resource("./webapps")
                 // for debugging inside IntelJ
-                .resource("./samples/chat/src/main/resources")
+                .resource("./wasync-samples/chat/src/main/resources")
                 .port(8080).host("127.0.0.1").build();
         Nettosphere s = new Nettosphere.Builder().config(b.build()).build();
         s.start();
