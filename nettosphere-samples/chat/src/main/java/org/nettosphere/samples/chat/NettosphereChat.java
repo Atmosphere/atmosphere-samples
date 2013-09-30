@@ -35,7 +35,7 @@ public class NettosphereChat {
         Config.Builder b = new Config.Builder();
         b.resource(Chat.class)
                 .resource("./webapps")
-                .resource("./samples/chat/src/main/resources")
+                .resource("./nettosphere-samples/chat/src/main/resources")
                 .port(8080).host("127.0.0.1").build();
         Nettosphere s = new Nettosphere.Builder().config(b.build()).build();
         s.start();

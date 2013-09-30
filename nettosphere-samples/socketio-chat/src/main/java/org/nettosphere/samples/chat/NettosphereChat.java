@@ -36,7 +36,7 @@ public class NettosphereChat {
         Config.Builder b = new Config.Builder();
         b.resource(SocketIOChatAtmosphereHandler.class)
                 .resource("./webapps")
-                .resource("./samples/socketio-chat/src/main/resources")
+                .resource("./nettosphere-samples/socketio-chat/src/main/resources")
                 .initParam(SocketIOAtmosphereInterceptor.SOCKETIO_TRANSPORT, "websocket,xhr-polling,jsonp-polling")
                 .mappingPath("/chat")
                 .interceptor(new SocketIOAtmosphereInterceptor())

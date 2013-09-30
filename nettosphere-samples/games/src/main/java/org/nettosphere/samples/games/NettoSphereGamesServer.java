@@ -36,7 +36,7 @@ public class NettoSphereGamesServer {
         b.resource(SnakeManagedService.class)
                 .resource("./webapps")
                 // for debugging inside IntelJ
-                .resource("./samples/games/src/main/resources")
+                .resource("./nettosphere-samples/games/src/main/resources")
                 .port(8080).host("127.0.0.1").build();
         Nettosphere s = new Nettosphere.Builder().config(b.build()).build();
         s.start();

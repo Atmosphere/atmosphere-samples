@@ -21,7 +21,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -38,7 +37,7 @@ public class NettosphereJerseyChat {
         b.resource(ResourceChat.class)
                 .resource("./webapps")
                 // for debugging inside IntelJ
-                .resource("./samples/jersey-chat/src/main/resources")
+                .resource("./nettosphere-samples/jersey-chat/src/main/resources")
                 .port(8080)
                 .host("127.0.0.1")
                 .initParam("org.atmosphere.websocket.messageContentType","application/json")
