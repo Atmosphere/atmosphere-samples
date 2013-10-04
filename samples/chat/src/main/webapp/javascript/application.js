@@ -20,8 +20,7 @@ $(function () {
         trackMessageLength : true,
         reconnectInterval : 5000,
         enableXDR: true,
-        timeout : 60000,
-        fallbackTransport: 'long-polling'};
+        timeout : 60000 };
 
 
     request.onOpen = function(response) {
@@ -48,9 +47,7 @@ $(function () {
     <!-- For demonstration of how you can customize the fallbackTransport using the onTransportFailure function -->
     request.onTransportFailure = function(errorMsg, request) {
         atmosphere.util.info(errorMsg);
-        if (window.EventSource) {
-            request.fallbackTransport = "sse";
-        }
+        request.fallbackTransport = "long-polling";
         header.html($('<h3>', { text: 'Atmosphere Chat. Default transport is WebSocket, fallback is ' + request.fallbackTransport }));
     };
 
