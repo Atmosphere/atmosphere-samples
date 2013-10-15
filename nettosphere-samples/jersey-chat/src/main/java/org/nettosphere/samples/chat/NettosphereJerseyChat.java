@@ -35,8 +35,11 @@ public class NettosphereJerseyChat {
     public static void main(String[] args) throws IOException {
         Config.Builder b = new Config.Builder();
         b.resource(ResourceChat.class)
+                // For *-distrubution
                 .resource("./webapps")
-                // for debugging inside IntelJ
+                // For mvn exec:java
+                .resource("./src/main/resources")
+                // For running inside an IDE
                 .resource("./nettosphere-samples/jersey-chat/src/main/resources")
                 .port(8080)
                 .host("127.0.0.1")

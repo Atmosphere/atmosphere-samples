@@ -35,7 +35,11 @@ public class NettosphereChat {
     public static void main(String[] args) throws IOException {
         Config.Builder b = new Config.Builder();
         b.resource(SocketIOChatAtmosphereHandler.class)
+                // For *-distrubution
                 .resource("./webapps")
+                // For mvn exec:java
+                .resource("./src/main/resources")
+                // For running inside an IDE
                 .resource("./nettosphere-samples/socketio-chat/src/main/resources")
                 .initParam(SocketIOAtmosphereInterceptor.SOCKETIO_TRANSPORT, "websocket,xhr-polling,jsonp-polling")
                 .mappingPath("/chat")
