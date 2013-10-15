@@ -52,7 +52,6 @@
  */
 package org.atmosphere.samples.pubsub;
 
-import org.atmosphere.cpr.AtmosphereConfig;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
 import org.atmosphere.jersey.JerseyBroadcaster;
@@ -73,10 +72,6 @@ public class PubSubBroadcaster extends JerseyBroadcaster {
     private static final Logger logger = LoggerFactory.getLogger(PubSubBroadcaster.class);
 
     private final AtomicBoolean isSet = new AtomicBoolean(false);
-
-    public PubSubBroadcaster(String id, AtmosphereConfig config) {
-        super(id, config);
-    }
 
     @Override
     protected void invokeOnStateChange(final AtmosphereResource r, final AtmosphereResourceEvent e) {
