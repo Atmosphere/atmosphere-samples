@@ -16,7 +16,6 @@
 package org.atmosphere.samples.chat;
 
 import org.atmosphere.config.service.BroadcasterService;
-import org.atmosphere.cpr.AtmosphereConfig;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.socketio.transport.SocketIOPacketImpl;
 import org.atmosphere.util.ExcludeSessionBroadcaster;
@@ -26,10 +25,6 @@ import java.util.concurrent.Future;
 
 @BroadcasterService
 public class SocketIOBroadcaster extends ExcludeSessionBroadcaster {
-
-    public SocketIOBroadcaster(String id, AtmosphereConfig config) {
-        super(id, config);
-    }
 
     @Override
     public Future<Object> broadcast(Object m) {
