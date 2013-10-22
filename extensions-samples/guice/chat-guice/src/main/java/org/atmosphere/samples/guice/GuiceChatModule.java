@@ -66,7 +66,7 @@ public class GuiceChatModule extends ServletModule {
     protected void configureServlets() {
         bind(ResourceChat.class);
         bind(new TypeLiteral<Map<String, String>>() {
-        }).annotatedWith(Names.named(AtmosphereGuiceServlet.JERSEY_PROPERTIES)).toInstance(
+        }).annotatedWith(Names.named(AtmosphereGuiceServlet.PROPERTIES)).toInstance(
                 Collections.<String, String>emptyMap());
     }
 }
