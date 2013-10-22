@@ -97,10 +97,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.atmosphere.extensions</groupId>
-            <artifactId>atmosphere-gwt20-client</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.atmosphere</groupId>
             <artifactId>atmosphere-runtime</artifactId>
             <version>${atmosphere-version}</version>
@@ -114,8 +110,12 @@
         </dependency>
         <dependency>
             <groupId>org.atmosphere.extensions</groupId>
-            <artifactId>atmosphere-gwt20-server</artifactId>
-        </dependency>       
+            <artifactId>atmosphere-gwt20-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.atmosphere.extensions</groupId>
+            <artifactId>atmosphere-gwt20-managed</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>

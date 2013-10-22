@@ -385,7 +385,7 @@
         <client-version>2.0.5</client-version>
         <compat-version>2.0.1</compat-version>
         <nettosphere-version>2.0.3-SNAPSHOT</nettosphere-version>
-        <extensions-version>2.0.0</extensions-version>
+        <extensions-version>2.1.0-SNAPSHOT</extensions-version>
         <wasync-version>1.1.0</wasync-version>
 
         <compat-version>2.0.1</compat-version>

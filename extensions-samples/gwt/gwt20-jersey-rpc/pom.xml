@@ -98,6 +98,7 @@
         <dependency>
             <groupId>org.atmosphere.extensions</groupId>
             <artifactId>atmosphere-gwt20-client</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.atmosphere.client</groupId>

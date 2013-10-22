@@ -35,6 +35,8 @@ import org.atmosphere.gwt20.client.AtmosphereReopenHandler;
 import org.atmosphere.gwt20.client.AtmosphereRequest;
 import org.atmosphere.gwt20.client.AtmosphereRequestConfig;
 import org.atmosphere.gwt20.client.AtmosphereResponse;
+import org.atmosphere.gwt20.client.managed.RPCEvent;
+import org.atmosphere.gwt20.client.managed.RPCSerializer;
 
 import java.util.List;
 import java.util.logging.Level;
@@ -43,29 +45,29 @@ import java.util.logging.Logger;
 public class GwtRpcDemo implements EntryPoint {
 
     static final Logger logger = Logger.getLogger(GwtRpcDemo.class.getName());
-    
+
     @Override
     public void onModuleLoad() {
-        
+
         GWT.setUncaughtExceptionHandler(new GWT.UncaughtExceptionHandler() {
             @Override
             public void onUncaughtException(Throwable e) {
                 logger.log(Level.SEVERE, "Uncaught exception", e);
             }
         });
-        
-      
+
+
         HorizontalPanel buttons = new HorizontalPanel();
         final TextBox messageInput = new TextBox();
         buttons.add(messageInput);
-        
+
         Button sendRPC = new Button("send (GWT-RPC)");
         buttons.add(sendRPC);
-      
-                
+
+
         RootPanel.get("buttonbar").add(buttons);
-        
-        
+
+
         HTMLPanel logPanel = new HTMLPanel("") {
             @Override
             public void add(Widget widget) {
@@ -75,10 +77,10 @@ public class GwtRpcDemo implements EntryPoint {
         };
         RootPanel.get("logger").add(logPanel);
         Logger.getLogger("").addHandler(new HasWidgetsLogHandler(logPanel));
-        
-                
+
+
         RPCSerializer rpc_serializer = GWT.create(RPCSerializer.class);
-                
+
         AtmosphereRequestConfig rpcRequestConfig = AtmosphereRequestConfig.create(rpc_serializer);
         rpcRequestConfig.setUrl(GWT.getModuleBaseURL() + "atmosphere/rpc");
         rpcRequestConfig.setTransport(AtmosphereRequestConfig.Transport.WEBSOCKET);
@@ -104,10 +106,10 @@ public class GwtRpcDemo implements EntryPoint {
         rpcRequestConfig.setMessageHandler(new AtmosphereMessageHandler() {
             @Override
             public void onMessage(AtmosphereResponse response) {
-               List<RPCEvent> messages = response.getMessages();
-               for (RPCEvent event : messages) {
-                  logger.info("received message through RPC: " + event.getData());
-               }
+                List<RPCEvent> messages = response.getMessages();
+                for (RPCEvent event : messages) {
+                    logger.info("received message through RPC: " + event.getData());
+                }
             }
         });
         rpcRequestConfig.setFlags(AtmosphereRequestConfig.Flags.enableProtocol);
@@ -116,21 +118,21 @@ public class GwtRpcDemo implements EntryPoint {
 
         Atmosphere atmosphere = Atmosphere.create();
         final AtmosphereRequest rpcRequest = atmosphere.subscribe(rpcRequestConfig);
-        
+
         sendRPC.addClickHandler(new ClickHandler() {
-          @Override
-          public void onClick(ClickEvent event) {
-            if (messageInput.getText().trim().length() > 0) {
-              try {
-                //              service.sendEvent(new Event(messageInput.getText()), callback);
-                  RPCEvent myevent = new RPCEvent();
-                  myevent.setData(messageInput.getText());
-                  rpcRequest.push(myevent);
-              } catch (SerializationException ex) {
-                logger.log(Level.SEVERE, "Failed to serialize message", ex);
-              }
+            @Override
+            public void onClick(ClickEvent event) {
+                if (messageInput.getText().trim().length() > 0) {
+                    try {
+                        //              service.sendEvent(new Event(messageInput.getText()), callback);
+                        RPCEvent myevent = new RPCEvent();
+                        myevent.setData(messageInput.getText());
+                        rpcRequest.push(myevent);
+                    } catch (SerializationException ex) {
+                        logger.log(Level.SEVERE, "Failed to serialize message", ex);
+                    }
+                }
             }
-          }
         });
     }
 

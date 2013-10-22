@@ -17,15 +17,14 @@ package org.atmosphere.samples.server;
 
 import org.atmosphere.client.TrackMessageSizeInterceptor;
 import org.atmosphere.config.service.Disconnect;
-import org.atmosphere.config.service.Get;
 import org.atmosphere.config.service.ManagedService;
 import org.atmosphere.config.service.Post;
 import org.atmosphere.config.service.Ready;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
-import org.atmosphere.cpr.AtmosphereResourceEventListenerAdapter;
 import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.gwt20.server.GwtRpcInterceptor;
+import org.atmosphere.gwt20.managed.RPCEventDeserializerInterceptor;
 import org.atmosphere.interceptor.AtmosphereResourceLifecycleInterceptor;
 import org.atmosphere.interceptor.BroadcastOnPostAtmosphereInterceptor;
 import org.atmosphere.interceptor.SuspendTrackerInterceptor;
