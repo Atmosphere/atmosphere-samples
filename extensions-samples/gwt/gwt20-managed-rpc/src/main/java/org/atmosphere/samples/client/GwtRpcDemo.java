@@ -29,6 +29,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import org.atmosphere.gwt20.client.Atmosphere;
 import org.atmosphere.gwt20.client.AtmosphereCloseHandler;
+import org.atmosphere.gwt20.client.AtmosphereMessage;
 import org.atmosphere.gwt20.client.AtmosphereMessageHandler;
 import org.atmosphere.gwt20.client.AtmosphereOpenHandler;
 import org.atmosphere.gwt20.client.AtmosphereReopenHandler;
@@ -108,7 +109,7 @@ public class GwtRpcDemo implements EntryPoint {
             public void onMessage(AtmosphereResponse response) {
                 List<RPCEvent> messages = response.getMessages();
                 for (RPCEvent event : messages) {
-                    logger.info("received message through RPC: " + event.getData());
+                    logger.info("received message through RPC: " + event.getMessage());
                 }
             }
         });
@@ -125,8 +126,8 @@ public class GwtRpcDemo implements EntryPoint {
                 if (messageInput.getText().trim().length() > 0) {
                     try {
                         //              service.sendEvent(new Event(messageInput.getText()), callback);
-                        RPCEvent myevent = new RPCEvent();
-                        myevent.setData(messageInput.getText());
+                        AtmosphereMessage myevent = new RPCEvent();
+                        myevent.setMessage(messageInput.getText());
                         rpcRequest.push(myevent);
                     } catch (SerializationException ex) {
                         logger.log(Level.SEVERE, "Failed to serialize message", ex);
