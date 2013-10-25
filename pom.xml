@@ -99,9 +99,8 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
+                <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.0.6.v20130930</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -52,9 +52,9 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>${jetty9-version}</version>
+                 <groupId>org.eclipse.jetty</groupId>
+                   <artifactId>jetty-maven-plugin</artifactId>
+                     <version>${jetty9-version}</version>
                 <configuration>
                     <webAppSourceDirectory>${project.build.directory}/${project.name}</webAppSourceDirectory>
                     <scanIntervalSeconds>1</scanIntervalSeconds>
