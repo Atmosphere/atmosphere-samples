@@ -24,7 +24,7 @@ import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
 import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.gwt20.server.GwtRpcInterceptor;
-import org.atmosphere.gwt20.managed.RPCEventDeserializerInterceptor;
+import org.atmosphere.gwt20.managed.AtmosphereMessageInterceptor;
 import org.atmosphere.interceptor.AtmosphereResourceLifecycleInterceptor;
 import org.atmosphere.interceptor.BroadcastOnPostAtmosphereInterceptor;
 import org.atmosphere.interceptor.SuspendTrackerInterceptor;
@@ -58,7 +58,7 @@ import java.util.logging.Logger;
             /**
              * Deserialize the GWT message
              */
-            RPCEventDeserializerInterceptor.class,
+            AtmosphereMessageInterceptor.class,
             /**
              * Echo the messages we are receiving from the client either as w WebSocket message or an HTTP Post.
              */
