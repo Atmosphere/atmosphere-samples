@@ -101,7 +101,7 @@
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>7.6.0.RC4</version>
+                <version>9.0.6.v20130930</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -372,8 +372,9 @@
         <maven-plugin.version>1.0.0</maven-plugin.version>
         <grizzly10-version>1.0.31</grizzly10-version>
         <jetty8-version>8.1.9.v20130131</jetty8-version>
+        <jetty9-version>9.0.6.v20130930</jetty9-version>
         <tomcat-version>6.0.35</tomcat-version>
-        <tomcat7-version>7.0.35</tomcat7-version>
+        <tomcat7-version>7.0.42</tomcat7-version>
         <common-logging-version>1.1.1</common-logging-version>
         <scala.version>2.9.2</scala.version>
         <shade-version>1.2.1</shade-version>
@@ -384,7 +385,7 @@
         <logback-version>1.0.13</logback-version>
         <client-version>2.0.5</client-version>
         <compat-version>2.0.1</compat-version>
-        <nettosphere-version>2.0.3-SNAPSHOT</nettosphere-version>
+        <nettosphere-version>2.1.0-SNAPSHOT</nettosphere-version>
         <extensions-version>2.1.0-SNAPSHOT</extensions-version>
         <wasync-version>1.1.0</wasync-version>
 
