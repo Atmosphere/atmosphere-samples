@@ -16,6 +16,7 @@
             <param-value>org.atmosphere.samples</param-value>
         </init-param>
         <load-on-startup>0</load-on-startup>
+        <async-supported>true</async-supported>
     </servlet>
     <servlet-mapping>
         <servlet-name>MeteorServlet</servlet-name>
