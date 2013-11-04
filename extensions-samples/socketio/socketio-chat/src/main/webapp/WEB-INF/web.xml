@@ -25,8 +25,8 @@
 			<param-name>socketio-suspendTime</param-name>
 			<param-value>300000</param-value>
 		</init-param>
-
 		<load-on-startup>0</load-on-startup>
+        <async-supported>true</async-supported>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AtmosphereServlet</servlet-name>

@@ -13,6 +13,23 @@
 	<version>2.0.4-SNAPSHOT</version>
 	<name>atmosphere-socketio-chat</name>
 	<url>http://maven.apache.org</url>
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty9-version}</version>
+                <configuration>
+                    <webAppSourceDirectory>${project.build.directory}/${project.name}</webAppSourceDirectory>
+                    <scanIntervalSeconds>1</scanIntervalSeconds>
+                    <webAppConfig>
+                        <contextPath>/</contextPath>
+                    </webAppConfig>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 	<dependencies>
 		<dependency>
 			<groupId>org.atmosphere</groupId>
@@ -35,13 +52,6 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
 			<version>1.6.1</version>
-		</dependency>
-		<!-- This is ONLY required if you use Atmosphere's annotation. If you use 
-			atmosphere.xml, not required -->
-		<dependency>
-			<groupId>eu.infomas</groupId>
-			<artifactId>annotation-detector</artifactId>
-			<version>3.0.0</version>
 		</dependency>
 	</dependencies>
 </project>
