@@ -11,7 +11,8 @@ $(function () {
     var request = { url: document.location.toString() + 'meteor',
                     contentType : "application/json",
                     logLevel : 'debug',
-                    transport : 'websocket' ,
+                    transport : 'jsonp' ,
+reconnectInterval : 5000,
                     fallbackTransport: 'long-polling'};
 
 
