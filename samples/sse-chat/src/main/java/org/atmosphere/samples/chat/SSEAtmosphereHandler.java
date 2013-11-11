@@ -16,14 +16,13 @@
 package org.atmosphere.samples.chat;
 
 import org.atmosphere.config.service.AtmosphereHandlerService;
-import org.atmosphere.cpr.AtmosphereHandler;
-import org.atmosphere.cpr.AtmosphereRequest;
-import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
 import org.atmosphere.cpr.AtmosphereResponse;
 import org.atmosphere.handler.OnMessage;
 import org.atmosphere.interceptor.AtmosphereResourceLifecycleInterceptor;
 import org.atmosphere.interceptor.BroadcastOnPostAtmosphereInterceptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.Date;
@@ -37,6 +36,7 @@ import java.util.Date;
         interceptors= {AtmosphereResourceLifecycleInterceptor.class,
                        BroadcastOnPostAtmosphereInterceptor.class})
 public class SSEAtmosphereHandler extends OnMessage<String> {
+    private final Logger logger = LoggerFactory.getLogger(SSEAtmosphereHandler.class);
 
     @Override
     public void onMessage(AtmosphereResponse response, String message) throws IOException {
@@ -46,6 +46,16 @@ public class SSEAtmosphereHandler extends OnMessage<String> {
         String chat = message.substring(message.lastIndexOf(":") + 2, message.length() - 2);
 
         response.getWriter().write(new Data(author, chat).toString());
+    }
+
+    @Override
+    public void onDisconnect(AtmosphereResponse response) throws IOException {
+        AtmosphereResourceEvent event = response.resource().getAtmosphereResourceEvent();
+        if (event.isCancelled()) {
+            logger.info("Browser {} unexpectedly disconnected", response.resource().uuid());
+        } else if (event.isClosedByClient()) {
+            logger.info("Browser {} closed the connection", response.resource().uuid());
+        }
     }
 
     private final static class Data {

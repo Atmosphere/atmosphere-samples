@@ -21,6 +21,8 @@ import org.atmosphere.config.service.AtmosphereService;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
 import org.atmosphere.cpr.AtmosphereResourceEventListenerAdapter;
 import org.atmosphere.jersey.JerseyBroadcaster;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -62,12 +64,18 @@ public class ChatResource {
     }
 
     public static final class OnDisconnect extends AtmosphereResourceEventListenerAdapter {
+        private final Logger logger = LoggerFactory.getLogger(ChatResource.class);
+
         /**
          * {@inheritDoc}
          */
         @Override
         public void onDisconnect(AtmosphereResourceEvent event) {
-            System.out.println(event);
+            if (event.isCancelled()) {
+                logger.info("Browser {} unexpectedly disconnected", event.getResource().uuid());
+            } else if (event.isClosedByClient()) {
+                logger.info("Browser {} closed the connection", event.getResource().uuid());
+            }
         }
     }
 
