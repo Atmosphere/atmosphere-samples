@@ -386,7 +386,7 @@
         <compat-version>2.0.1</compat-version>
         <nettosphere-version>2.1.0-SNAPSHOT</nettosphere-version>
         <extensions-version>2.1.0-SNAPSHOT</extensions-version>
-        <wasync-version>1.1.0</wasync-version>
+        <wasync-version>1.1.1</wasync-version>
 
         <compat-version>2.0.1</compat-version>
         <jgroups-version>3.1.0.Final</jgroups-version>
