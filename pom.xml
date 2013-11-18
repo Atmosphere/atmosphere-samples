@@ -382,7 +382,7 @@
         <slf4j-impl-version>1.6.1</slf4j-impl-version>
         <slf4j-version>1.6.1</slf4j-version>
         <logback-version>1.0.13</logback-version>
-        <client-version>2.1.1-SNAPSHOT</client-version>
+        <client-version>2.1.1</client-version>
         <compat-version>2.0.1</compat-version>
         <nettosphere-version>2.1.0-SNAPSHOT</nettosphere-version>
         <extensions-version>2.1.0-SNAPSHOT</extensions-version>
