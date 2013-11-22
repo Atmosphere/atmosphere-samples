@@ -32,7 +32,7 @@
         <dependency>
             <groupId>org.atmosphere</groupId>
             <artifactId>atmosphere-hazelcast</artifactId>
-            <version>${extensions-version}</version>
+            <version>2.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.atmosphere.samples</groupId>
