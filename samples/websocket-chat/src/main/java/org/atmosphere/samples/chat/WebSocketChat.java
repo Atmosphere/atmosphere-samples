@@ -21,12 +21,14 @@ import org.atmosphere.util.SimpleBroadcaster;
 import org.atmosphere.websocket.WebSocket;
 import org.atmosphere.websocket.WebSocketEventListenerAdapter;
 import org.atmosphere.websocket.WebSocketHandler;
-import org.atmosphere.websocket.WebSocketHandlerAdapter;
+import org.atmosphere.websocket.WebSocketStreamingHandlerAdapter;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.Date;
 
 /**
@@ -34,8 +36,9 @@ import java.util.Date;
  *
  * @author Jeanfrancois Arcand
  */
-@WebSocketHandlerService(path = "/chat", broadcaster = SimpleBroadcaster.class)
-public class WebSocketChat extends WebSocketHandlerAdapter {
+@WebSocketHandlerService(path = "/chat", broadcaster = SimpleBroadcaster.class,
+        atmosphereConfig = {"org.atmosphere.websocket.WebSocketProtocol=org.atmosphere.websocket.protocol.StreamingHttpProtocol"})
+public class WebSocketChat extends WebSocketStreamingHandlerAdapter {
 
     private final Logger logger = LoggerFactory.getLogger(WebSocketChat.class);
     private final ObjectMapper mapper = new ObjectMapper();
@@ -54,8 +57,8 @@ public class WebSocketChat extends WebSocketHandlerAdapter {
         });
     }
 
-    public void onTextMessage(WebSocket webSocket, String message) throws IOException {
-        webSocket.broadcast(mapper.writeValueAsString(mapper.readValue(message, Data.class)));
+    public void onTextStream(WebSocket webSocket, Reader reader) throws IOException {
+        webSocket.broadcast(mapper.writeValueAsString(mapper.readValue(new BufferedReader(reader).readLine(), Data.class)));
     }
 
     public final static class Data {
