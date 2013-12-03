@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author rinchen tenpel
  */
-public class RPCEvent implements Serializable {
+public class RPCEvent extends BaseEvent implements Serializable {
 
     private String data;
     
