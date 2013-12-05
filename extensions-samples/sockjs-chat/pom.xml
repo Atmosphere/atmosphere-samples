@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
-        <groupId>org.atmosphere.samples</groupId>
-        <artifactId>atmosphere-samples</artifactId>
+        <groupId>org.atmosphere</groupId>
+        <artifactId>atmosphere-samples-project</artifactId>
         <version>2.1.0-SNAPSHOT</version>
+        <relativePath>../../</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.atmosphere.samples</groupId>
-    <artifactId>atmosphere-chat</artifactId>
+    <artifactId>atmosphere-sockjs-chat</artifactId>
     <packaging>war</packaging>
     <version>2.1.0-SNAPSHOT</version>
-    <name>broadcast</name>
+    <name>atmosphere-sockjs-chat</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
@@ -43,6 +44,7 @@
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-servlet_3.0_spec</artifactId>
+            <version>1.0</version>
         </dependency>
         <!-- Uncomment to use RedisPubSub
         <dependency>

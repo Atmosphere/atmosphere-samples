@@ -10,13 +10,12 @@
         <description>AtmosphereServlet</description>
         <servlet-name>AtmosphereServlet</servlet-name>
         <servlet-class>org.atmosphere.cpr.AtmosphereServlet</servlet-class>
-        <!-- Use it with mvn jetty:run -->
         <load-on-startup>0</load-on-startup>
         <async-supported>true</async-supported>
     </servlet>
     <servlet-mapping>
         <servlet-name>AtmosphereServlet</servlet-name>
-        <url-pattern>/*</url-pattern>
+	<url-pattern>/chat/*</url-pattern>
     </servlet-mapping>
 </web-app>
 
