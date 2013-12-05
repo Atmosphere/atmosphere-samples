@@ -16,7 +16,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>AtmosphereServlet</servlet-name>
-        <url-pattern>/*</url-pattern>
+	<url-pattern>/chat/*</url-pattern>
     </servlet-mapping>
 </web-app>
 

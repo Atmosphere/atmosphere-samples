@@ -10,7 +10,7 @@
     <artifactId>atmosphere-chat</artifactId>
     <packaging>war</packaging>
     <version>2.1.0-SNAPSHOT</version>
-    <name>broadcast</name>
+    <name>atmosphere-chat</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
@@ -34,11 +34,6 @@
             <groupId>org.atmosphere</groupId>
             <artifactId>atmosphere-runtime</artifactId>
             <version>${atmosphere-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.atmosphere</groupId>
-            <artifactId>atmosphere-sockjs</artifactId>
-            <version>2.1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
