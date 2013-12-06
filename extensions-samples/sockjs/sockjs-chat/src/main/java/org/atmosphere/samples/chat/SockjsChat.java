@@ -20,6 +20,7 @@ import org.atmosphere.config.service.ManagedService;
 import org.atmosphere.config.service.Ready;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
+import org.atmosphere.interceptor.AtmosphereResourceLifecycleInterceptor;
 import org.atmosphere.interceptor.SuspendTrackerInterceptor;
 import org.atmosphere.samples.chat.custom.Config;
 import org.slf4j.Logger;
@@ -36,8 +37,8 @@ import java.io.IOException;
  */
 @Config
 @ManagedService(path = "/chat", interceptors = {SuspendTrackerInterceptor.class})
-public class Chat {
-    private final Logger logger = LoggerFactory.getLogger(Chat.class);
+public class SockjsChat {
+    private final Logger logger = LoggerFactory.getLogger(SockjsChat.class);
 
     /**
      * Invoked when the connection as been fully established and suspended, e.g ready for receiving messages.
