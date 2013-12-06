@@ -20,7 +20,6 @@ import org.atmosphere.config.service.ManagedService;
 import org.atmosphere.config.service.Ready;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
-import org.atmosphere.interceptor.AtmosphereResourceLifecycleInterceptor;
 import org.atmosphere.interceptor.SuspendTrackerInterceptor;
 import org.atmosphere.samples.chat.custom.Config;
 import org.slf4j.Logger;
