@@ -4,7 +4,7 @@
         <groupId>org.atmosphere</groupId>
         <artifactId>atmosphere-samples-project</artifactId>
         <version>2.1.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
+        <relativePath>../../../</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.atmosphere.samples</groupId>
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>org.atmosphere</groupId>
             <artifactId>atmosphere-sockjs</artifactId>
-            <version>2.1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
