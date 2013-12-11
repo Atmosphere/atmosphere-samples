@@ -44,7 +44,8 @@ Then the following Atmosphere's WebSocket Application will runs like a charm wit
      }
 
      public void onTextStream(WebSocket webSocket, Reader reader) throws IOException {
-         webSocket.broadcast(mapper.writeValueAsString(mapper.readValue(new BufferedReader(reader).readLine(), Data.class)));
+         webSocket.broadcast(mapper.writeValueAsString(
+               mapper.readValue(new BufferedReader(reader).readLine(), Data.class)));
      }
  }
 ```
