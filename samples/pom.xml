@@ -38,6 +38,8 @@
         <module>websocket-chat</module>
         <module>webrtc-atmospherehandler</module>
         <module>webrtc-jersey</module>
+        <module>websocketd</module>
+
     </modules>
     <build>
         <finalName>${project.artifactId}</finalName>
