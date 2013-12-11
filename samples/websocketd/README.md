@@ -1,9 +1,9 @@
 ### Running Atmosphere on top of [Websocketd](https://github.com/joewalnes/websocketd)
 
 To run Atmosphere on top of Websocketd, the easiest way is to package your .class and Atmosphere's dependencies inside a single jar file.
-See [this](https://github.com/Atmosphere/atmosphere-samples/blob/master/samples/websocketd/pom.xml) for an example and make sure the created jar contains a manifest main class entry.
+See [this](https://github.com/Atmosphere/atmosphere-samples/blob/master/samples/websocketd/pom.xml) for an example and make sure the created jar contains a manifest main class entry. Of course you can use the unfamous --classpath hell as well to start the java process.
 
-To bootstrap websocketd, write a class with this line:
+To bootstrap websocketd, write a class with a main and:
 ```java
 new EmbeddedWebSocketHandler(new AtmosphereFramework()).requestURI("/chat").on().serve(System.in);
 ```
