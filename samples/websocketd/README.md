@@ -19,11 +19,12 @@ And then just do:
 websocketd --staticdir=src/main/webapp/ --port=8080 ./atmosphere.sh
 ```
 
-Then the following Atmosphere's WebSocket Application will runs like a charm:
+Then the following Atmosphere's WebSocket Application will runs like a charm with websocketd or ANY WebSocket Server!
 
 ```java
  @WebSocketHandlerService(path = "/chat", broadcaster = SimpleBroadcaster.class,
-         atmosphereConfig = {"org.atmosphere.websocket.WebSocketProtocol=org.atmosphere.websocket.protocol.StreamingHttpProtocol"})
+         atmosphereConfig = {"org.atmosphere.websocket.WebSocketProtocol=
+                     org.atmosphere.websocket.protocol.StreamingHttpProtocol"})
  public class WebSocketdChat extends WebSocketStreamingHandlerAdapter {
      private final Logger logger = LoggerFactory.getLogger(WebSocketdChat.class);
      private final ObjectMapper mapper = new ObjectMapper();
@@ -44,48 +45,6 @@ Then the following Atmosphere's WebSocket Application will runs like a charm:
 
      public void onTextStream(WebSocket webSocket, Reader reader) throws IOException {
          webSocket.broadcast(mapper.writeValueAsString(mapper.readValue(new BufferedReader(reader).readLine(), Data.class)));
-     }
-
-     public final static class Data {
-
-         private String message;
-         private String author;
-         private long time;
-
-         public Data() {
-             this("", "");
-         }
-
-         public Data(String author, String message) {
-             this.author = author;
-             this.message = message;
-             this.time = new Date().getTime();
-         }
-
-         public String getMessage() {
-             return message;
-         }
-
-         public String getAuthor() {
-             return author;
-         }
-
-         public void setAuthor(String author) {
-             this.author = author;
-         }
-
-         public void setMessage(String message) {
-             this.message = message;
-         }
-
-         public long getTime() {
-             return time;
-         }
-
-         public void setTime(long time) {
-             this.time = time;
-         }
-
      }
  }
 ```
