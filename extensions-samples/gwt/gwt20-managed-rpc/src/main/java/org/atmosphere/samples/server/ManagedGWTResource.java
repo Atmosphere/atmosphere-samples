@@ -27,6 +27,7 @@ import org.atmosphere.gwt20.server.GwtRpcInterceptor;
 import org.atmosphere.gwt20.managed.AtmosphereMessageInterceptor;
 import org.atmosphere.interceptor.AtmosphereResourceLifecycleInterceptor;
 import org.atmosphere.interceptor.BroadcastOnPostAtmosphereInterceptor;
+import org.atmosphere.interceptor.IdleResourceInterceptor;
 import org.atmosphere.interceptor.SuspendTrackerInterceptor;
 
 import java.util.logging.Logger;
@@ -62,7 +63,11 @@ import java.util.logging.Logger;
             /**
              * Echo the messages we are receiving from the client either as w WebSocket message or an HTTP Post.
              */
-            BroadcastOnPostAtmosphereInterceptor.class
+            BroadcastOnPostAtmosphereInterceptor.class,
+            /**
+             * Discard idle AtmosphereResource in case the network didn't advise us the client disconnected
+             */
+            IdleResourceInterceptor.class
 })
 public class ManagedGWTResource {
 
