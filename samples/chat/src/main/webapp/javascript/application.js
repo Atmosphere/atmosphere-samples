@@ -28,6 +28,9 @@ $(function () {
         input.removeAttr('disabled').focus();
         status.text('Choose name:');
         transport = response.transport;
+
+        // Carry the UUID. This is required if you want to call subscribe(request) again.
+        request.uuid = response.request.uuid;
     };
 
     request.onClientTimeout = function(r) {

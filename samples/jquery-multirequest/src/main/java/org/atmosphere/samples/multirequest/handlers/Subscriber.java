@@ -39,16 +39,16 @@ public class Subscriber {
 
 	@GET
 	public SuspendResponse<String> subscribe() {
-		LOG.debug("OnSubscribe to topic");
+		LOG.debug("OnSubscribe to topic " + topic);
 		SuspendResponse<String> sr = new SuspendResponse.SuspendResponseBuilder<String>().broadcaster(topic).outputComments(true)
-				.addListener(new EventsLogger()).build();
+				.build();
 		return sr;
 	}
 
 	@POST
 	@Broadcast
 	public Broadcastable publish(@FormParam("message") String message) {
-		LOG.debug("Receive message <" + message + ">, dispatch to other connected");
+		LOG.debug("Receive message <" + message + ">, dispatch to other connected " + topic );
 		return new Broadcastable(message, "", topic);
 	}
 }
