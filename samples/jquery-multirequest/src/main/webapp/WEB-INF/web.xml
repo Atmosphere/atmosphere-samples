@@ -29,6 +29,7 @@
 			<param-value>org.atmosphere.samples.multirequest.handlers</param-value>
 		</init-param>
 		<load-on-startup>0</load-on-startup>
+		<async-supported>true</async-supported>
 	</servlet>
 	<!-- Servlet mappings for Atmosphere servlet -->
 	<servlet-mapping>
