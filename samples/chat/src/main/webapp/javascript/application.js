@@ -74,7 +74,9 @@ $(function () {
 
     request.onClose = function(response) {
         content.html($('<p>', { text: 'Server closed the connection after a timeout' }));
-        subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: 'disconnecting' }));
+        if (subSocket) {
+            subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: 'disconnecting' }));
+        }
         input.attr('disabled', 'disabled');
     };
 
