@@ -39,7 +39,7 @@
         <dependency>
             <groupId>org.atmosphere</groupId>
             <artifactId>atmosphere-socketio</artifactId>
-            <version>2.0.1-SNAPSHOT</version>
+            <version>${extensions-version}</version>
         </dependency>
 
         <dependency>
