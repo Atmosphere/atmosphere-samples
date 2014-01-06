@@ -106,7 +106,13 @@ public class wAsyncChat {
             public void on(String t) {
                 logger.info("Connection closed");
             }
-        }).open(request.build());
+        }).on(Event.OPEN.name(), new Function<String>() {
+                    @Override
+                    public void on(String t) {
+                        logger.info("Connection opened");
+                    }
+                })
+                .open(request.build());
 
         logger.info("Choose Name: ");
         String name = null;
