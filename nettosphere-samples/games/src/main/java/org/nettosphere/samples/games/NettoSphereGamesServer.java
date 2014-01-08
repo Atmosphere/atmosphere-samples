@@ -15,6 +15,7 @@
  */
 package org.nettosphere.samples.games;
 
+import org.atmosphere.cpr.ApplicationConfig;
 import org.atmosphere.nettosphere.Config;
 import org.atmosphere.nettosphere.Nettosphere;
 import org.slf4j.Logger;
@@ -40,6 +41,7 @@ public class NettoSphereGamesServer {
                 .resource("./src/main/resources")
                 // For running inside an IDE
                 .resource("./nettosphere-samples/games/src/main/resources")
+                .initParam(ApplicationConfig.PROPERTY_SESSION_SUPPORT, "true")
                 .port(8080).host("127.0.0.1").build();
         Nettosphere s = new Nettosphere.Builder().config(b.build()).build();
         s.start();
