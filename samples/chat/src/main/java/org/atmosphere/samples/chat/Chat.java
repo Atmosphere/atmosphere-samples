@@ -35,6 +35,12 @@ import java.io.IOException;
 public class Chat {
     private final Logger logger = LoggerFactory.getLogger(Chat.class);
 
+// Uncomment for changing response's state
+//    @Get
+//    public void init(AtmosphereResource r) {
+//        r.getResponse().setCharacterEncoding("UTF-8");
+//    }
+
     /**
      * Invoked when the connection as been fully established and suspended, e.g ready for receiving messages.
      *
