@@ -27,9 +27,6 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.atmosphere.gwt20.client.Atmosphere;
 import org.atmosphere.gwt20.client.AtmosphereCloseHandler;
 import org.atmosphere.gwt20.client.AtmosphereMessageHandler;
@@ -38,6 +35,10 @@ import org.atmosphere.gwt20.client.AtmosphereRequest;
 import org.atmosphere.gwt20.client.AtmosphereRequestConfig;
 import org.atmosphere.gwt20.client.AtmosphereRequestConfig.Flags;
 import org.atmosphere.gwt20.client.AtmosphereResponse;
+
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -85,8 +86,8 @@ public class GwtJerseyDemo implements EntryPoint {
             
         AtmosphereRequestConfig jerseyRpcRequestConfig = AtmosphereRequestConfig.create(rpc_serializer);
         jerseyRpcRequestConfig.setUrl(GWT.getHostPageBaseURL() + "atmo/jersey/rpc");
-        jerseyRpcRequestConfig.setTransport(AtmosphereRequestConfig.Transport.STREAMING);
-        jerseyRpcRequestConfig.setFallbackTransport(AtmosphereRequestConfig.Transport.LONG_POLLING);
+        jerseyRpcRequestConfig.setTransport(AtmosphereRequestConfig.Transport.WEBSOCKET);
+        jerseyRpcRequestConfig.setFallbackTransport(AtmosphereRequestConfig.Transport.STREAMING);
         jerseyRpcRequestConfig.setOpenHandler(new AtmosphereOpenHandler() {
             @Override
             public void onOpen(AtmosphereResponse response) {

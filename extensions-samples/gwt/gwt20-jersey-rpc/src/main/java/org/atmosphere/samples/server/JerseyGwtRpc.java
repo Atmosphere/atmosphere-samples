@@ -4,24 +4,21 @@
  */
 package org.atmosphere.samples.server;
 
-import java.util.logging.Logger;
+import org.atmosphere.annotation.Suspend;
+import org.atmosphere.cpr.AtmosphereResource;
+import org.atmosphere.cpr.Broadcaster;
+import org.atmosphere.gwt20.shared.Constants;
+import org.atmosphere.samples.client.RPCEvent;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
-import org.atmosphere.cpr.Broadcaster;
-import org.atmosphere.annotation.Suspend;
-import org.atmosphere.cpr.AtmosphereResource;
-import org.atmosphere.gwt20.shared.Constants;
-import org.atmosphere.samples.client.RPCEvent;
+import java.util.logging.Logger;
 
-/**
- * Experimental, not functioning yet
- * 
- * @author p.havelaar
- */
+
 @Path("/jersey/rpc")
 public class JerseyGwtRpc {
     
