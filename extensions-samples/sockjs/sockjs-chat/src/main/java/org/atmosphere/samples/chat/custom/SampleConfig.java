@@ -27,12 +27,12 @@ import org.slf4j.LoggerFactory;
  * @author eanfrancois Arcand
  */
 @AtmosphereAnnotation(Config.class)
-public class SampleConfig implements Processor {
+public class SampleConfig implements Processor<Object> {
 
     private final Logger logger = LoggerFactory.getLogger(SampleConfig.class);
 
     @Override
-    public void handle(AtmosphereFramework framework, Class<?> annotatedClass) {
+    public void handle(AtmosphereFramework framework, Class<Object> annotatedClass) {
         logger.info("Custom annotation {} discovered. Starting the Chat Sample", annotatedClass.getAnnotation(Config.class));
     }
 }
