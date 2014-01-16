@@ -26,12 +26,14 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
+import static org.atmosphere.cpr.ApplicationConfig.MAX_INACTIVE;
+
 /**
  * Simple annotated class that demonstrate the power of Atmosphere. This class supports all transports, support
  * message length garantee, heart beat, message cache thanks to the {@link ManagedService}.
  */
 @Config
-@ManagedService(path = "/chat")
+@ManagedService(path = "/chat", atmosphereConfig = MAX_INACTIVE + "=60000")
 public class Chat {
     private final Logger logger = LoggerFactory.getLogger(Chat.class);
 
