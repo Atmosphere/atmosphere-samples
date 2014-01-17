@@ -33,7 +33,7 @@ import static org.atmosphere.cpr.ApplicationConfig.MAX_INACTIVE;
  * message length garantee, heart beat, message cache thanks to the {@link ManagedService}.
  */
 @Config
-@ManagedService(path = "/chat", atmosphereConfig = MAX_INACTIVE + "=60000")
+@ManagedService(path = "/chat", atmosphereConfig = MAX_INACTIVE + "=120000")
 public class Chat {
     private final Logger logger = LoggerFactory.getLogger(Chat.class);
 
