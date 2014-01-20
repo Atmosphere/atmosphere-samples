@@ -392,7 +392,7 @@
         <client-version>2.0.9</client-version>
         <compat-version>2.0.1</compat-version>
         <nettosphere-version>2.0.2</nettosphere-version>
-        <extensions-version>2.0.2</extensions-version>
+        <extensions-version>2.0.0</extensions-version>
         <wasync-version>1.2.0</wasync-version>
         <compat-version>2.0.1</compat-version>
         <jgroups-version>3.1.0.Final</jgroups-version>
