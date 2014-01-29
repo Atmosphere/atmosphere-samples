@@ -15,6 +15,23 @@
  */
 package org.atmosphere.samples.client;
 
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import org.atmosphere.gwt20.client.Atmosphere;
+import org.atmosphere.gwt20.client.AtmosphereCloseHandler;
+import org.atmosphere.gwt20.client.AtmosphereMessage;
+import org.atmosphere.gwt20.client.AtmosphereMessageHandler;
+import org.atmosphere.gwt20.client.AtmosphereOpenHandler;
+import org.atmosphere.gwt20.client.AtmosphereReopenHandler;
+import org.atmosphere.gwt20.client.AtmosphereRequestConfig;
+import org.atmosphere.gwt20.client.AtmosphereServerRequest;
+import org.atmosphere.gwt20.client.AtmosphereServerResponse;
+import org.atmosphere.gwt20.client.RequestConfig;
+import org.atmosphere.gwt20.client.managed.RPCEvent;
+import org.atmosphere.gwt20.client.managed.RPCSerializer;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -27,21 +44,6 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
-import org.atmosphere.gwt20.client.Atmosphere;
-import org.atmosphere.gwt20.client.AtmosphereCloseHandler;
-import org.atmosphere.gwt20.client.AtmosphereMessage;
-import org.atmosphere.gwt20.client.AtmosphereMessageHandler;
-import org.atmosphere.gwt20.client.AtmosphereOpenHandler;
-import org.atmosphere.gwt20.client.AtmosphereReopenHandler;
-import org.atmosphere.gwt20.client.AtmosphereRequest;
-import org.atmosphere.gwt20.client.AtmosphereRequestConfig;
-import org.atmosphere.gwt20.client.AtmosphereResponse;
-import org.atmosphere.gwt20.client.managed.RPCEvent;
-import org.atmosphere.gwt20.client.managed.RPCSerializer;
-
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GwtRpcDemo implements EntryPoint {
 
@@ -82,31 +84,31 @@ public class GwtRpcDemo implements EntryPoint {
 
         RPCSerializer rpc_serializer = GWT.create(RPCSerializer.class);
 
-        AtmosphereRequestConfig rpcRequestConfig = AtmosphereRequestConfig.create(rpc_serializer);
+        RequestConfig rpcRequestConfig = AtmosphereRequestConfig.create(rpc_serializer);
         rpcRequestConfig.setUrl(GWT.getModuleBaseURL() + "atmosphere/rpc");
         rpcRequestConfig.setTransport(AtmosphereRequestConfig.Transport.WEBSOCKET);
         rpcRequestConfig.setFallbackTransport(AtmosphereRequestConfig.Transport.LONG_POLLING);
         rpcRequestConfig.setOpenHandler(new AtmosphereOpenHandler() {
             @Override
-            public void onOpen(AtmosphereResponse response) {
+            public void onOpen(AtmosphereServerResponse response) {
                 logger.info("RPC Connection opened");
             }
         });
         rpcRequestConfig.setReopenHandler(new AtmosphereReopenHandler() {
             @Override
-            public void onReopen(AtmosphereResponse response) {
+            public void onReopen(AtmosphereServerResponse response) {
                 logger.info("RPC Connection reopened");
             }
         });
         rpcRequestConfig.setCloseHandler(new AtmosphereCloseHandler() {
             @Override
-            public void onClose(AtmosphereResponse response) {
+            public void onClose(AtmosphereServerResponse response) {
                 logger.info("RPC Connection closed");
             }
         });
         rpcRequestConfig.setMessageHandler(new AtmosphereMessageHandler() {
             @Override
-            public void onMessage(AtmosphereResponse response) {
+            public void onMessage(AtmosphereServerResponse response) {
                 List<RPCEvent> messages = response.getMessages();
                 for (RPCEvent event : messages) {
                     logger.info("received message through RPC: " + event.getMessage());
@@ -118,7 +120,7 @@ public class GwtRpcDemo implements EntryPoint {
 
 
         Atmosphere atmosphere = Atmosphere.create();
-        final AtmosphereRequest rpcRequest = atmosphere.subscribe(rpcRequestConfig);
+        final AtmosphereServerRequest rpcRequest = atmosphere.subscribe(rpcRequestConfig);
 
         sendRPC.addClickHandler(new ClickHandler() {
             @Override
@@ -126,7 +128,7 @@ public class GwtRpcDemo implements EntryPoint {
                 if (messageInput.getText().trim().length() > 0) {
                     try {
                         //              service.sendEvent(new Event(messageInput.getText()), callback);
-                        AtmosphereMessage myevent = new RPCEvent();
+                        RPCEvent myevent = new RPCEvent();
                         myevent.setMessage(messageInput.getText());
                         rpcRequest.push(myevent);
                     } catch (SerializationException ex) {
