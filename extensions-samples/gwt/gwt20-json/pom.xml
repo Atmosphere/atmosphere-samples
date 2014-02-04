@@ -20,6 +20,7 @@
         <gwt.draftCompile>true</gwt.draftCompile>
         <gwt.style>PRETTY</gwt.style>
         <gwt.compiler.strict>true</gwt.compiler.strict>
+        <gwt.copyWebapp>true</gwt.copyWebapp>
         <outputDir>${war.target}/WEB-INF/classes</outputDir>
     </properties>
 
