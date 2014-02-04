@@ -13,6 +13,7 @@
     <version>2.1.0-SNAPSHOT</version>
     <name>atmosphere-extensions-samples</name>
     <modules>
+        <module>chat-cdi/</module>
 	    <module>sockjs/sockjs-chat</module>
 	    <module>sockjs/sockjs-demo</module>
         <module>guice/chat-guice</module>
