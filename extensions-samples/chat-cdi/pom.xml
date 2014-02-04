@@ -8,10 +8,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.atmosphere.samples</groupId>
-    <artifactId>atmosphere-chat</artifactId>
+    <artifactId>atmosphere-chat-cdi</artifactId>
     <packaging>war</packaging>
     <version>2.1.0-SNAPSHOT</version>
-    <name>atmosphere-chat</name>
+    <name>atmosphere-chat-cdi</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
