@@ -47,6 +47,13 @@
                 <version>1.9</version>
             </extension>
         </extensions>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty9-version}</version>
+            </plugin>
+        </plugins>
     </build>
 
     <dependencyManagement>
