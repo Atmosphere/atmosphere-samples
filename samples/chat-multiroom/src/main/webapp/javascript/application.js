@@ -91,7 +91,7 @@ $(function () {
 
                 var r = 'Available rooms: ';
                 for (var i = 0; i < json.rooms.length; i++) {
-                    r += json.rooms[i].split("/")[2] + "  ";
+                    r += json.rooms[i] + "  ";
                 }
                 rooms.append($('<h3>', { text: r }))
             }
