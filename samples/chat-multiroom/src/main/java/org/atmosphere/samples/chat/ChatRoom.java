@@ -19,15 +19,13 @@ import org.atmosphere.config.service.Disconnect;
 import org.atmosphere.config.service.ManagedService;
 import org.atmosphere.config.service.Message;
 import org.atmosphere.config.service.Ready;
-import org.atmosphere.cpr.AtmosphereResource;
-import org.atmosphere.cpr.AtmosphereResourceEvent;
-import org.atmosphere.cpr.AtmosphereResourceFactory;
-import org.atmosphere.cpr.BroadcasterFactory;
-import org.atmosphere.cpr.MetaBroadcaster;
+import org.atmosphere.cpr.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -58,7 +56,17 @@ public class ChatRoom {
             factory = r.getAtmosphereConfig().getBroadcasterFactory();
         }
 
-        return new ChatProtocol(users.keySet(), factory.lookupAll());
+        return new ChatProtocol(users.keySet(), getRooms(factory.lookupAll()));
+    }
+
+    private static Collection<String> getRooms(Collection<Broadcaster> broadcasters) {
+        Collection<String> result = new ArrayList<String>();
+        for (Broadcaster broadcaster : broadcasters) {
+            if (!("/*".equals(broadcaster.getID()))) {
+                result.add(broadcaster.getID().split("/")[2]);
+            }
+        };
+        return result;
     }
 
     /**
@@ -90,17 +98,17 @@ public class ChatRoom {
 
         if (!users.containsKey(message.getAuthor())) {
             users.put(message.getAuthor(), message.getUuid());
-            return new ChatProtocol(message.getAuthor(), " entered room " + chatroomName, users.keySet(), factory.lookupAll());
+            return new ChatProtocol(message.getAuthor(), " entered room " + chatroomName, users.keySet(), getRooms(factory.lookupAll()));
         }
 
         if (message.getMessage().contains("disconnecting")) {
             users.remove(message.getAuthor());
-            return new ChatProtocol(message.getAuthor(), " disconnected from room " + chatroomName, users.keySet(), factory.lookupAll());
+            return new ChatProtocol(message.getAuthor(), " disconnected from room " + chatroomName, users.keySet(), getRooms(factory.lookupAll()));
         }
 
         message.setUsers(users.keySet());
         logger.info("{} just send {}", message.getAuthor(), message.getMessage());
-        return new ChatProtocol(message.getAuthor(), message.getMessage(), users.keySet(), factory.lookupAll());
+        return new ChatProtocol(message.getAuthor(), message.getMessage(), users.keySet(), getRooms(factory.lookupAll()));
     }
 
     @Message(decoders = {UserDecoder.class})
@@ -110,13 +118,13 @@ public class ChatRoom {
             AtmosphereResource r = AtmosphereResourceFactory.getDefault().find(userUUID);
 
             if (r != null) {
-                ChatProtocol m = new ChatProtocol(user.getUser(), " sent you a private message: " + user.getMessage().split(":")[1], users.keySet(), factory.lookupAll());
+                ChatProtocol m = new ChatProtocol(user.getUser(), " sent you a private message: " + user.getMessage().split(":")[1], users.keySet(), getRooms(factory.lookupAll()));
                 if (!user.getUser().equalsIgnoreCase("all")) {
                     factory.lookup(mappedPath).broadcast(m, r);
                 }
             }
         } else {
-            ChatProtocol m = new ChatProtocol(user.getUser(), " sent a message to all chatroom: " + user.getMessage().split(":")[1], users.keySet(), factory.lookupAll());
+            ChatProtocol m = new ChatProtocol(user.getUser(), " sent a message to all chatroom: " + user.getMessage().split(":")[1], users.keySet(), getRooms(factory.lookupAll()));
             MetaBroadcaster.getDefault().broadcastTo("/*", m);
         }
     }

@@ -41,19 +41,15 @@ public class ChatProtocol implements JacksonEncoder.Encodable {
         this.time = new Date().getTime();
     }
 
-    public ChatProtocol(String author, String message, Collection<String> users, Collection<Broadcaster> rooms) {
+    public ChatProtocol(String author, String message, Collection<String> users, Collection<String> rooms) {
         this(author, message);
         this.users.addAll(users);
-        for(Broadcaster b: rooms) {
-            this.rooms.add(b.getID().toString());
-        }
+        this.rooms.addAll(rooms);
     }
 
-    public ChatProtocol(Collection<String> users, Collection<Broadcaster> rooms) {
+    public ChatProtocol(Collection<String> users, Collection<String> rooms) {
         this.users.addAll(users);
-        for(Broadcaster b: rooms) {
-            this.rooms.add(b.getID().toString());
-        }
+        this.rooms.addAll(rooms);
     }
 
     public String getMessage() {
