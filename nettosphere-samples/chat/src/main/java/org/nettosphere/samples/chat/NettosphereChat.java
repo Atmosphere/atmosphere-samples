@@ -40,7 +40,7 @@ public class NettosphereChat {
                 .resource("./src/main/resources")
                 // For running inside an IDE
                 .resource("./nettosphere-samples/chat/src/main/resources")
-                .port(8080).host("127.0.0.1").build();
+                .port(8080).host("0.0.0.0").build();
         Nettosphere s = new Nettosphere.Builder().config(b.build()).build();
         s.start();
         String a = "";
