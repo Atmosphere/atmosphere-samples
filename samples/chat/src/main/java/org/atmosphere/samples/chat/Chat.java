@@ -20,6 +20,7 @@ import org.atmosphere.config.service.ManagedService;
 import org.atmosphere.config.service.Ready;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
+import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.samples.chat.custom.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,6 +79,7 @@ public class Chat {
     @org.atmosphere.config.service.Message(encoders = {JacksonEncoder.class}, decoders = {JacksonDecoder.class})
     public Message onMessage(Message message) throws IOException {
         logger.info("{} just send {}", message.getAuthor(), message.getMessage());
+        BroadcasterFactory.getDefault().lookup("/chat").broadcast("{\"message\":\"ads\",\"author\":\"dasdas\",\"time\":1394628175361}");
         return message;
     }
 

@@ -46,7 +46,6 @@ public class ChatResource {
     @Suspend(contentType = "application/json", listeners = {OnDisconnect.class})
     @GET
     public String suspend() {
-
         return "";
     }
 
