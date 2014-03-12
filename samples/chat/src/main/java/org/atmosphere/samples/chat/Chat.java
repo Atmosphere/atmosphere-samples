@@ -79,7 +79,6 @@ public class Chat {
     @org.atmosphere.config.service.Message(encoders = {JacksonEncoder.class}, decoders = {JacksonDecoder.class})
     public Message onMessage(Message message) throws IOException {
         logger.info("{} just send {}", message.getAuthor(), message.getMessage());
-        BroadcasterFactory.getDefault().lookup("/chat").broadcast("{\"message\":\"ads\",\"author\":\"dasdas\",\"time\":1394628175361}");
         return message;
     }
 
