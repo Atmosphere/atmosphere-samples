@@ -15,35 +15,48 @@
  */
 package org.atmosphere.samples.guice;
 
+import com.google.inject.Inject;
 import org.atmosphere.annotation.Broadcast;
 import org.atmosphere.annotation.Suspend;
-import org.atmosphere.cpr.Broadcaster;
 
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
+import javax.ws.rs.WebApplicationException;
 
 @Path("/")
 @Produces("application/json")
 public class ResourceChat {
 
-    @Suspend
+    private final InjectedService injectedService;
+
+    @Inject
+    ResourceChat(InjectedService injectedService) {
+        this.injectedService = injectedService;
+    }
+
+    @Suspend(listeners = EventListener.class)
     @GET
     public String suspend() {
+        if (injectedService == null) {
+            throw new WebApplicationException(500);
+        }
         return "";
     }
 
     /**
      * Broadcast the received message object to all suspended response. Do not write back the message to the calling connection.
+     *
      * @param message a {@link Message}
      * @return a {@link Response}
      */
     @Broadcast(writeEntity = false)
     @POST
     public Response broadcast(Message message) {
+        if (injectedService == null) {
+            throw new WebApplicationException(500);
+        }
         return new Response(message.author, message.message);
     }
 
