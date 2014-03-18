@@ -17,4 +17,7 @@
     <set-property name="locale" value="default"/>
 
     <entry-point class='org.atmosphere.samples.client.GwtRpcDemo'/>
+    
+     <source path='client'/>
+  <source path='shared'/>
 </module>

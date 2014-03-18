@@ -15,6 +15,22 @@
  */
 package org.atmosphere.samples.client;
 
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import org.atmosphere.gwt20.client.Atmosphere;
+import org.atmosphere.gwt20.client.AtmosphereCloseHandler;
+import org.atmosphere.gwt20.client.AtmosphereMessageHandler;
+import org.atmosphere.gwt20.client.AtmosphereOpenHandler;
+import org.atmosphere.gwt20.client.AtmosphereReopenHandler;
+import org.atmosphere.gwt20.client.AtmosphereRequest;
+import org.atmosphere.gwt20.client.AtmosphereRequestConfig;
+import org.atmosphere.gwt20.client.AtmosphereResponse;
+import org.atmosphere.samples.shared.BaseEvent;
+import org.atmosphere.samples.shared.EventBar;
+import org.atmosphere.samples.shared.EventFoo;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -27,26 +43,13 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.atmosphere.gwt20.client.Atmosphere;
-import org.atmosphere.gwt20.client.AtmosphereCloseHandler;
-import org.atmosphere.gwt20.client.AtmosphereMessageHandler;
-import org.atmosphere.gwt20.client.AtmosphereOpenHandler;
-import org.atmosphere.gwt20.client.AtmosphereReopenHandler;
-import org.atmosphere.gwt20.client.AtmosphereRequest;
-import org.atmosphere.gwt20.client.AtmosphereRequestConfig;
-import org.atmosphere.gwt20.client.AtmosphereResponse;
-
-import org.atmosphere.gwt20.client.AtmosphereRequestConfig.Flags;
 
 /**
- *
+ * 
  * @author jotec
  */
 public class GwtRpcDemo implements EntryPoint {
-
+    
     static final Logger logger = Logger.getLogger(GwtRpcDemo.class.getName());
     
     @Override
@@ -59,17 +62,15 @@ public class GwtRpcDemo implements EntryPoint {
             }
         });
         
-      
+        
         HorizontalPanel buttons = new HorizontalPanel();
         final TextBox messageInput = new TextBox();
         buttons.add(messageInput);
         
         Button sendRPC = new Button("send (GWT-RPC)");
         buttons.add(sendRPC);
-      
-                
-        RootPanel.get("buttonbar").add(buttons);
         
+        RootPanel.get("buttonbar").add(buttons);
         
         HTMLPanel logPanel = new HTMLPanel("") {
             @Override
@@ -81,9 +82,8 @@ public class GwtRpcDemo implements EntryPoint {
         RootPanel.get("logger").add(logPanel);
         Logger.getLogger("").addHandler(new HasWidgetsLogHandler(logPanel));
         
-                
         RPCSerializer rpc_serializer = GWT.create(RPCSerializer.class);
-                
+        
         AtmosphereRequestConfig rpcRequestConfig = AtmosphereRequestConfig.create(rpc_serializer);
         rpcRequestConfig.setUrl(GWT.getModuleBaseURL() + "atmosphere/rpc");
         rpcRequestConfig.setTransport(AtmosphereRequestConfig.Transport.STREAMING);
@@ -109,39 +109,50 @@ public class GwtRpcDemo implements EntryPoint {
         rpcRequestConfig.setMessageHandler(new AtmosphereMessageHandler() {
             @Override
             public void onMessage(AtmosphereResponse response) {
-               List<RPCEvent> messages = response.getMessages();
-               for (RPCEvent event : messages) {
-                  logger.info("received message through RPC: " + event.getData());
-               }
+                List<BaseEvent> messages = response.getMessages();
+                for (BaseEvent event : messages) {
+                    logger.info("received message through RPC: " + event.toString());
+                }
             }
         });
         
-        // trackMessageLength is not required but makes the connection more robust, does not seem to work with 
+        // trackMessageLength is not required but makes the connection more
+        // robust, does not seem to work with
         // unicode characters
-//        rpcRequestConfig.setFlags(Flags.trackMessageLength);
-        
-        
+        // rpcRequestConfig.setFlags(Flags.trackMessageLength);
         
         Atmosphere atmosphere = Atmosphere.create();
         final AtmosphereRequest rpcRequest = atmosphere.subscribe(rpcRequestConfig);
         
         sendRPC.addClickHandler(new ClickHandler() {
-          @Override
-          public void onClick(ClickEvent event) {
-            if (messageInput.getText().trim().length() > 0) {
-              try {
-                //              service.sendEvent(new Event(messageInput.getText()), callback);
-                  RPCEvent myevent = new RPCEvent();
-                  myevent.setData(messageInput.getText());
-                  rpcRequest.push(myevent);
-              } catch (SerializationException ex) {
-                logger.log(Level.SEVERE, "Failed to serialize message", ex);
-              }
+            private boolean bToogle = false;
+            
+            @Override
+            public void onClick(ClickEvent event) {
+                if (messageInput.getText().trim().length() > 0) {
+                    try {
+                        if (bToogle) {
+                            EventFoo myevent2 = new EventFoo();
+                            myevent2.setData1(messageInput.getText());
+                            myevent2.setData2(messageInput.getText());
+                            rpcRequest.push(myevent2);
+                            bToogle = false;
+                            
+                        } else {
+                            EventBar myevent2 = new EventBar();
+                            myevent2.setData1(messageInput.getText());
+                            myevent2.setData2(messageInput.getText());
+                            rpcRequest.push(myevent2);
+                            bToogle = true;
+                            
+                        }
+                    } catch (SerializationException ex) {
+                        logger.log(Level.SEVERE, "Failed to serialize message", ex);
+                    }
+                }
             }
-          }
         });
         
-        
     }
-
+    
 }
