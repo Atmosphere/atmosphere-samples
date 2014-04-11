@@ -18,8 +18,14 @@ package org.atmosphere.samples.chat;
 import org.atmosphere.config.service.Disconnect;
 import org.atmosphere.config.service.ManagedService;
 import org.atmosphere.config.service.Message;
+import org.atmosphere.config.service.PathParam;
 import org.atmosphere.config.service.Ready;
-import org.atmosphere.cpr.*;
+import org.atmosphere.cpr.AtmosphereResource;
+import org.atmosphere.cpr.AtmosphereResourceEvent;
+import org.atmosphere.cpr.AtmosphereResourceFactory;
+import org.atmosphere.cpr.Broadcaster;
+import org.atmosphere.cpr.BroadcasterFactory;
+import org.atmosphere.cpr.MetaBroadcaster;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,11 +38,12 @@ import java.util.concurrent.ConcurrentHashMap;
  * Simple annotated class that demonstrate the power of Atmosphere. This class supports all transports, support
  * message length garantee, heart beat, message cache thanks to the @managedAService.
  */
-@ManagedService(path = "{room: [a-zA-Z][a-zA-Z_0-9]*}")
+@ManagedService(path = "/chat/{room: [a-zA-Z][a-zA-Z_0-9]*}")
 public class ChatRoom {
     private final Logger logger = LoggerFactory.getLogger(ChatRoom.class);
 
     private final ConcurrentHashMap<String, String> users = new ConcurrentHashMap<String, String>();
+    @PathParam("room")
     private String chatroomName;
     private String mappedPath;
     private BroadcasterFactory factory;
@@ -49,13 +56,7 @@ public class ChatRoom {
     @Ready(value = Ready.DELIVER_TO.ALL, encoders = {JacksonEncoder.class})
     public ChatProtocol onReady(final AtmosphereResource r) {
         logger.info("Browser {} connected.", r.uuid());
-        if (chatroomName == null) {
-            mappedPath = r.getBroadcaster().getID();
-            // Get rid of the AtmosphereFramework mapped path.
-            chatroomName = mappedPath.split("/")[2];
-            factory = r.getAtmosphereConfig().getBroadcasterFactory();
-        }
-
+        factory = r.getAtmosphereConfig().getBroadcasterFactory();
         return new ChatProtocol(users.keySet(), getRooms(factory.lookupAll()));
     }
 
