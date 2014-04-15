@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <script src="stomp.js"></script>
+        <script>
+            function pubsub(destination) {
+                var subscribe = this.value == "Subscribe";
+
+                if (subscribe) {
+                    this.value = "Unsubscribe";
+                } else {
+                    this.value = "Subscribe";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <td>Destination</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Destination 1</td>
+                    <td><input type="button" onclick="pubsub.bind(this)(1)" value="Subscribe"/></td>
+                </tr>
+                <tr>
+                    <td>Destination 2</td>
+                    <td><input type="button" onclick="pubsub.bind(this)(2)" value="Subscribe"/></td>
+                </tr>
+                <tr>
+                    <td>Destination 3</td>
+                    <td><input type="button" onclick="pubsub.bind(this)(3)" value="Subscribe"/></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div>
+            <input type="text" />
+            <button>SEND</button>
+        </div>
+        <div>
+            <h3>Messages from server</h3>
+            <div id="messages"></div>
+        </div>
+    </body>
+</html>
