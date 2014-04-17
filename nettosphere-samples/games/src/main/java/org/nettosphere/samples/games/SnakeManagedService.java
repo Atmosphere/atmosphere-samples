@@ -52,7 +52,7 @@ public class SnakeManagedService extends SnakeGame {
     public void onDisconnect(AtmosphereResourceEvent event) {
         AtmosphereRequest request = event.getResource().getRequest();
         String s = request.getHeader(HeaderConfig.X_ATMOSPHERE_TRANSPORT);
-        if (s != null && s.equalsIgnoreCase(HeaderConfig.DISCONNECT)) {
+        if (s != null && s.equalsIgnoreCase(HeaderConfig.DISCONNECT_TRANSPORT_MESSAGE)) {
             SnakeManagedService.super.onClose(event.getResource());
             uuids.remove(event.getResource().uuid());
         }

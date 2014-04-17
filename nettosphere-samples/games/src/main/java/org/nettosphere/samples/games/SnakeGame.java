@@ -33,6 +33,7 @@ package org.nettosphere.samples.games;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.BroadcasterFactory;
 
+import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.io.IOException;
 import java.util.Iterator;
@@ -103,19 +104,27 @@ public class SnakeGame {
     }
 
     protected Snake snake(AtmosphereResource resource) {
-        return (Snake) resource.session().getAttribute("snake");
+        if (resource == null) return null;
+
+        HttpSession s = resource.session(true);
+        if (s != null) {
+            return (Snake) s.getAttribute("snake");
+        }
+        return null;
     }
 
     protected void onMessage(AtmosphereResource resource, String message) {
         Snake snake = snake(resource);
-        if ("west".equals(message)) {
-            snake.setDirection(Direction.WEST);
-        } else if ("north".equals(message)) {
-            snake.setDirection(Direction.NORTH);
-        } else if ("east".equals(message)) {
-            snake.setDirection(Direction.EAST);
-        } else if ("south".equals(message)) {
-            snake.setDirection(Direction.SOUTH);
+        if (snake != null) {
+            if ("west".equals(message)) {
+                snake.setDirection(Direction.WEST);
+            } else if ("north".equals(message)) {
+                snake.setDirection(Direction.NORTH);
+            } else if ("east".equals(message)) {
+                snake.setDirection(Direction.EAST);
+            } else if ("south".equals(message)) {
+                snake.setDirection(Direction.SOUTH);
+            }
         }
     }
 }
