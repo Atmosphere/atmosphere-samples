@@ -264,6 +264,7 @@
         <module>extensions-samples</module>
         <module>nettosphere-samples</module>
         <module>wasync-samples</module>
+        <module>stomp</module>
     </modules>
     <reporting>
         <outputDirectory>target/site</outputDirectory>
