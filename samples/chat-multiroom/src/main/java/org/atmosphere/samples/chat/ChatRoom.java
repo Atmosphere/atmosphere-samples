@@ -26,6 +26,7 @@ import org.atmosphere.cpr.AtmosphereResourceFactory;
 import org.atmosphere.cpr.Broadcaster;
 import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.cpr.MetaBroadcaster;
+import org.atmosphere.util.SimpleBroadcaster;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,17 +37,22 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Simple annotated class that demonstrate the power of Atmosphere. This class supports all transports, support
- * message length garantee, heart beat, message cache thanks to the @managedAService.
+ * message length guarantee, heart beat, message cache thanks to the {@link ManagedService}.
  */
-@ManagedService(path = "/chat/{room: [a-zA-Z][a-zA-Z_0-9]*}")
+@ManagedService(path = "/chat/{room: [a-zA-Z][a-zA-Z_0-9]*}", broadcaster = SimpleBroadcaster.class)
 public class ChatRoom {
     private final Logger logger = LoggerFactory.getLogger(ChatRoom.class);
 
     private final ConcurrentHashMap<String, String> users = new ConcurrentHashMap<String, String>();
+
+    private final static String CHAT = "/chat/";
+
     @PathParam("room")
     private String chatroomName;
-    private String mappedPath;
+
     private BroadcasterFactory factory;
+
+    private AtmosphereResourceFactory resourceFactory;
 
     /**
      * Invoked when the connection as been fully established and suspended, e.g ready for receiving messages.
@@ -56,7 +62,10 @@ public class ChatRoom {
     @Ready(value = Ready.DELIVER_TO.ALL, encoders = {JacksonEncoder.class})
     public ChatProtocol onReady(final AtmosphereResource r) {
         logger.info("Browser {} connected.", r.uuid());
+
         factory = r.getAtmosphereConfig().getBroadcasterFactory();
+        resourceFactory = r.getAtmosphereConfig().resourcesFactory();
+
         return new ChatProtocol(users.keySet(), getRooms(factory.lookupAll()));
     }
 
@@ -116,12 +125,13 @@ public class ChatRoom {
     public void onPrivateMessage(UserMessage user) throws IOException {
         String userUUID = users.get(user.getUser());
         if (userUUID != null) {
-            AtmosphereResource r = AtmosphereResourceFactory.getDefault().find(userUUID);
+            // Retrieve the original AtmosphereResource
+            AtmosphereResource r = resourceFactory.find(userUUID);
 
             if (r != null) {
                 ChatProtocol m = new ChatProtocol(user.getUser(), " sent you a private message: " + user.getMessage().split(":")[1], users.keySet(), getRooms(factory.lookupAll()));
                 if (!user.getUser().equalsIgnoreCase("all")) {
-                    factory.lookup(mappedPath).broadcast(m, r);
+                    factory.lookup(CHAT + chatroomName).broadcast(m, r);
                 }
             }
         } else {

@@ -15,21 +15,20 @@
  */
 package org.atmosphere.samples.chat;
 
-import org.atmosphere.cpr.Broadcaster;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class ChatProtocol implements JacksonEncoder.Encodable {
 
-    private String message;
-    private String author;
-    private long time;
+    private String message = "";
+    private String author = "";
+    private long time = System.currentTimeMillis();
     private List<String> users = new ArrayList<String>();
     private List<String> rooms = new ArrayList<String>();
-    private String uuid;
+    private String uuid = UUID.randomUUID().toString();
 
     public ChatProtocol() {
         this("", "");
