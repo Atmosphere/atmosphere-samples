@@ -1,18 +1,23 @@
 // Subscribe/unsubscribe to the given destination
 function pubsub(destination) {
-    subSocket.push([this.value, "\n", "id:0\n", "destination:/destination-", destination, "\n", "\n"].join(""));
-    this.value = this.value === "SUBSCRIBE" ? "UNSUBSCRIBE" : "SUBSCRIBE";
+    var subscribe = this.value === "SUBSCRIBE";
+
+    if (!subscribe) {
+        this.value = "SUBSCRIBE";
+        subscriptions[destination].unsubscribe();
+    } else {
+        subscriptions[destination] = client.subscribe("/destination-" + destination, function () { });
+        this.value = "UNSUBSCRIBE";
+    }
 }
 
 // Send action to the selected destination
 function send() {
-    subSocket.push(["SEND\ndestination:/destination-",
-        destinationSelect.selectedIndex + 1,
-        "\ncontent-type:text/plain\n\n",
-        sendText.value,
-        "\n"].join(""));
+    // TODO destinationSelect undefined on IE9
+    client.send("/destination-" + (destinationSelect.selectedIndex + 1), {}, sendText.value);
 }
 
+var subscriptions = [];
 var socket = $.atmosphere;
 var subSocket;
 var transport = 'websocket';
@@ -21,13 +26,14 @@ var destinationSelect = document.getElementById('destination');
 var sendText = document.getElementById('send');
 
 // We are now ready to cut the request
-var request = { url: document.location.protocol + "//" + document.location.host + '/stomp',
+var request = {
+    url: document.location.protocol + "//" + document.location.host + '/stomp',
     contentType: "application/json",
     logLevel: 'debug',
     transport: transport,
     enableProtocol: true,
-    fallbackTransport: 'long-polling'};
-
+    fallbackTransport: 'long-polling'
+};
 
 request.onOpen = function (response) {
     console.log('Atmosphere connected using ' + response.transport);
@@ -47,3 +53,4 @@ request.onError = function (response) {
 };
 
 subSocket = socket.subscribe(request);
+var client = Stomp.over(subSocket);
