@@ -1,3 +1,8 @@
+// Callback when a message is delivered
+function callback (frame) {
+    messages.innerHTML = [frame.body, "<BR />", messages.innerHTML].join("");
+}
+
 // Subscribe/unsubscribe to the given destination
 function pubsub(destination) {
     var subscribe = this.value === "SUBSCRIBE";
@@ -6,7 +11,7 @@ function pubsub(destination) {
         this.value = "SUBSCRIBE";
         subscriptions[destination].unsubscribe();
     } else {
-        subscriptions[destination] = client.subscribe("/destination-" + destination, function () { });
+        subscriptions[destination] = client.subscribe("/destination-" + destination, callback);
         this.value = "UNSUBSCRIBE";
     }
 }
@@ -18,9 +23,6 @@ function send() {
 }
 
 var subscriptions = [];
-var socket = $.atmosphere;
-var subSocket;
-var transport = 'websocket';
 var messages = document.getElementById('messages');
 var destinationSelect = document.getElementById('destination');
 var sendText = document.getElementById('send');
@@ -30,27 +32,34 @@ var request = {
     url: document.location.protocol + "//" + document.location.host + '/stomp',
     contentType: "application/json",
     logLevel: 'debug',
-    transport: transport,
+    transport: 'websocket',
     enableProtocol: true,
     fallbackTransport: 'long-polling'
 };
 
-request.onOpen = function (response) {
-    console.log('Atmosphere connected using ' + response.transport);
-    transport = response.transport;
+request.onMessage = function (e) {
+    bridge.onmessage({data: e.responseBody});
 };
 
-request.onMessage = function (response) {
-    messages.innerHTML = [response.responseBody, "<BR />", messages.innerHTML].join("");
-};
+var subSocket = $.atmosphere.subscribe(request);
 
-request.onClose = function (response) {
-    console.log('closed');
-};
+var bridge = {
+    send: function (data) {
+        subSocket.push(data);
+    },
 
-request.onError = function (response) {
-    console.log('Sorry, but there\'s some problem with your socket or the server is down');
-};
+    onmessage: function(e) {
+    },
 
-subSocket = socket.subscribe(request);
-var client = Stomp.over(subSocket);
+    onopen: function(e) {
+    },
+
+    onclose: function (e) {
+    },
+
+    onerror: function (e) {
+
+    }
+};
+var client = Stomp.over(bridge);
+client.connect();
