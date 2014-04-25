@@ -1,10 +1,10 @@
 // Callback when a message is delivered
-function callback (frame) {
+var callback = function (frame) {
     messages.innerHTML = [frame.body, "<BR />", messages.innerHTML].join("");
-}
+};
 
 // Subscribe/unsubscribe to the given destination
-function pubsub(destination) {
+var pubsub = function (destination) {
     var subscribe = this.value === "SUBSCRIBE";
 
     if (!subscribe) {
@@ -14,13 +14,12 @@ function pubsub(destination) {
         subscriptions[destination] = client.subscribe("/destination-" + destination, callback);
         this.value = "UNSUBSCRIBE";
     }
-}
+};
 
 // Send action to the selected destination
-function send() {
-    // TODO destinationSelect undefined on IE9
+var send = function () {
     client.send("/destination-" + (destinationSelect.selectedIndex + 1), {}, sendText.value);
-}
+};
 
 // Track subscriptions to unsubscribe then
 var subscriptions = [];
