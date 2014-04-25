@@ -22,7 +22,10 @@ function send() {
     client.send("/destination-" + (destinationSelect.selectedIndex + 1), {}, sendText.value);
 }
 
+// Track subscriptions to unsubscribe then
 var subscriptions = [];
+
+// DOM
 var messages = document.getElementById('messages');
 var destinationSelect = document.getElementById('destination');
 var sendText = document.getElementById('send');
@@ -37,29 +40,13 @@ var request = {
     fallbackTransport: 'long-polling'
 };
 
-request.onMessage = function (e) {
-    bridge.onmessage({data: e.responseBody});
-};
+// With the request, atmosphere will subscribe a connection to server
+// and expose an object with functions defined in websocket interface
+var subscription = new $.atmosphere.WebsocketApiAdapter(request);
 
-var subSocket = $.atmosphere.subscribe(request);
+// This kind of object is required by Stomp.js
+// The client will be used to send/receive messages and also subscribe/unsubscribe to destinations
+var client = Stomp.over(subscription);
 
-var bridge = {
-    send: function (data) {
-        subSocket.push(data);
-    },
-
-    onmessage: function(e) {
-    },
-
-    onopen: function(e) {
-    },
-
-    onclose: function (e) {
-    },
-
-    onerror: function (e) {
-
-    }
-};
-var client = Stomp.over(bridge);
+// Establish a connection as specified by stomp protocol by sending a connect frame
 client.connect();
