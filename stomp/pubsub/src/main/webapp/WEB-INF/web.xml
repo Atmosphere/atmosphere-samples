@@ -9,10 +9,6 @@
         <description>AtmosphereServlet</description>
         <servlet-name>AtmosphereServlet</servlet-name>
         <servlet-class>org.atmosphere.cpr.AtmosphereServlet</servlet-class>
-        <init-param>
-            <param-name>org.atmosphere.cpr.AtmosphereInterceptor</param-name>
-            <param-value>org.atmosphere.stomp.StompInterceptor</param-value>
-        </init-param>
         <load-on-startup>0</load-on-startup>
         <async-supported>true</async-supported>
     </servlet>
