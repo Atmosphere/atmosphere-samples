@@ -16,6 +16,7 @@
 package org.atmosphere.samples.chat;
 
 import org.atmosphere.config.service.Disconnect;
+import org.atmosphere.config.service.Heartbeat;
 import org.atmosphere.config.service.ManagedService;
 import org.atmosphere.config.service.Ready;
 import org.atmosphere.cpr.AtmosphereResource;
@@ -42,6 +43,11 @@ public class Chat {
 //    public void init(AtmosphereResource r) {
 //        r.getResponse().setCharacterEncoding("UTF-8");
 //    }
+
+    @Heartbeat
+    public void onHeartbeat(final AtmosphereResourceEvent event) {
+        logger.info("Heartbeat send by {}", event.getResource());
+    }
 
     /**
      * Invoked when the connection as been fully established and suspended, e.g ready for receiving messages.

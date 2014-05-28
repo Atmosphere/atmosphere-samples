@@ -14,6 +14,10 @@
             <param-name>org.atmosphere.cpr.packages</param-name>
             <param-value>org.atmosphere.samples</param-value>
         </init-param>
+        <init-param>
+            <param-name>org.atmosphere.interceptor.HeartbeatInterceptor.clientHeartbeatFrequencyInSeconds</param-name>
+            <param-value>10</param-value>
+        </init-param>
         <load-on-startup>0</load-on-startup>
         <async-supported>true</async-supported>
     </servlet>
