@@ -51,6 +51,11 @@ public class EventListener implements AtmosphereResourceEventListener {
         checkInjection();
     }
 
+    @Override
+    public void onHeartbeat( AtmosphereResourceEvent atmosphereResourceEvent ) {
+        checkInjection();
+    }
+
     private void checkInjection() {
         if (injectedService == null) {
             throw new RuntimeException("Guice injection doesn't work");

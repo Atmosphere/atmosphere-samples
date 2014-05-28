@@ -47,6 +47,10 @@ public class EventsLogger implements AtmosphereResourceEventListener {
         System.out.println("onBroadcast: " + event);
     }
 
+    public void onHeartbeat(AtmosphereResourceEvent event) {
+        System.out.println("onHeartbeat: " + event);
+    }
+
     public void onThrowable(AtmosphereResourceEvent event) {
         event.throwable().printStackTrace(System.err);
     }

@@ -26,6 +26,7 @@ public class EventsLogger implements AtmosphereResourceEventListener {
 
     public EventsLogger() {
     }
+
     /**
      * {@inheritDoc}
      */
@@ -34,26 +35,57 @@ public class EventsLogger implements AtmosphereResourceEventListener {
         System.out.println("onPreSuspend: " + event);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void onSuspend(final AtmosphereResourceEvent event) {
         logger.info("onSuspend(): {}", event);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void onResume(AtmosphereResourceEvent event) {
         logger.info("onResume(): {}", event);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onHeartbeat(AtmosphereResourceEvent event) {
+        logger.info("onHeartbeat(): {}", event);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void onDisconnect(AtmosphereResourceEvent event) {
         logger.info("onDisconnect(): {}", event);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void onBroadcast(AtmosphereResourceEvent event) {
-        logger.warn("onThrowable(): {}", event);
+        logger.warn("onBroadcast(): {}", event);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void onThrowable(AtmosphereResourceEvent event) {
         logger.warn("onThrowable(): {}", event);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void onClose(AtmosphereResourceEvent event) {
         logger.warn("onClose(): {}", event);
