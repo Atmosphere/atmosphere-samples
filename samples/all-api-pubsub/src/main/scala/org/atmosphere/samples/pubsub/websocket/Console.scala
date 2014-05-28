@@ -54,6 +54,10 @@ class Console extends WebSocketEventListener {
     logger.warn("onThrowable(): {}", event)
   }
 
+  def onHeartbeat(event: AtmosphereResourceEvent): Unit = {
+    logger.warn("onHeartbeat(): {}", event)
+  }
+
   def onHandshake(event: WebSocketEventListener.WebSocketEvent[_]): Unit = {
     logger.info("onHandshake(): {}", event)
   }
