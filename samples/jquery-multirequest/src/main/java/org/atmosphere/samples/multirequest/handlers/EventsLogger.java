@@ -86,7 +86,11 @@ public class EventsLogger implements WebSocketEventListener {
 		logger.debug("onDisconnect(): " + event);
 	}
 
-	public void onConnect(WebSocketEvent event) {
+    public void onHeartbeat(AtmosphereResourceEvent event) {
+        logger.debug("onHeartbeat(): " + event);
+    }
+
+    public void onConnect(WebSocketEvent event) {
 		logger.debug("onConnect(): " + event);
 	}
 }

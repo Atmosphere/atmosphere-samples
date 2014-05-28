@@ -50,6 +50,13 @@ public class EventsLogger implements WebSocketEventListener {
                 + event.getResource().getRequest().getRemotePort());
     }
 
+    public void onHeartbeat(
+            AtmosphereResourceEvent event) {
+        logger.debug("onHeartbeat(): "
+                + event.getResource().getRequest().getRemoteAddr() + ":"
+                + event.getResource().getRequest().getRemotePort());
+    }
+
     public void onBroadcast(
             AtmosphereResourceEvent event) {
         logger.debug("onBroadcast(): " + event.getMessage());
