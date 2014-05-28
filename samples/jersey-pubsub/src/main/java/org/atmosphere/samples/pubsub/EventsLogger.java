@@ -51,6 +51,10 @@ public class EventsLogger implements WebSocketEventListener {
         logger.info("onBroadcast(): {}", event.getMessage());
     }
 
+    public void onHeartbeat(AtmosphereResourceEvent event) {
+        logger.info("onHeartbeat(): {}", event.getMessage());
+    }
+
     public void onThrowable(AtmosphereResourceEvent event) {
         logger.warn("onThrowable(): {}", event);
     }
