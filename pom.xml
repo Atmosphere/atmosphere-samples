@@ -385,9 +385,9 @@
         <compat-version>2.0.1</compat-version>
 
         <nettosphere-version>2.1.1</nettosphere-version>
-        <atmosphere-version>2.1.4</atmosphere-version>
+        <atmosphere-version>2.1.5-SNAPSHOT</atmosphere-version>
         <extensions-version>2.1.1</extensions-version>
-        <wasync-version>1.3.1</wasync-version>
+        <wasync-version>1.3.2</wasync-version>
 
         <compat-version>2.0.1</compat-version>
         <jgroups-version>3.1.0.Final</jgroups-version>
