@@ -2,12 +2,12 @@
     <parent>
         <groupId>org.atmosphere.samples</groupId>
         <artifactId>atmosphere-samples</artifactId>
-        <version>2.1.5-SNAPSHOT</version>
+        <version>2.1.5</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.atmosphere.samples</groupId>
     <artifactId>atmosphere-jersey-webrtc</artifactId>
-    <version>2.1.5-SNAPSHOT</version>
+    <version>2.1.5</version>
     <packaging>war</packaging>
     <name>atmosphere-jersey-webrtc</name>
     <description>VideoChat with Atmosphere Jersey and webrtc</description>
