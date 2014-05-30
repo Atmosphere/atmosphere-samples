@@ -3,8 +3,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
-    <description>Atmosphere Chat</description>
-    <display-name>Atmosphere Chat</display-name>
+    <description>Atmosphere Stream</description>
+    <display-name>Atmosphere Stream</display-name>
     <servlet>
         <description>AtmosphereServlet</description>
         <servlet-name>AtmosphereServlet</servlet-name>
@@ -19,7 +19,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>AtmosphereServlet</servlet-name>
-        <url-pattern>/chat/*</url-pattern>
+        <url-pattern>/stream/*</url-pattern>
     </servlet-mapping>
 </web-app>
 
