@@ -221,6 +221,6 @@ If you plan to use Spring or GWT, take a look at their specific samples.
           <tr>
           <td>[gwt20-websockets](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.atmosphere.samples%22%20AND%20a%3A%22gwt20-websockets%22)</td>
           <td>GWT client websockets using com.sksamuel.gwt</td>
-          <td>websocket-stream</td>	
-          <td>[Client](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/gwt/gwt20-rpc/src/main/java/org/atmosphere/samples/client/GwtWebsocketsDemo.java)</td>
+          <td>[websocket-stream](./samples/websocket-stream)</td>	
+          <td>[Client](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/gwt/gwt20-websockets/src/main/java/org/atmosphere/samples/client/GwtWebsocketsDemo.java)</td>
       </tr>
