@@ -1,3 +1,7 @@
+### Atmosphere Samples for for Jersey, Jersey2, GWT, JavaScript, JQuery, Netty, Guice, Spring, RMI, RabbitMQ, Redis, Hazelcast, JGroups, jsr 356, Sockjs, Socket.IO, JMX, etc...
+
+One sample to rule them all!
+
 The table below describes every Atmosphere's sample by defining the server and client API used to build it. You can download the sample by clicking on its name or clone the workspace, build it and then do
 ```bash
   mvn jetty:run
