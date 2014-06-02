@@ -28,5 +28,5 @@ examples directly from the workspace, provided you have the m2 eclipse plugin. R
 
 Flow Diagram
 ============
-![example flow](http://github.com/simontuffs/atmosphere-samples/blob/images/extensions-samples/gwt/gwt20-websockets/atmosphere%20gwt%2Bwebsockets.jpg "Example Flow")
+![Alt example flow](atmosphere%20gwt%2Bwebsockets.jpg?raw=true "Example Flow")
 
