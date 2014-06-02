@@ -25,3 +25,8 @@ Eclipse Users
 Eclipse users can use the .launch configuration files to run the websocket-stream and gwt-websockets
 examples directly from the workspace, provided you have the m2 eclipse plugin. Right-click|Run As on the 
 .launch files to bring them up.
+
+Flow Diagram
+============
+![example flow](http://github.com/simontuffs/atmosphere-samples/blob/images/extensions-samples/gwt/gwt20-websockets/atmosphere%20gwt%2Bwebsockets.jpg "Example Flow")
+
