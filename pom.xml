@@ -266,6 +266,10 @@
         <module>wasync-samples</module>
         <module>stomp</module>
         <module>vertx-samples</module>
+	<!--
+        <module>play-samples</module>
+	-->
+
     </modules>
     <reporting>
         <outputDirectory>target/site</outputDirectory>
@@ -393,7 +397,7 @@
 
         <vertx-version>2.1</vertx-version>
         <atmosphere-vertx-version>2.0.0-SNAPSHOT</atmosphere-vertx-version>
-
+        <atmosphere-play-version>2.0.0-SNAPSHOT</atmosphere-play-version>
 
         <compat-version>2.0.1</compat-version>
         <jgroups-version>3.1.0.Final</jgroups-version>
