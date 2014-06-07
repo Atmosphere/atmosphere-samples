@@ -47,5 +47,8 @@ var subscription = new $.atmosphere.WebsocketApiAdapter(request);
 // The client will be used to send/receive messages and also subscribe/unsubscribe to destinations
 var client = Stomp.over(subscription);
 
+client.heartbeat.outgoing = 20000; // client will send heartbeats every 20000ms
+client.heartbeat.incoming = 70000;
+
 // Establish a connection as specified by stomp protocol by sending a connect frame
 client.connect();

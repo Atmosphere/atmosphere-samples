@@ -17,8 +17,12 @@
 
 package org.atmosphere.samples.stomp.pubsub;
 
+import org.atmosphere.config.service.Heartbeat;
+import org.atmosphere.cpr.AtmosphereResourceEvent;
 import org.atmosphere.stomp.annotation.StompEndpoint;
 import org.atmosphere.stomp.annotation.StompService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -35,6 +39,21 @@ import java.util.Date;
  */
 @StompEndpoint
 public class StompEndpointSample {
+
+    /**
+     * The logger.
+     */
+    private final Logger log = LoggerFactory.getLogger(getClass());
+
+    /**
+     * The heartbeat listener.
+     *
+     * @param event the event
+     */
+    @Heartbeat
+    public void onHeartbeat(final AtmosphereResourceEvent event) {
+        log.info("Heartbeat received from {}", event);
+    }
 
     /**
      * <p>
