@@ -55,7 +55,7 @@ public class GwtWebsocketsDemo implements EntryPoint {
     console.log("adding websocket");
     
     // Establish a websocket communication channel to the atmosphere chat service.
-    // Websocket socket = new Websocket("ws://localhost:8080/chat?X-Atmosphere-tracking-id=5ebed4c5-0b90-4166-88b2-9f273719ab75&X-Atmosphere-Framework=2.2.1-jquery&X-Atmosphere-Transport=websocket&X-Cache-Date=1401409863002&Content-Type=application/json&X-atmo-protocol=true");
+    // Websocket socket = new Websocket("ws://localhost:8080/chat?X-Atmosphere-tracking-id=5ebed4c5-0b90-4166-88b2-9f273719ab75&X-Atmosphere-Framework=2.2.1-jquery&X-Atmosphere-Transport=websocket&Content-Type=application/json&X-atmo-protocol=true");
     final String url = "ws://localhost:8080/stream";
     Websocket socket = new Websocket(url);
     
