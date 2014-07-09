@@ -22,7 +22,8 @@ var pubsub = function (destination) {
 
 // Send action to the selected destination
 var send = function () {
-    client.send("/destination-" + (destinationSelect.selectedIndex + 1), {}, sendText.value);
+    var headers = receipt.checked ? { "receipt-id": "4000" } : {};
+    client.send("/destination-" + (destinationSelect.selectedIndex + 1), headers, sendText.value);
 };
 
 // Track subscriptions to unsubscribe then
@@ -32,6 +33,7 @@ var subscriptions = [];
 var messages = document.getElementById('messages');
 var destinationSelect = document.getElementById('destination');
 var sendText = document.getElementById('send');
+var receipt = document.getElementById('receipt');
 
 // We are now ready to cut the request
 var request = {
