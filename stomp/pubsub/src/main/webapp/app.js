@@ -3,6 +3,10 @@ var callback = function (frame) {
     messages.innerHTML = [frame.body, "<BR />", messages.innerHTML].join("");
 };
 
+var disconnect = function() {
+    client.disconnect();
+};
+
 // Subscribe/unsubscribe to the given destination
 var pubsub = function (destination) {
     var subscribe = this.value === "SUBSCRIBE";
