@@ -15,6 +15,7 @@
  */
 package org.atmosphere.samples.chat;
 
+import org.atmosphere.config.service.DeliverTo;
 import org.atmosphere.config.service.Disconnect;
 import org.atmosphere.config.service.ManagedService;
 import org.atmosphere.config.service.Message;
@@ -58,7 +59,8 @@ public class ChatRoom {
      *
      * @param r
      */
-    @Ready(value = Ready.DELIVER_TO.ALL, encoders = {JacksonEncoder.class})
+    @Ready(encoders = {JacksonEncoder.class})
+    @DeliverTo(DeliverTo.DELIVER_TO.ALL)
     public ChatProtocol onReady(final AtmosphereResource r) {
         logger.info("Browser {} connected.", r.uuid());
 

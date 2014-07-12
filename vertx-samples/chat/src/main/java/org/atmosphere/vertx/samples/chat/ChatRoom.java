@@ -58,7 +58,8 @@ public class ChatRoom {
      *
      * @param r
      */
-    @Ready(value = Ready.DELIVER_TO.ALL, encoders = {JacksonEncoder.class})
+    @Ready(encoders = {JacksonEncoder.class})
+    @DeliverTo(DeliverTo.DELIVER_TO.ALL)
     public ChatProtocol onReady(final AtmosphereResource r) {
         logger.info("Browser {} connected.", r.uuid());
 
