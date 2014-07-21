@@ -39,13 +39,17 @@
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-servlet_3.0_spec</artifactId>
         </dependency>
-        <!-- Uncomment to use RedisPubSub
-        <dependency>
-            <groupId>org.atmosphere</groupId>
-            <artifactId>atmosphere-redis</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        -->
+        <!-- Uncomment to use Atmosphere Pro: http://async-io.org/AtmospherePro.html -->
+        <!--<dependency>-->
+            <!--<groupId>io.async</groupId>-->
+            <!--<artifactId>atmosphere-tower-control</artifactId>-->
+            <!--<version>1.0.0</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>io.async</groupId>-->
+            <!--<artifactId>atmosphere-satellite</artifactId>-->
+            <!--<version>1.0.0</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
