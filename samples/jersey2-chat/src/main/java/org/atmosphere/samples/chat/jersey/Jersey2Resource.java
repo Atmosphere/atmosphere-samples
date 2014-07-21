@@ -28,7 +28,7 @@ import javax.ws.rs.Path;
  *
  * @author Jeanfrancois Arcand
  */
-@Path("/chat")
+@Path("/")
 @AtmosphereService(
         dispatch = false,
         interceptors = {AtmosphereResourceLifecycleInterceptor.class, TrackMessageSizeInterceptor.class},
