@@ -15,6 +15,7 @@
  */
 package org.atmosphere.vertx.samples.chat;
 
+import org.atmosphere.config.service.DeliverTo;
 import org.atmosphere.config.service.Disconnect;
 import org.atmosphere.config.service.ManagedService;
 import org.atmosphere.config.service.Message;
