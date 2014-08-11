@@ -385,8 +385,8 @@
         <compat-version>2.0.1</compat-version>
 
         <nettosphere-version>2.1.1</nettosphere-version>
-        <atmosphere-version>2.1.7</atmosphere-version>
-        <extensions-version>2.1.2</extensions-version>
+        <atmosphere-version>2.1.8</atmosphere-version>
+        <extensions-version>2.1.3</extensions-version>
         <wasync-version>1.3.2</wasync-version>
 
         <compat-version>2.0.1</compat-version>
