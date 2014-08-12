@@ -389,10 +389,10 @@
         <logback-version>1.0.13</logback-version>
         <compat-version>2.0.1</compat-version>
 
-        <client-version>2.2.3-SNAPSHOT</client-version>
+        <client-version>2.2.4-SNAPSHOT</client-version>
         <nettosphere-version>2.2.0-SNAPSHOT</nettosphere-version>
-        <atmosphere-version>2.2.0-SNAPSHOT</atmosphere-version>
-        <extensions-version>2.2.0-SNAPSHOT</extensions-version>
+        <atmosphere-version>2.3.0-SNAPSHOT</atmosphere-version>
+        <extensions-version>2.2.1-SNAPSHOT</extensions-version>
         <wasync-version>1.4.0-SNAPSHOT</wasync-version>
 
         <vertx-version>2.1</vertx-version>
