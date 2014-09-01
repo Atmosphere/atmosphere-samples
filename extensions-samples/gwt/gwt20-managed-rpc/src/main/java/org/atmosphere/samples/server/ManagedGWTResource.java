@@ -77,7 +77,8 @@ public class ManagedGWTResource {
     public void onReady(final AtmosphereResource r) {
         logger.info("Received RPC GET");
         // Look up a new Broadcaster used for pushing who is connected.
-        BroadcasterFactory.getDefault().lookup("Connected users", true).addAtmosphereResource(r)
+        BroadcasterFactory f = r.getAtmosphereConfig().getBroadcasterFactory();
+        f.lookup("Connected users", true).addAtmosphereResource(r)
                 .broadcast("Browser UUID: " + r.uuid() + " connected.");
     }
 
