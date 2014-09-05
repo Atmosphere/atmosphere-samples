@@ -390,7 +390,7 @@
         <compat-version>2.0.1</compat-version>
 
         <client-version>2.2.4-SNAPSHOT</client-version>
-        <nettosphere-version>2.2.0-SNAPSHOT</nettosphere-version>
+        <nettosphere-version>2.2.1-SNAPSHOT</nettosphere-version>
         <atmosphere-version>2.3.0-SNAPSHOT</atmosphere-version>
         <extensions-version>2.3.0-SNAPSHOT</extensions-version>
         <wasync-version>1.4.1-SNAPSHOT</wasync-version>
@@ -398,6 +398,8 @@
         <vertx-version>2.1</vertx-version>
         <atmosphere-vertx-version>2.0.0-SNAPSHOT</atmosphere-vertx-version>
         <atmosphere-play-version>2.0.0-SNAPSHOT</atmosphere-play-version>
+        <stomp-version>0.3-SNAPSHOT</stomp-version>
+
 
         <compat-version>2.0.1</compat-version>
         <jgroups-version>3.1.0.Final</jgroups-version>
