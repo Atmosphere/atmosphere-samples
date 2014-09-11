@@ -334,6 +334,10 @@
                 <enabled>false</enabled>
             </snapshots>
         </pluginRepository>
+        <pluginRepository>
+            <id>synergian-repo</id>
+            <url>https://raw.github.com/synergian/wagon-git/releases</url>
+        </pluginRepository>
     </pluginRepositories>
     <repositories>
         <repository>
@@ -367,6 +371,18 @@
             <url>https://maven.java.net/content/groups/public/</url>
         </repository>
     </repositories>
+    <distributionManagement>
+        <repository>
+            <id>maven-repo-releases</id>
+            <name>maven-repo-releases</name>
+            <url>git:releases://git@bitbucket.org:async-io/maven-repo.git</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven-repo-snapshots</id>
+            <name>maven-repo-snapshots</name>
+            <url>git:snapshots://git@bitbucket.org:async-io/maven-repo.git</url>
+        </snapshotRepository>
+    </distributionManagement>
     <properties>
         <jetty-version>6.1.22</jetty-version>
         <jersey-version>1.18.1</jersey-version>
