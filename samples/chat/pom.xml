@@ -48,6 +48,11 @@
         <!--<dependency>-->
             <!--<groupId>io.async</groupId>-->
             <!--<artifactId>atmosphere-satellite</artifactId>-->
+            <!--<version>1.1.0</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>io.async</groupId>-->
+            <!--<artifactId>atmosphere-postman</artifactId>-->
             <!--<version>1.0.0</version>-->
         <!--</dependency>-->
         <dependency>
