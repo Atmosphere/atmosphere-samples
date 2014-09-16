@@ -396,8 +396,8 @@
         <wasync-version>2.0.0-SNAPSHOT</wasync-version>
 
         <vertx-version>2.1</vertx-version>
-        <atmosphere-vertx-version>2.0.0-SNAPSHOT</atmosphere-vertx-version>
-        <atmosphere-play-version>2.0.0-SNAPSHOT</atmosphere-play-version>
+        <atmosphere-vertx-version>2.0.0</atmosphere-vertx-version>
+        <atmosphere-play-version>2.0.0</atmosphere-play-version>
         <stomp-version>0.3-SNAPSHOT</stomp-version>
 
 
