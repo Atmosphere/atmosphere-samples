@@ -407,7 +407,7 @@
 
         <client-version>2.2.4</client-version>
         <nettosphere-version>2.2.0</nettosphere-version>
-        <atmosphere-version>2.2.2-SNAPSHOT</atmosphere-version>
+        <atmosphere-version>2.2.2</atmosphere-version>
         <extensions-version>2.2.0</extensions-version>
         <wasync-version>1.4.0</wasync-version>
 
