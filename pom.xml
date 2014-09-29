@@ -371,6 +371,7 @@
             <url>https://maven.java.net/content/groups/public/</url>
         </repository>
     </repositories>
+<!--
     <distributionManagement>
         <repository>
             <id>maven-repo-releases</id>
@@ -383,6 +384,7 @@
             <url>git:snapshots://git@bitbucket.org:async-io/maven-repo.git</url>
         </snapshotRepository>
     </distributionManagement>
+-->
     <properties>
         <jetty-version>6.1.22</jetty-version>
         <jersey-version>1.18.1</jersey-version>
