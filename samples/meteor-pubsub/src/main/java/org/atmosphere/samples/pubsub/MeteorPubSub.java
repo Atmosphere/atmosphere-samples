@@ -21,6 +21,7 @@ import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.cpr.Meteor;
 import org.atmosphere.websocket.WebSocketEventListenerAdapter;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,6 +35,9 @@ import java.io.IOException;
  */
 @MeteorService
 public class MeteorPubSub extends HttpServlet {
+
+    @Inject
+    private BroadcasterFactory broadcasterFactory;
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -65,9 +69,9 @@ public class MeteorPubSub extends HttpServlet {
         String[] decodedPath = pathInfo.split("/");
         Broadcaster b;
         if (decodedPath.length > 0) {
-            b = BroadcasterFactory.getDefault().lookup(decodedPath[decodedPath.length - 1], true);
+            b = broadcasterFactory.lookup(decodedPath[decodedPath.length - 1], true);
         } else {
-            b = BroadcasterFactory.getDefault().lookup("/", true);
+            b = broadcasterFactory.lookup("/", true);
         }
         return b;
     }
