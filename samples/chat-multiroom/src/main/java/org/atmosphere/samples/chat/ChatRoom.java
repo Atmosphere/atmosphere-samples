@@ -30,6 +30,7 @@ import org.atmosphere.cpr.MetaBroadcaster;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -50,9 +51,14 @@ public class ChatRoom {
     @PathParam("room")
     private String chatroomName;
 
+    @Inject
     private BroadcasterFactory factory;
 
+    @Inject
     private AtmosphereResourceFactory resourceFactory;
+
+    @Inject
+    private MetaBroadcaster metaBroadcaster;
 
     /**
      * Invoked when the connection as been fully established and suspended, e.g ready for receiving messages.
@@ -63,10 +69,6 @@ public class ChatRoom {
     @DeliverTo(DeliverTo.DELIVER_TO.ALL)
     public ChatProtocol onReady(final AtmosphereResource r) {
         logger.info("Browser {} connected.", r.uuid());
-
-        factory = r.getAtmosphereConfig().getBroadcasterFactory();
-        resourceFactory = r.getAtmosphereConfig().resourcesFactory();
-
         return new ChatProtocol(users.keySet(), getRooms(factory.lookupAll()));
     }
 
@@ -137,7 +139,7 @@ public class ChatRoom {
             }
         } else {
             ChatProtocol m = new ChatProtocol(user.getUser(), " sent a message to all chatroom: " + user.getMessage().split(":")[1], users.keySet(), getRooms(factory.lookupAll()));
-            MetaBroadcaster.getDefault().broadcastTo("/*", m);
+            metaBroadcaster.broadcastTo("/*", m);
         }
     }
 

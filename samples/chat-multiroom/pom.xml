@@ -39,6 +39,11 @@
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-servlet_3.0_spec</artifactId>
         </dependency>
+        <dependency>
+          <groupId>javax.inject</groupId>
+          <artifactId>javax.inject</artifactId>
+          <version>1</version>
+        </dependency>
         <!-- Uncomment to use RedisPubSub
         <dependency>
             <groupId>org.atmosphere</groupId>
