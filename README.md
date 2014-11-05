@@ -11,6 +11,8 @@ Recommended samples for getting started are the chat, which demonstrate usage of
 
 If you plan to use Spring or GWT, take a look at their specific samples.
 
+[![Analytics](https://ga-beacon.appspot.com/UA-31990725-2/Atmosphere/atmosphere-samples)]
+
 <font color="green">**All sample supports WebSocket and Long Polling by default. Streaming and JSONP are supported by the majority of pubsub samples. If you are interested to write HTML5 Server Side Events application, take a look at the atmosphere-sse-xxx samples.**</font>
 <table width=100% height=100%>
     <tr>
