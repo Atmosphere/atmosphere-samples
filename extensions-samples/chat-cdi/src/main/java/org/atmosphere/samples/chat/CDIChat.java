@@ -22,6 +22,7 @@ import org.atmosphere.config.service.ManagedService;
 import org.atmosphere.config.service.Ready;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
+import org.atmosphere.cpr.BroadcasterFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +34,7 @@ import static org.atmosphere.cpr.ApplicationConfig.MAX_INACTIVE;
 /**
  * Simple annotated class that demonstrate the power of Atmosphere. This class supports all transports, support
  * message length garantee, heart beat, message cache thanks to the {@link ManagedService}.
- *
+ * <p/>
  * This class use CDI for creating instance of Encoder and Decoder.
  */
 @ManagedService(path = "/chat", atmosphereConfig = MAX_INACTIVE + "=120000")
@@ -47,6 +48,9 @@ public class CDIChat {
     @Inject
     private Encoder<Message, String> encoder;
 
+    @Inject
+    BroadcasterFactory factory;
+
     /**
      * Invoked when the connection as been fully established and suspended, e.g ready for receiving messages.
      *
@@ -54,7 +58,10 @@ public class CDIChat {
      */
     @Ready
     public void onReady(final AtmosphereResource r) {
+
         logger.info("Browser {} connected.", r.uuid());
+        logger.info("Injected Factory {} connected.", factory.getClass().getName());
+
     }
 
     /**
