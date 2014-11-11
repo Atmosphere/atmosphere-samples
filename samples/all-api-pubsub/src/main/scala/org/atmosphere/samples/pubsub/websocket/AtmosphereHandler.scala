@@ -27,11 +27,11 @@ class AtmosphereHandler extends AbstractReflectorAtmosphereHandler {
     if ("GET".equalsIgnoreCase(method)) {
       r.addEventListener(new Console)
       res.setContentType("text/html;charset=ISO-8859-1")
-      var b: Broadcaster = lookupBroadcaster(req.getPathInfo)
+      var b: Broadcaster = lookupBroadcaster(r.getAtmosphereConfig.getBroadcasterFactory, req.getPathInfo)
       r.setBroadcaster(b).suspend(-1)
     }
     else if ("POST".equalsIgnoreCase(method)) {
-      var b: Broadcaster = lookupBroadcaster(req.getPathInfo)
+      var b: Broadcaster = lookupBroadcaster(r.getAtmosphereConfig.getBroadcasterFactory, req.getPathInfo)
       var message: String = req.getReader.readLine
 
       if (message != null && message.indexOf("message") != -1) {
@@ -46,9 +46,9 @@ class AtmosphereHandler extends AbstractReflectorAtmosphereHandler {
    * @param pathInfo
    * @return the {@link Broadcaster} based on the request's path info.
    */
-  private[pubsub] def lookupBroadcaster(pathInfo: String): Broadcaster = {
+  private[pubsub] def lookupBroadcaster(factory : BroadcasterFactory, pathInfo: String): Broadcaster = {
     var decodedPath: Array[String] = pathInfo.split("/")
-    var b: Broadcaster = BroadcasterFactory.getDefault.lookup(decodedPath(decodedPath.length - 1), true)
+    var b: Broadcaster = factory.lookup(decodedPath(decodedPath.length - 1), true)
     return b
   }
 }
