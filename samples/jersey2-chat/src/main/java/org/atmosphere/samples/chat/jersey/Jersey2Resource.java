@@ -17,11 +17,16 @@ package org.atmosphere.samples.chat.jersey;
 
 import org.atmosphere.client.TrackMessageSizeInterceptor;
 import org.atmosphere.config.service.AtmosphereService;
+import org.atmosphere.cpr.ApplicationConfig;
+import org.atmosphere.cpr.AtmosphereResource;
+import org.atmosphere.cpr.Broadcaster;
 import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.interceptor.AtmosphereResourceLifecycleInterceptor;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
 
 /**
  * Extremely simple chat application supportiong WebSocket, Server Side-Events, Long-Polling and Streaming.
@@ -36,13 +41,23 @@ import javax.ws.rs.Path;
         servlet = "org.glassfish.jersey.servlet.ServletContainer")
 public class Jersey2Resource {
 
+    @Context
+    private HttpServletRequest request;
+
     /**
      * Echo the chat message. Jackson can clearly be used here, but for simplicity we just echo what we receive.
+     *
      * @param message
      */
     @POST
     public void broadcast(String message) {
-        BroadcasterFactory.getDefault().lookup("/chat").broadcast(message);
+        AtmosphereResource r = (AtmosphereResource) request.getAttribute(ApplicationConfig.ATMOSPHERE_RESOURCE);
+
+        if (r != null) {
+            r.getBroadcaster().broadcast(message);
+        } else {
+            throw new IllegalStateException();
+        }
     }
 
 }
