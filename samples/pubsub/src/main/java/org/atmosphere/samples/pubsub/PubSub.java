@@ -56,7 +56,6 @@ import org.atmosphere.annotation.Schedule;
 import org.atmosphere.annotation.Suspend;
 import org.atmosphere.cpr.AtmosphereResourceEventListener;
 import org.atmosphere.cpr.Broadcaster;
-import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.jersey.Broadcastable;
 import org.atmosphere.jersey.JerseyBroadcaster;
 import org.atmosphere.util.StringFilterAggregator;
@@ -95,7 +94,7 @@ public class PubSub {
      */
     private
     @PathParam("topic")
-    Broadcaster topic;
+    Broadcaster broadcaster;
 
     /**
      * Suspend the response, and register a {@link AtmosphereResourceEventListener}
@@ -107,7 +106,7 @@ public class PubSub {
     @GET
     @Suspend(listeners = {EventsLogger.class})
     public Broadcastable subscribe() {
-        return new Broadcastable(topic);
+        return new Broadcastable(broadcaster);
     }
 
     /**
@@ -127,7 +126,8 @@ public class PubSub {
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {
                 }
-                BroadcasterFactory.getDefault().lookup(JerseyBroadcaster.class, topic).broadcast("\nEcho: " + topic);
+                broadcaster.getBroadcasterConfig().getAtmosphereConfig().getBroadcasterFactory()
+                        .lookup(JerseyBroadcaster.class, topic).broadcast("\nEcho: " + topic);
             }
         });
         return "foo";
@@ -143,7 +143,7 @@ public class PubSub {
     @Suspend(resumeOnBroadcast = true, listeners = {EventsLogger.class})
     @Path("subscribeAndResume")
     public Broadcastable subscribeAndResume() {
-        return new Broadcastable(topic);
+        return new Broadcastable(broadcaster);
     }
 
 
@@ -158,7 +158,7 @@ public class PubSub {
     @Produces("application/xml")
     @Broadcast
     public Broadcastable publishWithXML(@FormParam("message") String message) {
-        return new Broadcastable(new JAXBBean(message), topic);
+        return new Broadcastable(new JAXBBean(message), broadcaster);
     }
 
     /**
@@ -276,7 +276,7 @@ public class PubSub {
     @POST
     @Path("broadcast")
     public String manualDelayBroadcast(@FormParam("message") String message) {
-        topic.delayBroadcast(message, 10, TimeUnit.SECONDS);
+        broadcaster.delayBroadcast(message, 10, TimeUnit.SECONDS);
         return message;
     }
 
@@ -289,7 +289,7 @@ public class PubSub {
     @Suspend(period = 60, timeUnit = TimeUnit.SECONDS, listeners = {EventsLogger.class})
     @Path("timeout")
     public Broadcastable timeout() {
-        return new Broadcastable(topic);
+        return new Broadcastable(broadcaster);
     }
 
     /**
@@ -299,6 +299,6 @@ public class PubSub {
      * @return
      */
     Broadcastable broadcast(String m) {
-        return new Broadcastable(m + "\n", topic);
+        return new Broadcastable(m + "\n", broadcaster);
     }
 } 
