@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>org.atmosphere</groupId>
         <artifactId>atmosphere-samples-project</artifactId>
@@ -34,13 +35,12 @@
         <module>channel</module>
         <module>async-annotation-pubsub</module>
         <module>all-api-pubsub</module>
-        <module>jquery-multirequest</module>
         <module>websocket-chat</module>
         <module>webrtc-atmospherehandler</module>
         <module>webrtc-jersey</module>
-	<!--
-        <module>websocketd</module>
-	-->
+        <!--
+            <module>websocketd</module>
+        -->
 
     </modules>
     <build>
@@ -56,9 +56,9 @@
                 </configuration>
             </plugin>
             <plugin>
-                 <groupId>org.eclipse.jetty</groupId>
-                   <artifactId>jetty-maven-plugin</artifactId>
-                     <version>${jetty9-version}</version>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty9-version}</version>
                 <configuration>
                     <webAppSourceDirectory>${project.build.directory}/${project.name}</webAppSourceDirectory>
                     <scanIntervalSeconds>1</scanIntervalSeconds>

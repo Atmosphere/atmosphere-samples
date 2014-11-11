@@ -33,13 +33,12 @@ import java.util.Map;
 
 @Service
 public class ChatService {
-    @Autowired
-    private BroadcasterFactory broadcasterFactory;
     private final static Logger LOG = LoggerFactory.getLogger(ChatService.class);
     private Map<String, Thread> runningPublishers = Maps.newConcurrentMap();
 
     public void execute(Command command) {
-        Broadcaster broadcaster = broadcasterFactory.lookup(DefaultBroadcaster.class, command.getChannel(), true);
+        Broadcaster broadcaster = command.getResource().getAtmosphereConfig().getBroadcasterFactory()
+                .lookup(DefaultBroadcaster.class, command.getChannel(), true);
         command.execute(broadcaster);
         if (!broadcaster.isDestroyed() && !isRunningThreadOnChannel(command.getChannel())) {
             startMessagingThread(command.getChannel(), broadcaster);

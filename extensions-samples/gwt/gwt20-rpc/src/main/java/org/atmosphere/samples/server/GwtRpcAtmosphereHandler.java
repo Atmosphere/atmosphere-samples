@@ -42,7 +42,7 @@ public class GwtRpcAtmosphereHandler extends AbstractReflectorAtmosphereHandler 
     public void doGet(AtmosphereResource ar) {
         
        // lookup the broadcaster, if not found create it. Name is arbitrary
-        ar.setBroadcaster(DefaultBroadcasterFactory.getDefault().lookup("MyBroadcaster", true));
+        ar.setBroadcaster(ar.getAtmosphereConfig().getBroadcasterFactory().lookup("MyBroadcaster", true));
         
         ar.suspend();
     }
@@ -55,7 +55,7 @@ public class GwtRpcAtmosphereHandler extends AbstractReflectorAtmosphereHandler 
         if (msg != null) {
           logger.info("received RPC post: " + msg.toString());
           // for demonstration purposes we will broadcast the message to all connections
-          DefaultBroadcasterFactory.getDefault().lookup("MyBroadcaster").broadcast(msg);
+            ar.getAtmosphereConfig().getBroadcasterFactory().lookup("MyBroadcaster").broadcast(msg);
         }
     }
 

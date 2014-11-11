@@ -19,7 +19,7 @@
 package org.atmosphere.samples.pubsub.config;
 
 import org.apache.commons.lang.StringUtils;
-import org.atmosphere.cpr.BroadcasterFactory;
+
 import org.codehaus.jackson.map.MapperConfig;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.PropertyNamingStrategy;
@@ -35,11 +35,6 @@ import org.springframework.context.annotation.Import;
 @ComponentScan(basePackages = "org.atmosphere.samples.pubsub", excludeFilters = @ComponentScan.Filter(Configuration.class))
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class ComponentConfiguration {
-
-    @Bean
-    public BroadcasterFactory broadcasterFactory() {
-        return BroadcasterFactory.getDefault();
-    }
 
     @Bean
     public ObjectMapper objectMapper() {

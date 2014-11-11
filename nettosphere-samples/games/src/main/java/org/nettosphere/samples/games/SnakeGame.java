@@ -31,6 +31,7 @@
 package org.nettosphere.samples.games;
 
 import org.atmosphere.cpr.AtmosphereResource;
+import org.atmosphere.cpr.Broadcaster;
 import org.atmosphere.cpr.BroadcasterFactory;
 
 import javax.servlet.http.HttpSession;
@@ -40,17 +41,16 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class SnakeGame {
+public abstract class SnakeGame {
     public static final int PLAYFIELD_WIDTH = 640;
     public static final int PLAYFIELD_HEIGHT = 480;
     public static final int GRID_SIZE = 10;
 
     protected static final AtomicInteger snakeIds = new AtomicInteger(0);
     protected static final Random random = new Random();
-    protected final SnakeBroadcaster snakeBroadcaster;
+    protected SnakeBroadcaster snakeBroadcaster;
 
     public SnakeGame() {
-        snakeBroadcaster = new SnakeBroadcaster(BroadcasterFactory.getDefault().lookup("/snake", true));
     }
 
     public static String getRandomHexColor() {
@@ -82,9 +82,9 @@ public class SnakeGame {
         Snake snake = new Snake(id, resource);
 
         resource.session().setAttribute("snake", snake);
-        snakeBroadcaster.addSnake(snake);
+        snakeBroadcaster().addSnake(snake);
         StringBuilder sb = new StringBuilder();
-        for (Iterator<Snake> iterator = snakeBroadcaster.getSnakes().iterator();
+        for (Iterator<Snake> iterator = snakeBroadcaster().getSnakes().iterator();
              iterator.hasNext(); ) {
             snake = iterator.next();
             sb.append(String.format("{id: %d, color: '%s'}",
@@ -93,13 +93,13 @@ public class SnakeGame {
                 sb.append(',');
             }
         }
-        snakeBroadcaster.broadcast(String.format("{'type': 'join','data':[%s]}",
+        snakeBroadcaster().broadcast(String.format("{'type': 'join','data':[%s]}",
                 sb.toString()));
     }
 
     public void onClose(AtmosphereResource resource) {
-        snakeBroadcaster.removeSnake(snake(resource));
-        snakeBroadcaster.broadcast(String.format("{'type': 'leave', 'id': %d}",
+        snakeBroadcaster().removeSnake(snake(resource));
+        snakeBroadcaster().broadcast(String.format("{'type': 'leave', 'id': %d}",
                 ((Integer) resource.session().getAttribute("id"))));
     }
 
@@ -127,4 +127,13 @@ public class SnakeGame {
             }
         }
     }
+
+    SnakeBroadcaster snakeBroadcaster() {
+        if (snakeBroadcaster == null) {
+            snakeBroadcaster = new SnakeBroadcaster(factory().lookup("/snake", true));
+        }
+        return snakeBroadcaster;
+    }
+
+    abstract BroadcasterFactory factory();
 }

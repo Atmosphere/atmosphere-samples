@@ -23,10 +23,12 @@ import org.atmosphere.cpr.AtmosphereRequest;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
 import org.atmosphere.cpr.AtmosphereResourceFactory;
+import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.cpr.HeaderConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -35,6 +37,9 @@ public class SnakeManagedService extends SnakeGame {
 
     private Logger logger = LoggerFactory.getLogger(SnakeManagedService.class);
     private final ConcurrentLinkedQueue<String> uuids = new ConcurrentLinkedQueue<String>();
+
+    @Inject
+    private BroadcasterFactory factory;
 
     @Ready
     public void onReady(final AtmosphereResource r) {
@@ -69,4 +74,8 @@ public class SnakeManagedService extends SnakeGame {
         }
     }
 
+    @Override
+    BroadcasterFactory factory() {
+        return factory;
+    }
 }

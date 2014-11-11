@@ -15,10 +15,12 @@
  */
 package org.nettosphere.samples.games;
 
+import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.websocket.WebSocket;
 import org.atmosphere.websocket.WebSocketHandler;
 import org.atmosphere.websocket.WebSocketProcessor;
 
+import javax.inject.Inject;
 import java.io.IOException;
 
 /**
@@ -30,6 +32,9 @@ import java.io.IOException;
 // Uncomment if you want to only support WebSocket.
 //@WebSocketHandlerService(path = "/snake")
 public class SnakeWebSocket extends SnakeGame implements WebSocketHandler {
+
+    @Inject
+    private BroadcasterFactory factory;
 
     @Override
     public void onTextMessage(WebSocket webSocket, String message) throws IOException {
@@ -54,5 +59,8 @@ public class SnakeWebSocket extends SnakeGame implements WebSocketHandler {
     public void onByteMessage(WebSocket webSocket, byte[] data, int offset, int length) throws IOException {
     }
 
-
+    @Override
+    BroadcasterFactory factory() {
+        return factory;
+    }
 }

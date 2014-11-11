@@ -54,7 +54,7 @@ public class JsonAtmosphereHandler extends AbstractReflectorAtmosphereHandler {
         ar.getResponse().setContentType("application/json");
         
         // lookup the broadcaster, if not found create it. Name is arbitrary
-        ar.setBroadcaster(DefaultBroadcasterFactory.getDefault().lookup("MyBroadcaster", true));
+        ar.setBroadcaster(ar.getAtmosphereConfig().getBroadcasterFactory().lookup("MyBroadcaster", true));
         
         ar.setSerializer(new Serializer() {
             Charset charset = Charset.forName(ar.getResponse().getCharacterEncoding());
@@ -87,7 +87,7 @@ public class JsonAtmosphereHandler extends AbstractReflectorAtmosphereHandler {
             logger.info("Received json message from client: " + data.toString());
         
             Object message = serializer.deserialize(data.toString());
-            DefaultBroadcasterFactory.getDefault().lookup("MyBroadcaster").broadcast(message);
+            ar.getAtmosphereConfig().getBroadcasterFactory().lookup("MyBroadcaster").broadcast(message);
             
         } catch (SerializationException ex) {
             logger.log(Level.SEVERE, "Failed to read request data", ex);

@@ -22,14 +22,15 @@ import org.atmosphere.jersey.JerseyBroadcaster;
 public abstract class AtmosphereJob {
 
 	protected void sendMessages(String topic, String message) {
-		Broadcaster broadcaster = getBroadcaster(topic);
+		Broadcaster broadcaster = getBroadcaster(factory(), topic);
 		if (broadcaster != null) {
 			broadcaster.broadcast(message);
 		}
 	}
 
-	protected Broadcaster getBroadcaster(String topic) {
-		return BroadcasterFactory.getDefault().lookup(JerseyBroadcaster.class,
-				topic);
+    protected abstract BroadcasterFactory factory();
+
+    protected Broadcaster getBroadcaster(BroadcasterFactory factory, String topic) {
+		return factory.lookup(JerseyBroadcaster.class, topic);
 	}
 }

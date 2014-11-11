@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.atmosphere.cpr.ApplicationConfig;
+import org.atmosphere.cpr.AtmosphereRequest;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.Broadcaster;
 import org.atmosphere.cpr.BroadcasterFactory;
@@ -53,9 +54,7 @@ public class PubSubController {
 
 	/**
 	 * Handles the main page load
-	 * 
-	 * @param request
-	 * @param response
+	 *
 	 * @return ModelAndView
 	 */
 	@RequestMapping(produces = "text/html")
@@ -110,7 +109,7 @@ public class PubSubController {
 
 		res.setContentType("text/html;charset=ISO-8859-1");
 
-		Broadcaster b = lookupBroadcaster(req.getPathInfo());
+		Broadcaster b = lookupBroadcaster(AtmosphereRequest.class.cast(req));
 		r.setBroadcaster(b);
 
 		String header = req.getHeader(HeaderConfig.X_ATMOSPHERE_TRANSPORT);
@@ -125,7 +124,7 @@ public class PubSubController {
 
 	// See AtmosphereHandlerPubSub example - same code as POST
 	private void doPost(HttpServletRequest req) throws IOException {
-		Broadcaster b = lookupBroadcaster(req.getPathInfo());
+		Broadcaster b = lookupBroadcaster(AtmosphereRequest.class.cast(req));
 		String message = req.getReader().readLine();
 
 		if (message != null && message.indexOf("message") != -1) {
@@ -133,18 +132,15 @@ public class PubSubController {
 		}
 	}
 
-	/**
-	 * Retrieve the {@link Broadcaster} based on the request's path info.
-	 * 
-	 * @param pathInfo
-	 * @return the {@link Broadcaster} based on the request's path info.
-	 */
-    Broadcaster lookupBroadcaster(String pathInfo) {
+    Broadcaster lookupBroadcaster(  AtmosphereRequest request) {
+        String pathInfo = request.getPathInfo();
+        BroadcasterFactory factory = request.resource().getAtmosphereConfig().getBroadcasterFactory();
+
         if (pathInfo == null) {
-            return BroadcasterFactory.getDefault().lookup("/", true);
+            return factory.lookup("/", true);
         } else {
             String[] decodedPath = pathInfo.split("/");
-            return BroadcasterFactory.getDefault().lookup(
+            return factory.lookup(
                     decodedPath[decodedPath.length - 1], true);
         }
     }

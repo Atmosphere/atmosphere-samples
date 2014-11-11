@@ -38,6 +38,12 @@ public abstract class BaseCommand implements Command {
         this.resource = resource;
     }
 
+    @Override
+    public AtmosphereResource getResource(){
+        return resource;
+    }
+
+
     public String getChannel() {
         return channel;
     }

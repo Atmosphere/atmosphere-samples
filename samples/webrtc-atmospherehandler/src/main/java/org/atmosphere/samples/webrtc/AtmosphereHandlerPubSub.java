@@ -79,14 +79,14 @@ public class AtmosphereHandlerPubSub extends AbstractReflectorAtmosphereHandler 
     /**
      * Retrieve the {@link Broadcaster} based on the request's path info.
      *
-     * @param pathInfo
+     * @param ar
      * @return the {@link Broadcaster} based on the request's path info.
      */
     Broadcaster lookupBroadcaster(AtmosphereResource ar) {
 
         String pathInfo = ar.getRequest().getPathInfo();
         String[] decodedPath = pathInfo.split("/");
-        Broadcaster b = BroadcasterFactory.getDefault().lookup(
+        Broadcaster b = ar.getAtmosphereConfig().getBroadcasterFactory().lookup(
                 decodedPath[decodedPath.length - 1], true);
         return b;
     }

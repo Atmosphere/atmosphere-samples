@@ -21,13 +21,12 @@ import org.atmosphere.cpr._
 class Meteor extends HttpServlet {
 
   override def doGet(req: HttpServletRequest, res: HttpServletResponse): Unit = {
-    var m:  org.atmosphere.cpr.Meteor = org.atmosphere.cpr.Meteor.build(req)
+    val m:  org.atmosphere.cpr.Meteor = org.atmosphere.cpr.Meteor.build(req)
     m.addListener(new Console)
-    var factory : BroadcasterFactory = m.getAtmosphereConfig.getBroadcasterFactory
-
+    val factory : BroadcasterFactory = m.getAtmosphereResource.getAtmosphereConfig.getBroadcasterFactory
 
     res.setContentType("text/html;charset=ISO-8859-1")
-    var b: Broadcaster = lookupBroadcaster(factory, req.getPathInfo)
+    val b: Broadcaster = lookupBroadcaster(factory, req.getPathInfo)
     m.setBroadcaster(b)
 
     if (req.getHeader(HeaderConfig.X_ATMOSPHERE_TRANSPORT).equalsIgnoreCase(HeaderConfig.LONG_POLLING_TRANSPORT)) {
@@ -37,8 +36,9 @@ class Meteor extends HttpServlet {
   }
 
   override def doPost(req: HttpServletRequest, res: HttpServletResponse): Unit = {
-    var b: Broadcaster = lookupBroadcaster(req.getPathInfo)
-    var message: String = req.getReader.readLine
+    val factory : BroadcasterFactory = req.asInstanceOf[AtmosphereRequest].resource().getAtmosphereConfig.getBroadcasterFactory
+    val b: Broadcaster = lookupBroadcaster(factory, req.getPathInfo)
+    val message: String = req.getReader.readLine
     if (message != null && message.indexOf("message") != -1) {
       b.broadcast(message.substring("message=".length))
     }
@@ -51,8 +51,8 @@ class Meteor extends HttpServlet {
    * @return the {@link Broadcaster} based on the request's path info.
    */
   private[pubsub] def lookupBroadcaster(factory : BroadcasterFactory, pathInfo: String): Broadcaster = {
-    var decodedPath: Array[String] = pathInfo.split("/")
-    var b: Broadcaster = factory.lookup(decodedPath(decodedPath.length - 1), true)
+    val decodedPath: Array[String] = pathInfo.split("/")
+    val b: Broadcaster = factory.lookup(decodedPath(decodedPath.length - 1), true)
     return b
   }
 
