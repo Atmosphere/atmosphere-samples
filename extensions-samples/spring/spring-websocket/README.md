@@ -6,4 +6,3 @@ It uses a delegating WebSocketProtocol to intercept websockets channels.
 
 Example has been tested against Firefox, Chrome and Safari.
 
-There is no WebSockets support for IE (yet).
