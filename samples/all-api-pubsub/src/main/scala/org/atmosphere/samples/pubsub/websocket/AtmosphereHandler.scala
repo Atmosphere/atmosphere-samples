@@ -23,15 +23,16 @@ class AtmosphereHandler extends AbstractReflectorAtmosphereHandler {
     var req: AtmosphereRequest = r.getRequest
     var res: AtmosphereResponse = r.getResponse
     var method: String = req.getMethod
+    var factory : BroadcasterFactory = r.getAtmosphereConfig.getBroadcasterFactory
 
     if ("GET".equalsIgnoreCase(method)) {
       r.addEventListener(new Console)
       res.setContentType("text/html;charset=ISO-8859-1")
-      var b: Broadcaster = lookupBroadcaster(r.getAtmosphereConfig.getBroadcasterFactory, req.getPathInfo)
+      var b: Broadcaster = lookupBroadcaster(factory, req.getPathInfo)
       r.setBroadcaster(b).suspend(-1)
     }
     else if ("POST".equalsIgnoreCase(method)) {
-      var b: Broadcaster = lookupBroadcaster(r.getAtmosphereConfig.getBroadcasterFactory, req.getPathInfo)
+      var b: Broadcaster = lookupBroadcaster(factory, req.getPathInfo)
       var message: String = req.getReader.readLine
 
       if (message != null && message.indexOf("message") != -1) {

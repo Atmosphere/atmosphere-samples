@@ -23,9 +23,11 @@ class Meteor extends HttpServlet {
   override def doGet(req: HttpServletRequest, res: HttpServletResponse): Unit = {
     var m:  org.atmosphere.cpr.Meteor = org.atmosphere.cpr.Meteor.build(req)
     m.addListener(new Console)
+    var factory : BroadcasterFactory = m.getAtmosphereConfig.getBroadcasterFactory
+
 
     res.setContentType("text/html;charset=ISO-8859-1")
-    var b: Broadcaster = lookupBroadcaster(req.getPathInfo)
+    var b: Broadcaster = lookupBroadcaster(factory, req.getPathInfo)
     m.setBroadcaster(b)
 
     if (req.getHeader(HeaderConfig.X_ATMOSPHERE_TRANSPORT).equalsIgnoreCase(HeaderConfig.LONG_POLLING_TRANSPORT)) {
@@ -42,9 +44,15 @@ class Meteor extends HttpServlet {
     }
   }
 
-  private[pubsub] def lookupBroadcaster(pathInfo: String): Broadcaster = {
+  /**
+   * Retrieve the {@link Broadcaster} based on the request's path info.
+   *
+   * @param pathInfo
+   * @return the {@link Broadcaster} based on the request's path info.
+   */
+  private[pubsub] def lookupBroadcaster(factory : BroadcasterFactory, pathInfo: String): Broadcaster = {
     var decodedPath: Array[String] = pathInfo.split("/")
-    var b: Broadcaster = BroadcasterFactory.getDefault.lookup(decodedPath(decodedPath.length - 1), true)
+    var b: Broadcaster = factory.lookup(decodedPath(decodedPath.length - 1), true)
     return b
   }
 
