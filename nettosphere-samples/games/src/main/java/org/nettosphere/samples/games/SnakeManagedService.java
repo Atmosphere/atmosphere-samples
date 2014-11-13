@@ -41,6 +41,9 @@ public class SnakeManagedService extends SnakeGame {
     @Inject
     private BroadcasterFactory factory;
 
+    @Inject
+    private AtmosphereResourceFactory resourceFactory;
+
     @Ready
     public void onReady(final AtmosphereResource r) {
         if (!uuids.contains(r.uuid())) {
@@ -68,7 +71,7 @@ public class SnakeManagedService extends SnakeGame {
     public void onMessage(AtmosphereResource resource) {
         try {
             // Here we need to find the suspended AtmosphereResource
-            super.onMessage(AtmosphereResourceFactory.getDefault().find(resource.uuid()), resource.getRequest().getReader().readLine());
+            super.onMessage(resourceFactory.find(resource.uuid()), resource.getRequest().getReader().readLine());
         } catch (IOException e) {
             e.printStackTrace();
         }
