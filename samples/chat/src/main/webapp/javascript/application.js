@@ -18,8 +18,7 @@ $(function () {
         logLevel : 'debug',
         transport : transport ,
         trackMessageLength : true,
-        reconnectInterval : 5000,
-	maxStreamingLength : 1000 };
+        reconnectInterval : 5000 };
 
 
     request.onOpen = function(response) {
