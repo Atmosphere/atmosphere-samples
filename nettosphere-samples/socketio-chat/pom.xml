@@ -38,7 +38,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>org.nettosphere.sample.games.NettosphereChat</mainClass>
+                    <mainClass>org.nettosphere.sample.chat.NettosphereChat</mainClass>
                 </configuration>
             </plugin>
             <plugin>
