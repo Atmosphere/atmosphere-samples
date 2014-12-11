@@ -17,42 +17,42 @@ public class EventListener implements AtmosphereResourceEventListener {
     }
 
     @Override
-    public void onPreSuspend( AtmosphereResourceEvent atmosphereResourceEvent ) {
+    public void onPreSuspend(AtmosphereResourceEvent atmosphereResourceEvent) {
         checkInjection();
     }
 
     @Override
-    public void onSuspend( AtmosphereResourceEvent atmosphereResourceEvent ) {
+    public void onSuspend(AtmosphereResourceEvent atmosphereResourceEvent) {
         checkInjection();
     }
 
     @Override
-    public void onResume( AtmosphereResourceEvent atmosphereResourceEvent ) {
+    public void onResume(AtmosphereResourceEvent atmosphereResourceEvent) {
         checkInjection();
     }
 
     @Override
-    public void onDisconnect( AtmosphereResourceEvent atmosphereResourceEvent ) {
+    public void onDisconnect(AtmosphereResourceEvent atmosphereResourceEvent) {
         checkInjection();
     }
 
     @Override
-    public void onBroadcast( AtmosphereResourceEvent atmosphereResourceEvent ) {
+    public void onBroadcast(AtmosphereResourceEvent atmosphereResourceEvent) {
         checkInjection();
     }
 
     @Override
-    public void onThrowable( AtmosphereResourceEvent atmosphereResourceEvent ) {
+    public void onThrowable(AtmosphereResourceEvent atmosphereResourceEvent) {
         checkInjection();
     }
 
     @Override
-    public void onClose( AtmosphereResourceEvent atmosphereResourceEvent ) {
+    public void onClose(AtmosphereResourceEvent atmosphereResourceEvent) {
         checkInjection();
     }
 
     @Override
-    public void onHeartbeat( AtmosphereResourceEvent atmosphereResourceEvent ) {
+    public void onHeartbeat(AtmosphereResourceEvent atmosphereResourceEvent) {
         checkInjection();
     }
 
