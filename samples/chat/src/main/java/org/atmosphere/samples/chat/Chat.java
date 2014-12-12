@@ -15,7 +15,6 @@
  */
 package org.atmosphere.samples.chat;
 
-import com.google.inject.Inject;
 import org.atmosphere.config.service.Disconnect;
 import org.atmosphere.config.service.Heartbeat;
 import org.atmosphere.config.service.ManagedService;
@@ -27,6 +26,7 @@ import org.atmosphere.samples.chat.custom.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
 import java.io.IOException;
 
 import static org.atmosphere.cpr.ApplicationConfig.MAX_INACTIVE;
