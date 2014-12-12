@@ -15,12 +15,14 @@
  */
 package org.atmosphere.samples.chat;
 
+import com.google.inject.Inject;
 import org.atmosphere.config.service.Disconnect;
 import org.atmosphere.config.service.Heartbeat;
 import org.atmosphere.config.service.ManagedService;
 import org.atmosphere.config.service.Ready;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
+import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.samples.chat.custom.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,6 +46,10 @@ public class Chat {
 //        r.getResponse().setCharacterEncoding("UTF-8");
 //    }
 
+    // For demonstrating injection.
+    @Inject
+    private BroadcasterFactory factory;
+
     @Heartbeat
     public void onHeartbeat(final AtmosphereResourceEvent event) {
         logger.trace("Heartbeat send by {}", event.getResource());
@@ -56,7 +62,8 @@ public class Chat {
      */
     @Ready
     public void onReady(final AtmosphereResource r) {
-        logger.info("Browser {} connected.", r.uuid());
+        logger.info("Browser {} connected", r.uuid());
+        logger.info("BroadcasterFactory used {}", factory.getClass().getName());
     }
 
     /**
