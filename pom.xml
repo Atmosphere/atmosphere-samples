@@ -394,7 +394,7 @@
         <nettosphere-version>2.3.0-SNAPSHOT</nettosphere-version>
         <atmosphere-version>2.3.0-SNAPSHOT</atmosphere-version>
         <extensions-version>2.3.0-SNAPSHOT</extensions-version>
-        <wasync-version>2.0.0-SNAPSHOT</wasync-version>
+        <wasync-version>2.0.0</wasync-version>
 
         <vertx-version>2.1</vertx-version>
         <atmosphere-vertx-version>2.0.0</atmosphere-vertx-version>
