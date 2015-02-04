@@ -40,11 +40,11 @@
             <artifactId>geronimo-servlet_3.0_spec</artifactId>
         </dependency>
         <!-- Uncomment to use Atmosphere Pro: http://async-io.org/AtmospherePro.html -->
-        <dependency>
-            <groupId>io.async</groupId>
-            <artifactId>atmosphere-tower-control</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>io.async</groupId>-->
+            <!--<artifactId>atmosphere-tower-control</artifactId>-->
+            <!--<version>1.0.1-SNAPSHOT</version>-->
+        <!--</dependency>-->
         <!--<dependency>-->
             <!--<groupId>io.async</groupId>-->
             <!--<artifactId>atmosphere-satellite</artifactId>-->
