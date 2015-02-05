@@ -41,7 +41,7 @@
         <!--
             <module>websocketd</module>
         -->
-
+        <module>embedded-jetty-websocket-chat</module>
     </modules>
     <build>
         <finalName>${project.artifactId}</finalName>
