@@ -50,7 +50,7 @@
 
         <dependency>
             <groupId>org.atmosphere</groupId>
-            <artifactId>atmosphere-spring</artifactId>
+            <artifactId>atmosphere-cdi</artifactId>
             <version>${extensions-version}</version>
         </dependency>
     </dependencies>
