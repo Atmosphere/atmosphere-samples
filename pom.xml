@@ -407,11 +407,11 @@
         <logback-version>1.0.13</logback-version>
         <compat-version>2.0.1</compat-version>
 
-        <client-version>2.2.6</client-version>
+        <client-version>2.2.7-SNAPSHOT</client-version>
         <nettosphere-version>2.2.1</nettosphere-version>
         <atmosphere-version>2.2.5-SNAPSHOT</atmosphere-version>
         <extensions-version>2.2.1</extensions-version>
-        <wasync-version>1.4.2</wasync-version>
+        <wasync-version>2.0.0</wasync-version>
 
         <vertx-version>2.1</vertx-version>
         <atmosphere-vertx-version>2.0.0</atmosphere-vertx-version>
