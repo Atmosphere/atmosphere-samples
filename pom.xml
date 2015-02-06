@@ -407,9 +407,9 @@
         <logback-version>1.0.13</logback-version>
         <compat-version>2.0.1</compat-version>
 
-        <client-version>2.2.7-SNAPSHOT</client-version>
+        <client-version>2.2.7</client-version>
         <nettosphere-version>2.2.1</nettosphere-version>
-        <atmosphere-version>2.2.5-SNAPSHOT</atmosphere-version>
+        <atmosphere-version>2.2.5</atmosphere-version>
         <extensions-version>2.2.1</extensions-version>
         <wasync-version>2.0.0</wasync-version>
 
