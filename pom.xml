@@ -391,9 +391,9 @@
         <compat-version>2.0.1</compat-version>
 
         <client-version>2.2.7-SNAPSHOT</client-version>
-        <nettosphere-version>2.3.0-SNAPSHOT</nettosphere-version>
-        <atmosphere-version>2.3.0-SNAPSHOT</atmosphere-version>
-        <extensions-version>2.3.0-SNAPSHOT</extensions-version>
+        <nettosphere-version>2.3.0-RC3</nettosphere-version>
+        <atmosphere-version>2.3.0-RC3</atmosphere-version>
+        <extensions-version>2.3.0-RC3</extensions-version>
         <wasync-version>2.0.0</wasync-version>
 
         <vertx-version>2.1</vertx-version>
