@@ -11,7 +11,7 @@
     <artifactId>atmosphere-samples-project</artifactId>
     <packaging>pom</packaging>
     <name>atmosphere-samples-project</name>
-    <version>2.2.7-SNAPSHOT</version>
+    <version>2.2.6-SNAPSHOT</version>
     <url>http://github.com/Atmosphere/atmosphere-samples</url>
     <scm>
         <connection>scm:git:git@github.com:Atmosphere/atmosphere-samples.git</connection>
@@ -409,7 +409,7 @@
 
         <client-version>2.2.7</client-version>
         <nettosphere-version>2.2.1</nettosphere-version>
-        <atmosphere-version>2.2.7-SNAPSHOT</atmosphere-version>
+        <atmosphere-version>2.2.6</atmosphere-version>
         <extensions-version>2.2.1</extensions-version>
         <wasync-version>2.0.0</wasync-version>
 
