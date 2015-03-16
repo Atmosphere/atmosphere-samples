@@ -100,11 +100,13 @@
             <artifactId>logback-core</artifactId>
             <version>${logback-version}</version>
         </dependency>
+<!--
         <dependency>
             <groupId>com.fasterxml</groupId>
             <artifactId>jackson-module-scala</artifactId>
             <version>1.9.3</version>
         </dependency>
+-->
     </dependencies>
     <build>
         <finalName>atmosphere-scala-chat</finalName>

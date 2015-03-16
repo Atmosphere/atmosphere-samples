@@ -15,8 +15,8 @@
  */
 package org.atmosphere.wasync.samples;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.atmosphere.config.managed.Encoder;
-import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
 

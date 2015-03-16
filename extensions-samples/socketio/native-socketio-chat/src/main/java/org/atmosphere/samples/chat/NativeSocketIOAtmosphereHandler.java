@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.atmosphere.cache.UUIDBroadcasterCache;
 import org.atmosphere.config.service.AtmosphereHandlerService;
 import org.atmosphere.cpr.AtmosphereResource;
@@ -32,7 +33,6 @@ import org.atmosphere.socketio.transport.DisconnectReason;
 import org.atmosphere.socketio.transport.SocketIOPacketImpl;
 import org.atmosphere.socketio.transport.SocketIOPacketImpl.PacketType;
 import org.atmosphere.util.ExcludeSessionBroadcaster;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

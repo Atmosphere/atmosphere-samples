@@ -18,6 +18,7 @@
  */
 package org.atmosphere.samples.pubsub.config.protocol;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.atmosphere.config.service.WebSocketProtocolService;
 import org.atmosphere.cpr.AtmosphereConfig;
 import org.atmosphere.cpr.AtmosphereRequest;
@@ -31,7 +32,6 @@ import org.atmosphere.samples.pubsub.services.ChatService;
 import org.atmosphere.websocket.WebSocket;
 import org.atmosphere.websocket.WebSocketProcessor;
 import org.atmosphere.websocket.WebSocketProtocol;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

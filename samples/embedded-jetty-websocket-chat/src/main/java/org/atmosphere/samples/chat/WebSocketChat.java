@@ -15,6 +15,7 @@
  */
 package org.atmosphere.samples.chat;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.atmosphere.config.service.WebSocketHandlerService;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
 import org.atmosphere.util.SimpleBroadcaster;
@@ -22,7 +23,6 @@ import org.atmosphere.websocket.WebSocket;
 import org.atmosphere.websocket.WebSocketEventListenerAdapter;
 import org.atmosphere.websocket.WebSocketHandler;
 import org.atmosphere.websocket.WebSocketStreamingHandlerAdapter;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
