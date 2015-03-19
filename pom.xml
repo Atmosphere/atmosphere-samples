@@ -398,15 +398,16 @@
 
         <vertx-version>2.1</vertx-version>
         <atmosphere-vertx-version>2.0.0</atmosphere-vertx-version>
-        <atmosphere-play-version>2.1.0</atmosphere-play-version>
-        <stomp-version>0.2</stomp-version>
+        <atmosphere-play-version>2.1.1</atmosphere-play-version>
+        <stomp-version>0.3-SNAPSHOT</stomp-version>
 
 
         <compat-version>2.0.1</compat-version>
         <jgroups-version>3.1.0.Final</jgroups-version>
         <jms-version>1.1</jms-version>
         <guice-version>3.0</guice-version>
-        <spring-version>3.0.6.RELEASE</spring-version>
+        <spring-version>4.1.5.RELEASE</spring-version>
+        <springboot-version>1.2.2.RELEASE</springboot-version>
         <ahc.version>1.7.6</ahc.version>
         <jedis.version>2.0.0</jedis.version>
     </properties>

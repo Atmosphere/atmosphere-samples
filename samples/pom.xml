@@ -35,6 +35,7 @@
         <module>websocket-chat</module>
         <module>webrtc-atmospherehandler</module>
         <module>webrtc-jersey</module>
+        <module>spring-boot-sample-atmosphere</module>
         <!--
             <module>websocketd</module>
         -->

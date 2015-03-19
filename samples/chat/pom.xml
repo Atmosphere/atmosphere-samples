@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>org.atmosphere.samples</groupId>
         <artifactId>atmosphere-samples</artifactId>
@@ -16,7 +17,7 @@
         <dependency>
             <groupId>org.atmosphere.client</groupId>
             <artifactId>javascript</artifactId>
-	    <version>${client-version}</version>
+            <version>${client-version}</version>
             <type>war</type>
         </dependency>
         <dependency>
@@ -41,19 +42,19 @@
         </dependency>
         <!-- Uncomment to use Atmosphere Pro: http://async-io.org/AtmospherePro.html -->
         <!--<dependency>-->
-            <!--<groupId>io.async</groupId>-->
-            <!--<artifactId>atmosphere-tower-control</artifactId>-->
-            <!--<version>1.0.1-SNAPSHOT</version>-->
+        <!--<groupId>io.async</groupId>-->
+        <!--<artifactId>atmosphere-tower-control</artifactId>-->
+        <!--<version>1.0.1-SNAPSHOT</version>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>io.async</groupId>-->
-            <!--<artifactId>atmosphere-satellite</artifactId>-->
-            <!--<version>1.1.0</version>-->
+        <!--<groupId>io.async</groupId>-->
+        <!--<artifactId>atmosphere-satellite</artifactId>-->
+        <!--<version>1.1.0</version>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>io.async</groupId>-->
-            <!--<artifactId>atmosphere-postman</artifactId>-->
-            <!--<version>1.0.0</version>-->
+        <!--<groupId>io.async</groupId>-->
+        <!--<artifactId>atmosphere-postman</artifactId>-->
+        <!--<version>1.0.0</version>-->
         <!--</dependency>-->
         <dependency>
             <groupId>javax.inject</groupId>
