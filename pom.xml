@@ -265,7 +265,9 @@
         <module>extensions-samples</module>
         <module>nettosphere-samples</module>
         <module>wasync-samples</module>
+<!--
         <module>stomp</module>
+-->
         <module>vertx-samples</module>
 	<!--
         <module>play-samples</module>
@@ -390,11 +392,11 @@
         <logback-version>1.0.13</logback-version>
         <compat-version>2.0.1</compat-version>
 
-        <client-version>2.2.9-SNAPSHOT</client-version>
-        <nettosphere-version>2.3.0-SNAPSHOT</nettosphere-version>
-        <atmosphere-version>2.3.0-SNAPSHOT</atmosphere-version>
-        <extensions-version>2.3.0-SNAPSHOT</extensions-version>
-        <wasync-version>2.0.1-SNAPSHOT</wasync-version>
+        <client-version>2.2.8</client-version>
+        <nettosphere-version>2.3.0-RC3</nettosphere-version>
+        <atmosphere-version>2.3.0-RC5</atmosphere-version>
+        <extensions-version>2.3.0-RC5</extensions-version>
+        <wasync-version>2.0.0</wasync-version>
 
         <vertx-version>2.1</vertx-version>
         <atmosphere-vertx-version>2.0.0</atmosphere-vertx-version>
