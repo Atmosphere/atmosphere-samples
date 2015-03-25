@@ -230,3 +230,7 @@ If you plan to use Spring or GWT, take a look at their specific samples.
           <td>[websocket-stream](./samples/websocket-stream)</td>	
           <td>[Client](https://github.com/Atmosphere/atmosphere-samples/blob/master/extensions-samples/gwt/gwt20-websockets/src/main/java/org/atmosphere/samples/client/GwtWebsocketsDemo.java)</td>
       </tr>
+</table>
+
+
+Note that for those samples using jQuery, version 2.x is used and they are not compatible with IE 6, 7, and 8. Try other browsers. For more information, see [https://jquery.com/browser-support/](https://jquery.com/browser-support/)
