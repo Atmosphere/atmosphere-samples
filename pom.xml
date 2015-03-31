@@ -265,7 +265,9 @@
         <module>extensions-samples</module>
         <module>nettosphere-samples</module>
         <module>wasync-samples</module>
+<!--
         <module>stomp</module>
+-->
         <module>vertx-samples</module>
 	<!--
         <module>play-samples</module>
