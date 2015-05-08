@@ -3,13 +3,13 @@
     <parent>
         <groupId>org.atmosphere</groupId>
         <artifactId>atmosphere-samples-project</artifactId>
-        <version>2.2.7</version>
+        <version>2.2.8-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.atmosphere.samples</groupId>
     <artifactId>vertx-samples</artifactId>
     <packaging>pom</packaging>
-    <version>2.2.7</version>
+    <version>2.2.8-SNAPSHOT</version>
     <name>atmosphere-samples</name>
     <modules>
         <module>chat</module>
