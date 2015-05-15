@@ -18,6 +18,7 @@ package org.atmosphere.samples.chat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.atmosphere.config.managed.Decoder;
 
+import javax.inject.Inject;
 import java.io.IOException;
 
 /**
@@ -25,7 +26,8 @@ import java.io.IOException;
  */
 public class ProtocolDecoder implements Decoder<String, ChatProtocol> {
 
-    private final ObjectMapper mapper = new ObjectMapper();
+    @Inject
+    private ObjectMapper mapper;
 
     @Override
     public ChatProtocol decode(String s) {
