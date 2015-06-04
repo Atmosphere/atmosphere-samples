@@ -47,7 +47,7 @@ request.onClose = function(response) {
 }
 
 request.onError = function(response) {
-    content.log("Sorry, something went wrong: " + response.responseBody);
+    console.log("Sorry, something went wrong: " + response.responseBody);
 };
 
 var subSocket = atmosphere.subscribe(request);
