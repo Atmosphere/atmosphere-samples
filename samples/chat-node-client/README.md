@@ -2,14 +2,15 @@
 
 Build the sample and then install atmosphere-client support in node.js
 
-Start the server part of the websocket-chat program.
+Start the server part of the chat or websocket-chat sample program.
 
-At a console, execute the following shell commands.
+At a console, execute the following shell commands to start the websocket-chat sample program.
 
 ```bash
 % cd ../websocket-chat
 % mvn jetty:run
 ```
+
 Open http://localhost:8080/ using your Browser for the first chat user.
 
 Start this client for another chat user.
