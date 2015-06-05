@@ -15,7 +15,9 @@ var atmosphere = require('atmosphere-client');
 
 var request = { url: 'http://localhost:8080/chat',
                 contentType : "application/json",
-                transport : 'websocket'};
+                transport : 'websocket',
+			    trackMessageLength: true,
+			    reconnectInterval : 5000};
 var isopen = false;
 
 request.onOpen = function(response) {
