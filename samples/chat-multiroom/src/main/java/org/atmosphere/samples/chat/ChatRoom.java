@@ -76,7 +76,9 @@ public class ChatRoom {
         Collection<String> result = new ArrayList<String>();
         for (Broadcaster broadcaster : broadcasters) {
             if (!("/*".equals(broadcaster.getID()))) {
-                result.add(broadcaster.getID().split("/")[2]);
+                // if no room is specified, use ''
+                String[] p = broadcaster.getID().split("/");
+                result.add(p.length > 2 ? p[2] : "");
             }
         };
         return result;
