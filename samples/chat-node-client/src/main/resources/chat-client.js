@@ -22,7 +22,7 @@ var isopen = false;
 
 request.onOpen = function(response) {
     isopen = true;
-    console.log('Connected');
+    console.log('Connected using ' + response.transport);
     prompt.setPrompt("user: ", 6);
     prompt.prompt();
 };
