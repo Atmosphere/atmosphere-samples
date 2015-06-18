@@ -355,15 +355,6 @@
             <url>https://repository.jboss.org/nexus/content/groups/public/</url>
         </repository>
         <repository>
-            <id>codehaus</id>
-            <name>repository.codehaus.org</name>
-            <url>http://repository.codehaus.org</url>
-        </repository>
-        <repository>
-            <id>codehaus-snapshots</id>
-            <url>http://snapshots.repository.codehaus.org</url>
-        </repository>
-        <repository>
             <id>maven.java.net</id>
             <url>https://maven.java.net/content/groups/public/</url>
         </repository>
