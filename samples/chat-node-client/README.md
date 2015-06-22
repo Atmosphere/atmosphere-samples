@@ -19,7 +19,10 @@ At another console, execute the following shell commands.
 
 ```bash
 % cd src/main/resources
-% npm install atmosphere-client
+% npm install atmosphere.js
 % node chat-client.js
 ```
 
+
+Note the old npm package atmosphere-client has been migrated to npm package atmosphere.js.
+For further information, see https://www.npmjs.com/package/atmosphere.js
