@@ -1,7 +1,8 @@
 /**
  * chat-client.js
  * 
- * A client program to chat over atmosphare-samples/samples/websocket-chat
+ * A client program to chat over atmosphare-samples/samples/websocket-chat or
+ * atmosphare-samples/samples/chat.
  * 
  * 
  */
@@ -11,13 +12,13 @@
 var reader = require('readline');
 var prompt = reader.createInterface(process.stdin, process.stdout);
 
-var atmosphere = require('atmosphere-client');
+var atmosphere = require('atmosphere.js');
 
 var request = { url: 'http://localhost:8080/chat',
                 contentType : "application/json",
                 transport : 'websocket',
-			    trackMessageLength: true,
-			    reconnectInterval : 5000};
+                trackMessageLength: true,
+                reconnectInterval : 5000};
 var isopen = false;
 
 request.onOpen = function(response) {
