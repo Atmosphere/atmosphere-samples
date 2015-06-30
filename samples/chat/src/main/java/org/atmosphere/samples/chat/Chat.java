@@ -21,12 +21,14 @@ import org.atmosphere.config.service.ManagedService;
 import org.atmosphere.config.service.Ready;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
+import org.atmosphere.cpr.Broadcaster;
 import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.samples.chat.custom.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.IOException;
 
 import static org.atmosphere.cpr.ApplicationConfig.MAX_INACTIVE;
@@ -50,6 +52,11 @@ public class Chat {
     @Inject
     private BroadcasterFactory factory;
 
+    // For demonstrating javax.injecNamed
+    @Inject
+    @Named("/chat")
+    private Broadcaster broadcaster;
+
     @Heartbeat
     public void onHeartbeat(final AtmosphereResourceEvent event) {
         logger.trace("Heartbeat send by {}", event.getResource());
@@ -64,6 +71,8 @@ public class Chat {
     public void onReady(final AtmosphereResource r) {
         logger.info("Browser {} connected", r.uuid());
         logger.info("BroadcasterFactory used {}", factory.getClass().getName());
+        logger.info("Broadcaster injected {}", broadcaster.getID());
+
     }
 
     /**
