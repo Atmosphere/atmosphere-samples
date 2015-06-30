@@ -383,7 +383,7 @@
 
         <client-version>2.2.11</client-version>
         <nettosphere-version>2.3.2</nettosphere-version>
-        <atmosphere-version>2.3.2</atmosphere-version>
+        <atmosphere-version>2.3.3-SNAPSHOT</atmosphere-version>
         <extensions-version>2.3.0</extensions-version>
         <wasync-version>2.1.2</wasync-version>
 
