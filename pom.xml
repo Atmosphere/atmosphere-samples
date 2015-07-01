@@ -382,7 +382,7 @@
         <compat-version>2.0.1</compat-version>
 
         <client-version>2.2.11</client-version>
-        <nettosphere-version>2.3.2</nettosphere-version>
+        <nettosphere-version>2.4.0-SNAPSHOT</nettosphere-version>
         <atmosphere-version>2.4.0-SNAPSHOT</atmosphere-version>
         <extensions-version>2.3.1-SNAPSHOT</extensions-version>
         <wasync-version>2.1.2</wasync-version>
