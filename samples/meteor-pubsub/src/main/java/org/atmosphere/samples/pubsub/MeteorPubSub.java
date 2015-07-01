@@ -17,11 +17,11 @@ package org.atmosphere.samples.pubsub;
 
 import org.atmosphere.config.service.MeteorService;
 import org.atmosphere.cpr.Broadcaster;
-import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.cpr.Meteor;
 import org.atmosphere.websocket.WebSocketEventListenerAdapter;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,11 +33,12 @@ import java.io.IOException;
  *
  * @author Jeanfrancois Arcand
  */
-@MeteorService
+@MeteorService(path="/pubsub/{topic}")
 public class MeteorPubSub extends HttpServlet {
 
     @Inject
-    private BroadcasterFactory broadcasterFactory;
+    @Named("/{topic}")
+    private Broadcaster broadcaster;
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -49,30 +50,15 @@ public class MeteorPubSub extends HttpServlet {
 
         res.setContentType("text/html;charset=ISO-8859-1");
 
-        Broadcaster b = lookupBroadcaster(req.getPathInfo());
-        m.setBroadcaster(b);
-
+        m.setBroadcaster(broadcaster);
         m.suspend(-1);
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        Broadcaster b = lookupBroadcaster(req.getPathInfo());
-
         String message = req.getReader().readLine();
 
         if (message != null && message.indexOf("message") != -1) {
-            b.broadcast(message.substring("message=".length()));
+            broadcaster.broadcast(message.substring("message=".length()));
         }
-    }
-
-    Broadcaster lookupBroadcaster(String pathInfo) {
-        String[] decodedPath = pathInfo.split("/");
-        Broadcaster b;
-        if (decodedPath.length > 0) {
-            b = broadcasterFactory.lookup(decodedPath[decodedPath.length - 1], true);
-        } else {
-            b = broadcasterFactory.lookup("/", true);
-        }
-        return b;
     }
 }

@@ -16,25 +16,26 @@
 package org.atmosphere.samples.chat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.atmosphere.config.managed.Encoder;
+import org.atmosphere.cpr.AtmosphereConfig;
+import org.atmosphere.inject.Injectable;
 
-import javax.inject.Inject;
-import java.io.IOException;
+import java.lang.reflect.Type;
 
 /**
- * Encode a {@link Message} into a String
+ * {@link Injectable} for {@link ObjectMapper}
  */
-public class JacksonEncoder implements Encoder<Message, String> {
+public class ObjectMapperInjectable implements Injectable<ObjectMapper> {
 
-    @Inject
-    private ObjectMapper mapper;
+    private final ObjectMapper mapper = new ObjectMapper();
 
     @Override
-    public String encode(Message m) {
-        try {
-            return mapper.writeValueAsString(m);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public boolean supportedType(Type t) {
+        return (t instanceof Class) && ObjectMapper.class.equals((Class) t);
+    }
+
+    @Override
+
+    public ObjectMapper injectable(AtmosphereConfig config) {
+        return mapper;
     }
 }

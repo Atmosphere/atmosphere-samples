@@ -18,6 +18,7 @@ package org.atmosphere.samples.chat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.atmosphere.config.managed.Encoder;
 
+import javax.inject.Inject;
 import java.io.IOException;
 
 /**
@@ -25,7 +26,8 @@ import java.io.IOException;
  */
 public class JacksonEncoder implements Encoder<JacksonEncoder.Encodable, String> {
 
-    private final ObjectMapper mapper = new ObjectMapper();
+    @Inject
+    private ObjectMapper mapper;
 
     @Override
     public String encode(Encodable m) {

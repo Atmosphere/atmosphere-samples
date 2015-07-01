@@ -3,11 +3,11 @@
     <parent>
         <groupId>org.atmosphere.samples</groupId>
         <artifactId>play-samples</artifactId>
-        <version>2.3.0-SNAPSHOT</version>
+        <version>2.3.1-SNAPSHOT</version>
     </parent>
     <groupId>org.atmosphere.samples</groupId>
     <artifactId>play-jersey-chat</artifactId>
-    <version>2.3.0-SNAPSHOT</version>
+    <version>2.3.1-SNAPSHOT</version>
     <packaging>play2</packaging>
     <name>Atmosphere Jersey Chat for Play</name>
     <dependencies>

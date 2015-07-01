@@ -21,12 +21,14 @@ import org.atmosphere.config.service.ManagedService;
 import org.atmosphere.config.service.Ready;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
+import org.atmosphere.cpr.Broadcaster;
 import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.samples.chat.custom.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.IOException;
 
 import static org.atmosphere.cpr.ApplicationConfig.MAX_INACTIVE;
@@ -50,6 +52,17 @@ public class Chat {
     @Inject
     private BroadcasterFactory factory;
 
+    // For demonstrating javax.inject.Named
+    @Inject
+    @Named("/chat")
+    private Broadcaster broadcaster;
+
+    @Inject
+    private AtmosphereResource r;
+
+    @Inject
+    private AtmosphereResourceEvent event;
+
     @Heartbeat
     public void onHeartbeat(final AtmosphereResourceEvent event) {
         logger.trace("Heartbeat send by {}", event.getResource());
@@ -58,21 +71,21 @@ public class Chat {
     /**
      * Invoked when the connection as been fully established and suspended, e.g ready for receiving messages.
      *
-     * @param r
      */
     @Ready
-    public void onReady(final AtmosphereResource r) {
+    public void onReady(/* In you don't want injection AtmosphereResource r */) {
         logger.info("Browser {} connected", r.uuid());
         logger.info("BroadcasterFactory used {}", factory.getClass().getName());
+        logger.info("Broadcaster injected {}", broadcaster.getID());
+
     }
 
     /**
      * Invoked when the client disconnect or when an unexpected closing of the underlying connection happens.
      *
-     * @param event
      */
     @Disconnect
-    public void onDisconnect(AtmosphereResourceEvent event) {
+    public void onDisconnect(/** If you don't want to use injection AtmosphereResourceEvent event*/) {
         if (event.isCancelled()) {
             logger.info("Browser {} unexpectedly disconnected", event.getResource().uuid());
         } else if (event.isClosedByClient()) {
