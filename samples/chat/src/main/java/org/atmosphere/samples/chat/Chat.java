@@ -52,10 +52,16 @@ public class Chat {
     @Inject
     private BroadcasterFactory factory;
 
-    // For demonstrating javax.injecNamed
+    // For demonstrating javax.injec.Named
     @Inject
     @Named("/chat")
     private Broadcaster broadcaster;
+
+    @Inject
+    private AtmosphereResource r;
+
+    @Inject
+    private AtmosphereResourceEvent event;
 
     @Heartbeat
     public void onHeartbeat(final AtmosphereResourceEvent event) {
@@ -65,10 +71,9 @@ public class Chat {
     /**
      * Invoked when the connection as been fully established and suspended, e.g ready for receiving messages.
      *
-     * @param r
      */
     @Ready
-    public void onReady(final AtmosphereResource r) {
+    public void onReady(/* In you don't want injection AtmosphereResource r */) {
         logger.info("Browser {} connected", r.uuid());
         logger.info("BroadcasterFactory used {}", factory.getClass().getName());
         logger.info("Broadcaster injected {}", broadcaster.getID());
@@ -78,10 +83,9 @@ public class Chat {
     /**
      * Invoked when the client disconnect or when an unexpected closing of the underlying connection happens.
      *
-     * @param event
      */
     @Disconnect
-    public void onDisconnect(AtmosphereResourceEvent event) {
+    public void onDisconnect(/** If you don't want to use injection AtmosphereResourceEvent event*/) {
         if (event.isCancelled()) {
             logger.info("Browser {} unexpectedly disconnected", event.getResource().uuid());
         } else if (event.isClosedByClient()) {
