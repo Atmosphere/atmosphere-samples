@@ -48,7 +48,7 @@ public class MeteorPubSub extends HttpServlet {
         // Log all events on the console, including WebSocket events.
         m.addListener(new WebSocketEventListenerAdapter());
 
-        res.setContentType("text/html;charset=ISO-8859-1");                                          ``
+        res.setContentType("text/html;charset=ISO-8859-1");
 
         m.setBroadcaster(broadcaster);
         m.suspend(-1);
