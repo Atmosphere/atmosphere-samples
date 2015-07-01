@@ -17,11 +17,12 @@ package org.atmosphere.samples.chat;
 
 import org.atmosphere.config.service.MeteorService;
 import org.atmosphere.cpr.AtmosphereResourceEventListenerAdapter;
-import org.atmosphere.cpr.BroadcasterFactory;
+import org.atmosphere.cpr.Broadcaster;
 import org.atmosphere.cpr.Meteor;
 import org.atmosphere.interceptor.AtmosphereResourceLifecycleInterceptor;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,7 +39,8 @@ import java.util.Date;
 public class MeteorChat extends HttpServlet {
 
     @Inject
-    private BroadcasterFactory broadcasterFactory;
+    @Named("/*")
+    private Broadcaster broadcaster;
 
     /**
      * Create a {@link Meteor} and use it to suspend the response.
@@ -65,7 +67,7 @@ public class MeteorChat extends HttpServlet {
         // Message looks like { "author" : "foo", "message" : "bar" }
         String author = body.substring(body.indexOf(":") + 2, body.indexOf(",") - 1);
         String message = body.substring(body.lastIndexOf(":") + 2, body.length() - 2);
-        broadcasterFactory.lookup("/*").broadcast(new Data(author, message).toString());
+        broadcaster.broadcast(new Data(author, message).toString());
     }
 
     private final static class Data {

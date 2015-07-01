@@ -52,7 +52,7 @@ public class Chat {
     @Inject
     private BroadcasterFactory factory;
 
-    // For demonstrating javax.injec.Named
+    // For demonstrating javax.inject.Named
     @Inject
     @Named("/chat")
     private Broadcaster broadcaster;
