@@ -15,18 +15,19 @@
  */
 package org.atmosphere.samples.chat;
 
-import org.atmosphere.config.managed.Decoder;
-import org.atmosphere.config.managed.Encoder;
 import org.atmosphere.config.service.Disconnect;
+import org.atmosphere.config.service.Heartbeat;
 import org.atmosphere.config.service.ManagedService;
 import org.atmosphere.config.service.Ready;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
+import org.atmosphere.cpr.Broadcaster;
 import org.atmosphere.cpr.BroadcasterFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.IOException;
 
 import static org.atmosphere.cpr.ApplicationConfig.MAX_INACTIVE;
@@ -38,39 +39,49 @@ import static org.atmosphere.cpr.ApplicationConfig.MAX_INACTIVE;
  * This class use CDI for creating instance of Encoder and Decoder.
  */
 @ManagedService(path = "/chat", atmosphereConfig = MAX_INACTIVE + "=120000")
-public class CDIChat {
-    private final Logger logger = LoggerFactory.getLogger(CDIChat.class);
+public class SpringInjectChat {
+    private final Logger logger = LoggerFactory.getLogger(SpringInjectChat.class);
 
-    // Normally Encoder and Decoder are managed by the @Message annotation, but for this sample we inject them instead.
+    // Uncomment for changing response's state
+    //    @Get
+    //    public void init(AtmosphereResource r) {
+    //        r.getResponse().setCharacterEncoding("UTF-8");
+    //    }
+
+    // For demonstrating injection.
     @Inject
-    private Decoder<String, Message> decoder;
+    private BroadcasterFactory factory;
+
+    // For demonstrating javax.inject.Named
+    @Inject
+    @Named("/chat")
+    private Broadcaster broadcaster;
 
     @Inject
-    private Encoder<Message, String> encoder;
+    private AtmosphereResource r;
 
     @Inject
-    BroadcasterFactory factory;
+    private AtmosphereResourceEvent event;
+
+    @Heartbeat
+    public void onHeartbeat(/*final AtmosphereResourceEvent event*/) {
+        logger.trace("Heartbeat send by {}", event.getResource());
+    }
 
     /**
      * Invoked when the connection as been fully established and suspended, e.g ready for receiving messages.
-     *
-     * @param r
      */
     @Ready
-    public void onReady(final AtmosphereResource r) {
-
-        logger.info("Browser {} connected.", r.uuid());
-        logger.info("Injected Factory {} connected.", factory.getClass().getName());
-
+    public void onReady(/* In you don't want injection AtmosphereResource r */) {
+        logger.info("Browser {} connected", r.uuid());
+        logger.info("BroadcasterFactory used {}", factory.getClass().getName());
     }
 
     /**
      * Invoked when the client disconnect or when an unexpected closing of the underlying connection happens.
-     *
-     * @param event
      */
     @Disconnect
-    public void onDisconnect(AtmosphereResourceEvent event) {
+    public void onDisconnect(/** If you don't want to use injection AtmosphereResourceEvent event*/) {
         if (event.isCancelled()) {
             logger.info("Browser {} unexpectedly disconnected", event.getResource().uuid());
         } else if (event.isClosedByClient()) {
@@ -78,11 +89,18 @@ public class CDIChat {
         }
     }
 
-    @org.atmosphere.config.service.Message
-    public String onMessage(String s) throws IOException {
-        Message message = decoder.decode(s);
+    /**
+     * Simple annotated class that demonstrate how {@link org.atmosphere.config.managed.Encoder} and {@link org.atmosphere.config.managed.Decoder
+     * can be used.
+     *
+     * @param message an instance of {@link Message}
+     * @return
+     * @throws IOException
+     */
+    @org.atmosphere.config.service.Message(encoders = {JacksonEncoder.class}, decoders = {JacksonDecoder.class})
+    public Message onMessage(Message message) throws IOException {
         logger.info("{} just send {}", message.getAuthor(), message.getMessage());
-        return encoder.encode(message);
+        return message;
     }
 
 }
