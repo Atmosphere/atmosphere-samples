@@ -375,7 +375,7 @@
         <scala.version>2.9.2</scala.version>
         <shade-version>1.2.1</shade-version>
         <felix-version>2.3.7</felix-version>
-        <ahc.version>1.8.1</ahc.version>
+        <ahc.version>1.8.5</ahc.version>
         <slf4j-impl-version>1.6.1</slf4j-impl-version>
         <slf4j-version>1.6.1</slf4j-version>
         <logback-version>1.0.13</logback-version>
@@ -397,7 +397,6 @@
         <guice-version>3.0</guice-version>
         <spring-version>4.1.5.RELEASE</spring-version>
         <springboot-version>1.2.2.RELEASE</springboot-version>
-        <ahc.version>1.7.6</ahc.version>
         <jedis.version>2.0.0</jedis.version>
     </properties>
 </project>
