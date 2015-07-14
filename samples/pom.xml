@@ -20,6 +20,7 @@
         <module>sse-chat</module>
         <module>sse-rest-chat</module>
         <module>chat-multiroom</module>
+        <module>chat-node-client</module>
         <module>pubsub</module>
         <module>atmospherehandler-pubsub</module>
         <module>jersey2-chat</module>
