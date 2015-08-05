@@ -381,9 +381,9 @@
         <logback-version>1.0.13</logback-version>
         <compat-version>2.0.1</compat-version>
 
-        <client-version>2.2.11</client-version>
+        <client-version>2.2.12</client-version>
         <nettosphere-version>2.3.3</nettosphere-version>
-        <atmosphere-version>2.3.3</atmosphere-version>
+        <atmosphere-version>2.3.4</atmosphere-version>
         <extensions-version>2.3.0</extensions-version>
         <wasync-version>2.1.2</wasync-version>
 
