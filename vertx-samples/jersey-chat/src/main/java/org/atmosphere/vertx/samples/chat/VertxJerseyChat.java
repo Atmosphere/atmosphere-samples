@@ -41,7 +41,8 @@ public class VertxJerseyChat extends AbstractVerticle {
     public void start(Future<Void> future) throws Exception {
         VertxAtmosphere.Builder b = new VertxAtmosphere.Builder();
 
-        b.resource(ResourceChat.class).httpServer(httpServer).url("/chat/:room")
+        b.resource(ResourceChat.class).httpServer(httpServer)
+                .url("/chat")
                 .webroot("src/main/webapp/")
                 .initParam(ApplicationConfig.WEBSOCKET_CONTENT_TYPE, "application/json")
                 .vertx(vertx)
