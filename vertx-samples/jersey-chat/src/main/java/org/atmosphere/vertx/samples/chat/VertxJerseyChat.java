@@ -15,43 +15,42 @@
  */
 package org.atmosphere.vertx.samples.chat;
 
+import io.vertx.core.AbstractVerticle;
+import io.vertx.core.Context;
+import io.vertx.core.Future;
+import io.vertx.core.Vertx;
+import io.vertx.core.http.HttpServer;
 import org.atmosphere.cpr.ApplicationConfig;
 import org.atmosphere.vertx.VertxAtmosphere;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.vertx.java.core.Handler;
-import org.vertx.java.core.http.HttpServer;
-import org.vertx.java.core.http.HttpServerRequest;
-import org.vertx.java.platform.Verticle;
 
 /**
  * A bootstrap class that start Vertosphere and the Atmosphere Chat samples.
  */
-public class VertxJerseyChat extends Verticle {
+public class VertxJerseyChat extends AbstractVerticle {
 
-    private static final Logger logger = LoggerFactory.getLogger(VertxJerseyChat.class);
+    private HttpServer httpServer;
+    private Vertx vertx;
 
     @Override
-    public void start() {
+    public void init(Vertx vertx, Context context) {
+        this.vertx = vertx;
+        httpServer = vertx.createHttpServer();
+    }
+
+    @Override
+    public void start(Future<Void> future) throws Exception {
         VertxAtmosphere.Builder b = new VertxAtmosphere.Builder();
-        HttpServer httpServer = vertx.createHttpServer();
 
-        httpServer.requestHandler(new Handler<HttpServerRequest>() {
-            public void handle(HttpServerRequest req) {
-                String path = req.path();
-                if (path.equals("/")) {
-                    path = "/index.html";
-                }
-
-                logger.info("Servicing request {}", path);
-                req.response().sendFile("webapp/" + path);
-            }
-        });
-
-        b.resource(ResourceChat.class)
-         .initParam(ApplicationConfig.WEBSOCKET_CONTENT_TYPE, "application/json")
-         .httpServer(httpServer).url("/chat").build();
-
+        b.resource(ResourceChat.class).httpServer(httpServer).url("/chat/:room")
+                .webroot("src/main/webapp/")
+                .initParam(ApplicationConfig.WEBSOCKET_CONTENT_TYPE, "application/json")
+                .vertx(vertx)
+                .build();
         httpServer.listen(8080);
+    }
+
+    @Override
+    public void stop(Future<Void> future) throws Exception {
+        httpServer.close();
     }
 }
