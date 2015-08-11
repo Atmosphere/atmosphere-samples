@@ -372,7 +372,7 @@
         <tomcat-version>6.0.35</tomcat-version>
         <tomcat7-version>7.0.47</tomcat7-version>
         <common-logging-version>1.1.1</common-logging-version>
-        <scala.version>2.9.2</scala.version>
+        <scala.version>2.11.5</scala.version>
         <shade-version>1.2.1</shade-version>
         <felix-version>2.3.7</felix-version>
         <ahc.version>1.8.1</ahc.version>
@@ -388,7 +388,7 @@
         <wasync-version>2.1.2</wasync-version>
 
         <vertx-version>3.0.0</vertx-version>
-        <atmosphere-vertx-version>2.1.0-SNAPSHOT</atmosphere-vertx-version>
+        <atmosphere-vertx-version>2.1.0</atmosphere-vertx-version>
         <atmosphere-play-version>2.1.2</atmosphere-play-version>
         <stomp-version>0.3</stomp-version>
 
