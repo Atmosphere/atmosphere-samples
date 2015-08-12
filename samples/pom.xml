@@ -15,7 +15,9 @@
         <module>chat</module>
         <module>commons</module>
         <module>rest-chat</module>
+<!--
         <module>scala-chat</module>
+-->
         <module>meteor-chat</module>
         <module>sse-chat</module>
         <module>sse-rest-chat</module>
