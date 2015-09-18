@@ -26,6 +26,7 @@
         <module>socketio/native-socketio-chat</module>
         <module>socketio/socketio-chat</module>
         <module>spring/spring-inject</module>
+        <module>spring/spring-echo</module>
         <module>spring/spring-websocket</module>
         <module>xmpp</module>
         <module>cometd</module>
