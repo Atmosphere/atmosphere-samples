@@ -3,12 +3,12 @@
     <parent>
         <groupId>org.atmosphere.extensions</groupId>
         <artifactId>atmosphere-samples-gwt20-project</artifactId>
-        <version>2.2.9-SNAPSHOT</version>
+        <version>2.2.9</version>
         <relativePath>../</relativePath>
     </parent>
     <groupId>org.atmosphere.samples</groupId>
     <artifactId>gwt20-rpc</artifactId>
-    <version>2.2.9-SNAPSHOT</version>
+    <version>2.2.9</version>
     <packaging>war</packaging>
     <name>gwt20-rpc</name>
 
