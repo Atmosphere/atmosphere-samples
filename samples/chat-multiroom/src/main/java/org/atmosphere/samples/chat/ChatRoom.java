@@ -111,14 +111,14 @@ public class ChatRoom {
     @Message(encoders = {JacksonEncoder.class}, decoders = {ProtocolDecoder.class})
     public ChatProtocol onMessage(ChatProtocol message) throws IOException {
 
-        if (!users.containsKey(message.getAuthor())) {
-            users.put(message.getAuthor(), message.getUuid());
-            return new ChatProtocol(message.getAuthor(), " entered room " + chatroomName, users.keySet(), getRooms(factory.lookupAll()));
-        }
-
         if (message.getMessage().contains("disconnecting")) {
             users.remove(message.getAuthor());
             return new ChatProtocol(message.getAuthor(), " disconnected from room " + chatroomName, users.keySet(), getRooms(factory.lookupAll()));
+        }
+
+        if (!users.containsKey(message.getAuthor())) {
+            users.put(message.getAuthor(), message.getUuid());
+            return new ChatProtocol(message.getAuthor(), " entered room " + chatroomName, users.keySet(), getRooms(factory.lookupAll()));
         }
 
         message.setUsers(users.keySet());
