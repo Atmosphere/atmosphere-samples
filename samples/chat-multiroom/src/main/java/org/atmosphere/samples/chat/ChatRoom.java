@@ -68,7 +68,7 @@ public class ChatRoom {
     @Ready(encoders = {JacksonEncoder.class})
     @DeliverTo(DeliverTo.DELIVER_TO.ALL)
     public ChatProtocol onReady(final AtmosphereResource r) {
-        logger.info("Browser {} connected.", r.uuid());
+        logger.info("Browser {} connected in room {}", r.uuid(), chatroomName);
         return new ChatProtocol(users.keySet(), getRooms(factory.lookupAll()));
     }
 
@@ -112,8 +112,13 @@ public class ChatRoom {
     public ChatProtocol onMessage(ChatProtocol message) throws IOException {
 
         if (message.getMessage().contains("disconnecting")) {
-            users.remove(message.getAuthor());
-            return new ChatProtocol(message.getAuthor(), " disconnected from room " + chatroomName, users.keySet(), getRooms(factory.lookupAll()));
+            String author = message.getAuthor();
+            if (author!= null) {
+                users.remove(author);
+            } else {
+                author = "";
+            }
+            return new ChatProtocol(author, " disconnected from room " + chatroomName, users.keySet(), getRooms(factory.lookupAll()));
         }
 
         if (!users.containsKey(message.getAuthor())) {
