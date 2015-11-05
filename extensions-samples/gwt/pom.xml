@@ -22,10 +22,10 @@
     <modules>
 <!--
         <module>gwt20-jersey-rpc</module>
--->
         <module>gwt20-json</module>
         <module>gwt20-managed-rpc</module>
         <module>gwt20-rpc</module>
+-->
     </modules>
 
     <build>
