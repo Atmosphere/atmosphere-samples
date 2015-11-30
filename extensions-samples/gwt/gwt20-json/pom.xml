@@ -3,12 +3,12 @@
     <parent>
         <groupId>org.atmosphere.extensions</groupId>
         <artifactId>atmosphere-samples-gwt20-project</artifactId>
-        <version>3.0.0-SNAPSHOT</version>
+        <version>2.4.1-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
     <groupId>org.atmosphere.samples</groupId>
     <artifactId>gwt20-json</artifactId>
-    <version>3.0.0-SNAPSHOT</version>
+    <version>2.4.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>gwt20-json</name>
 
@@ -50,16 +50,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <encoding>UTF-8</encoding>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
             </plugin>
 
             <plugin>
