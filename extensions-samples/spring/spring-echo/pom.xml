@@ -8,8 +8,8 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.atmosphere</groupId>
-    <artifactId>atmosphere-spring</artifactId>
+    <groupId>org.atmosphere.samples</groupId>
+    <artifactId>atmosphere-spring-echo</artifactId>
     <version>2.4.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
