@@ -279,9 +279,7 @@
         <module>extensions-samples</module>
         <module>nettosphere-samples</module>
         <module>wasync-samples</module>
-        <!--
         <module>stomp</module>
-        -->
         <module>vertx-samples</module>
 	<!--
         <module>play-samples</module>
@@ -407,7 +405,7 @@
         <vertx-version>3.0.0</vertx-version>
         <atmosphere-vertx-version>2.1.0</atmosphere-vertx-version>
         <atmosphere-play-version>2.1.2</atmosphere-play-version>
-        <stomp-version>0.3</stomp-version>
+        <stomp-version>0.4-SNAPSHOT</stomp-version>
         <compat-version>2.0.1</compat-version>
         <jgroups-version>3.1.0.Final</jgroups-version>
         <jms-version>1.1</jms-version>
