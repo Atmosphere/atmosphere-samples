@@ -43,6 +43,9 @@ public class WebAppInitializer implements WebApplicationInitializer {
 	    servlet.setInitParameter(org.atmosphere.cpr.ApplicationConfig.DEFAULT_CONTENT_TYPE, "application/json");
 	    servlet.setInitParameter(org.atmosphere.cpr.ApplicationConfig.NO_CACHE_HEADERS, "true");
 		servlet.setInitParameter(org.atmosphere.cpr.ApplicationConfig.JSR356_MAPPING_PATH, "/sprint-atmosphere");
+            // temporary workaround to avoid atmosphere-2.4.x's jsr356 issue when using spring
+            servlet.setInitParameter(org.atmosphere.cpr.ApplicationConfig.WEBSOCKET_SUPPRESS_JSR356, "true");
+
 	    
 	    servlet.setLoadOnStartup(1);
 	    servlet.addMapping("/");

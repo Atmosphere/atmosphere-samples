@@ -108,6 +108,8 @@
                     <scanIntervalSeconds>1</scanIntervalSeconds>
                     <webAppConfig>
                         <contextPath>/</contextPath>
+                        <!-- workaround to avoid spring-web collision -->
+                        <allowDuplicateFragmentNames>true</allowDuplicateFragmentNames>
                     </webAppConfig>
                 </configuration>
             </plugin>
@@ -398,7 +400,7 @@
 
         <client-version>2.2.13</client-version>
         <nettosphere-version>2.4.0</nettosphere-version>
-        <atmosphere-version>2.4.1</atmosphere-version>
+        <atmosphere-version>2.4.2-SNAPSHOT</atmosphere-version>
         <extensions-version>2.4.1</extensions-version>
         <wasync-version>2.1.2</wasync-version>
 

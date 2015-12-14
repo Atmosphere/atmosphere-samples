@@ -5,7 +5,7 @@
 <script type="text/javascript">
 
 var getUri = function(path){
-	return "http://127.0.0.1:8080/atmosphere-spring/"+path
+	return document.location.toString() + path;
 } 
 var request = {
         "url": getUri("chat/connect"),
@@ -14,7 +14,7 @@ var request = {
         "logLevel" : "debug",
         "onMessage": function (response) {
             console.log("on message")
-            console.log(response)
+            console.log("response: " + response.responseBody)
             var responseBody = JSON.parse(response.responseBody)
             var ul = document.getElementById('messages');
             var li = document.createElement("li");

@@ -9,6 +9,11 @@
         <description>AtmosphereServlet</description>
         <servlet-name>AtmosphereServlet</servlet-name>
         <servlet-class>org.atmosphere.cpr.AtmosphereServlet</servlet-class>
+        <!-- temporary workaround to avoid atmosphere-2.4.x's jsr356 issue when using spring -->
+        <init-param>
+            <param-name>org.atmosphere.websocket.suppressJSR356</param-name>
+            <param-value>true</param-value>
+        </init-param>
         <!-- Use it with mvn jetty:run -->
         <load-on-startup>0</load-on-startup>
         <async-supported>true</async-supported>
