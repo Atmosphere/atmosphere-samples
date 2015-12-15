@@ -407,7 +407,7 @@
         <vertx-version>3.0.0</vertx-version>
         <atmosphere-vertx-version>2.1.0</atmosphere-vertx-version>
         <atmosphere-play-version>2.1.2</atmosphere-play-version>
-        <stomp-version>0.4-SNAPSHOT</stomp-version>
+        <stomp-version>0.4</stomp-version>
         <compat-version>2.0.1</compat-version>
         <jgroups-version>3.1.0.Final</jgroups-version>
         <jms-version>1.1</jms-version>
