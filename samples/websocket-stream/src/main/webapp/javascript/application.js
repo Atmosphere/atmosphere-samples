@@ -7,7 +7,7 @@ $(function () {
     var connect = $('#connect');
     var status = $('#status');
 
-    var socket = $.atmosphere;
+    var socket = atmosphere;
 
     // We are now ready to cut the request
     var request = { url: document.location.toString() + 'stream',
@@ -15,19 +15,29 @@ $(function () {
         transport : 'websocket'};
     
     connect.click(function() {
-    	console.log("connecting");
+        if ('connect' === $(this).attr('value')) {
+            // coonnecting ...
+            console.log("reconnecting");
+            socket.subscribe(request);
+        } else {
+            // disconnecting ...
+            console.log("disconnecting");
+            socket.unsubscribe();
+        }
+
     });
 
     request.onOpen = function(response) {
         content.html($('<p>', { text: 'Atmosphere connected using ' + response.transport }));
         status.text('connected');
+        $('#connect').val('disconnect');
     };
 
     request.onMessage = function (response) {
         var message = response.responseBody;
         try {
             console.log("message: " + message);
-            var json = jQuery.parseJSON(message);
+            var json = atmosphere.util.parseJSON(message);
             status.html(message);
         } catch (e) {
             console.log('This doesn\'t look like a valid JSON: ', message);
@@ -36,6 +46,8 @@ $(function () {
     };
 
     request.onClose = function(response) {
+        content.html($('<p>', { text: 'Atmosphere disconnected from ' + response.transport }));
+        $('#connect').val('connect');
     };
 
     request.onError = function(response) {
