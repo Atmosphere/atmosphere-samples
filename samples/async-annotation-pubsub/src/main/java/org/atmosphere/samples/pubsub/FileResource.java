@@ -32,10 +32,10 @@ public class FileResource {
     @Context
     ServletContext sc;
 
-    @Path("/jquery/{id}")
+    @Path("/javascript/{id}")
     @GET
-    public InputStream getJQuery(@PathParam("id") PathSegment ps) {
-        return sc.getResourceAsStream("/jquery/" + ps.getPath());
+    public InputStream getScript(@PathParam("id") PathSegment ps) {
+        return sc.getResourceAsStream("/javascript/" + ps.getPath());
     }
 
     @GET

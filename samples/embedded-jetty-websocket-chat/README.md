@@ -1,2 +1,7 @@
-## Tested using IntelliJ
-Change line 61 if you are using another IDE
+## To Run the sample
+
+Run the following maven commands.
+
+  mvn install
+  mvn -Pserver
+

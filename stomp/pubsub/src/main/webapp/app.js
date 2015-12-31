@@ -47,7 +47,7 @@ var request = {
 
 // With the request, atmosphere will subscribe a connection to server
 // and expose an object with functions defined in websocket interface
-var subscription = new $.atmosphere.WebsocketApiAdapter(request);
+var subscription = new atmosphere.WebsocketApiAdapter(request);
 
 // This kind of object is required by Stomp.js
 // The client will be used to send/receive messages and also subscribe/unsubscribe to destinations

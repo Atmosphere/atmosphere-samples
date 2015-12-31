@@ -36,9 +36,11 @@ public class AsynchronousExecution {
     @POST
     @Asynchronous(waitForResource = false, contentType = "application/json")
     public Callable<Response> publish(final Message message) {
+        System.out.println("### AsynchronousExecution: message=" + message.message);
         return new Callable<Response>() {
 
             public Response call() throws Exception {
+                System.out.println("### AsynchronousExecution.call");
                 return new Response("Asynchronous Execution", message.message);
             }
         };

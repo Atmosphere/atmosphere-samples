@@ -97,13 +97,6 @@
                 <version>${atmosphere-version}</version>
             </dependency>
             <dependency>
-                <groupId>org.atmosphere.client</groupId>
-                <artifactId>jquery</artifactId>
-                <version>${javascript-version}</version>
-                <type>war</type>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
                 <groupId>org.atmosphere</groupId>
                 <artifactId>gwtprojsonserializer</artifactId>
                 <version>1.0.0</version>
