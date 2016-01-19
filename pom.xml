@@ -119,7 +119,7 @@
                 <version>2.1</version>
                 <configuration>
                     <warSourceDirectory>${project.build.directory}/${project.artifactId}</warSourceDirectory>
-                    <port>9000</port>
+                    <port>8080</port>
                     <path>/</path>
                 </configuration>
                 <executions>
