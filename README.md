@@ -3,8 +3,14 @@
 One sample to rule them all!
 
 The table below describes every Atmosphere's sample by defining the server and client API used to build it. You can download the sample by clicking on its name or clone the workspace, build it and then do
+
 ```bash
   mvn jetty:run
+```
+or
+
+```bash
+  mvn tomcat7:run
 ```
 
 Recommended samples for getting started are the chat, which demonstrate usage of all transports using an AtmosphereHandler, or the jquery-pubsub, which demonstrate how to switch from one transport to another using a Jersey Resources. If you are interested to write WebSocket only application, take a look at the atmosphere-websockethandler-pubsub sample. The pubsub sample contains a lot of small demonstration on how the Jersey extension can be used. If you are interested to write HTML5 Server Side Events application, take a look at the atmosphere-sse-xxx samples.
