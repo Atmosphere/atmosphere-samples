@@ -17,6 +17,7 @@ var atmosphere = require('atmosphere.js');
 var request = { url: 'http://localhost:8080/chat',
                 contentType : "application/json",
                 transport : 'websocket',
+                fallbackTransport: 'long-polling',
                 trackMessageLength: true,
                 reconnectInterval : 5000};
 var isopen = false;
@@ -82,7 +83,7 @@ on('line', function(line) {
         transport = selectOption(msg, TRANSPORT_NAMES);
         request.transport = transport;
         subSocket = atmosphere.subscribe(request);
-        console.log("Connecting using " + transport + " ...");
+        console.log("Connecting using " + transport + " with optional fallback to " + request.fallbackTransport + " ...");
         setTimeout(function() {
             if (!isopen) {
                 console.log("Unable to open a connection. Terminated.");
