@@ -3,13 +3,13 @@
     <parent>
         <groupId>org.atmosphere.samples</groupId>
         <artifactId>atmosphere-stomp-samples</artifactId>
-        <version>2.4.1-SNAPSHOT</version>
+        <version>2.4.3-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.atmosphere.samples</groupId>
     <artifactId>atmosphere-stomp-pubsub</artifactId>
     <packaging>war</packaging>
-    <version>2.4.1-SNAPSHOT</version>
+    <version>2.4.3-SNAPSHOT</version>
     <name>atmosphere-stomp-pubsub</name>
     <url>https://github.com/Atmosphere/atmosphere-samples</url>
     <dependencies>
@@ -19,7 +19,7 @@
         </dependency>
         <dependency>
             <groupId>org.atmosphere.client</groupId>
-            <artifactId>jquery</artifactId>
+            <artifactId>javascript</artifactId>
             <version>${client-version}</version>
             <type>war</type>
         </dependency>
@@ -38,31 +38,4 @@
             <artifactId>geronimo-servlet_3.0_spec</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <sourceDirectory>src/main/java</sourceDirectory>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>${jetty8-version}</version>
-                <configuration>
-                    <webAppSourceDirectory>${project.build.directory}/${project.name}</webAppSourceDirectory>
-                    <scanIntervalSeconds>1</scanIntervalSeconds>
-                    <webAppConfig>
-                        <contextPath>/</contextPath>
-                    </webAppConfig>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

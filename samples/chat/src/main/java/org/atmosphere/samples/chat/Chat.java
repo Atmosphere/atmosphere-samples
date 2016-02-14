@@ -69,7 +69,7 @@ public class Chat {
     }
 
     /**
-     * Invoked when the connection as been fully established and suspended, e.g ready for receiving messages.
+     * Invoked when the connection has been fully established and suspended, that is, ready for receiving messages.
      *
      */
     @Ready
@@ -81,7 +81,7 @@ public class Chat {
     }
 
     /**
-     * Invoked when the client disconnect or when an unexpected closing of the underlying connection happens.
+     * Invoked when the client disconnects or when the underlying connection is closed unexpectedly.
      *
      */
     @Disconnect
@@ -103,7 +103,7 @@ public class Chat {
      */
     @org.atmosphere.config.service.Message(encoders = {JacksonEncoder.class}, decoders = {JacksonDecoder.class})
     public Message onMessage(Message message) throws IOException {
-        logger.info("{} just send {}", message.getAuthor(), message.getMessage());
+        logger.info("{} just sent {}", message.getAuthor(), message.getMessage());
         return message;
     }
 

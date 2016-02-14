@@ -1,12 +1,12 @@
 <!doctype html>
 <html>
 <head>
-    <script type="text/javascript" src="jquery/jquery-2.0.3.js"></script>
-    <script type="text/javascript" src="jquery/jquery.atmosphere.js"></script>
-    <script type="text/javascript" src="jquery/jquery.list.js"></script>
+    <script type="text/javascript" src="javascript/jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="javascript/atmosphere.js"></script>
+    <script type="text/javascript" src="javascript/jquery.list.js"></script>
     <script type="text/javascript">
     $(function() {
-        var socket = $.atmosphere;
+        var socket = atmosphere;
         var subSocket;
 
         function getKeyCode(ev) {
@@ -43,7 +43,7 @@
                     var data = response.responseBody;
 
                     try {
-                        var result = $.parseJSON(data);
+                        var result = atmosphere.util.parseJSON(data);
 
                         var i = 0;
                         for (i = result.statuses.length - 1; i > -1; i--) {
@@ -70,7 +70,7 @@
             socket.publish(request);
             // if we can push it this way for websocket but this cannot work either
             // as it won't find the target operation "stop"
-            // subSocket.push(jQuery.stringifyJSON(request));
+            // subSocket.push(atmosphere.util.stringifyJSON(request));
         }
 
         getElementById('connect').onclick = function(event) {

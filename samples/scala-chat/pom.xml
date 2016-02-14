@@ -40,32 +40,17 @@
     <parent>
         <groupId>org.atmosphere.samples</groupId>
         <artifactId>atmosphere-samples</artifactId>
-        <version>2.4.0-SNAPSHOT-SNAPSHOT</version>
+        <version>2.4.1-SNAPSHOT</version>
     </parent>
     <groupId>org.atmosphere.samples</groupId>
     <artifactId>atmosphere-scala-chat</artifactId>
-    <version>2.4.0-SNAPSHOT-SNAPSHOT</version>
+    <version>2.4.1-SNAPSHOT</version>
     <name>atmosphere-scala-chat</name>
     <packaging>war</packaging>
-    <profiles>
-        <profile>
-            <id>jdk-1.5</id>
-            <activation>
-                <jdk>1.5</jdk>
-            </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>com.sun.xml.bind</groupId>
-                    <artifactId>jaxb-impl</artifactId>
-                    <version>2.1.11</version>
-                </dependency>
-            </dependencies>
-        </profile>
-    </profiles>
     <dependencies>
         <dependency>
             <groupId>org.atmosphere.client</groupId>
-            <artifactId>jquery</artifactId>
+            <artifactId>javascript</artifactId>
             <version>${client-version}</version>
             <type>war</type>
         </dependency>

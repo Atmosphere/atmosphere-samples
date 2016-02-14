@@ -21,6 +21,17 @@ var request = { url: 'http://localhost:8080/chat',
                 reconnectInterval : 5000};
 var isopen = false;
 
+const TRANSPORT_NAMES = ["websocket", "sse", "long-polling"];
+
+function selectOption(c, opts) {
+    var i = parseInt(c);
+    if (!(i >= 0 && i < opts.length)) {
+        console.log('Invalid selection: ' + c + '; Using ' + opts[0]);
+        i = 0;
+    }
+    return opts[i];
+}
+
 request.onOpen = function(response) {
     isopen = true;
     console.log('Connected using ' + response.transport);
@@ -53,24 +64,36 @@ request.onError = function(response) {
     console.log("Sorry, something went wrong: " + response.responseBody);
 };
 
-var subSocket = atmosphere.subscribe(request);
+var transport = null;
+var subSocket = null;
 var author = null;
 
-setTimeout(function() {
-   if (!isopen) {
-       console.log("Unable to open a connection. Terminated.");
-       process.exit(0);
-   }
-}, 3000);
+console.log("Select transport ...");
+for (var i = 0; i < TRANSPORT_NAMES.length; i++) { 
+    console.log(i + ": " + TRANSPORT_NAMES[i]);
+}
+prompt.setPrompt("select: ", 6);
+prompt.prompt();
 
 prompt.
 on('line', function(line) {
     var msg = line.trim();
-    if (author == null) {
+    if (transport == null) {
+        transport = selectOption(msg, TRANSPORT_NAMES);
+        request.transport = transport;
+        subSocket = atmosphere.subscribe(request);
+        console.log("Connecting using " + transport + " ...");
+        setTimeout(function() {
+            if (!isopen) {
+                console.log("Unable to open a connection. Terminated.");
+                process.exit(0);
+            }
+        }, 3000);
+    } else if (author == null) {
         author = msg;
+    } else {
+        subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: msg }));
     }
-    subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: msg }));
-
     prompt.setPrompt("> ", 2);
     prompt.prompt();
 }).
@@ -78,4 +101,3 @@ on('close', function() {
     console.log("close");
     process.exit(0);
 });
-console.log("Connecting ...");

@@ -2,8 +2,8 @@
 <head>
     <%--<meta http-equiv="X-UA-Compatible" content="chrome=1"/>--%>
     <meta http-equiv="cache-control" content="no-cache"/>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/jquery-2.0.3.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/jquery.atmosphere.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/javascript/jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/javascript/atmosphere.js"></script>
 
     <script type="text/javascript">
         var wsApi = {
@@ -25,9 +25,9 @@
                 }
 
                 /* transport can be : long-polling, streaming or websocket */
-                this.connectedEndpoint = $.atmosphere.subscribe('${pageContext.request.contextPath}/websockets',
+                this.connectedEndpoint = atmosphere.subscribe('${pageContext.request.contextPath}/websockets',
                         !this.callbackAdded ? callback : null,
-                        $.atmosphere.request = {transport:'websocket', logLevel:'none'});
+                        atmosphere.request = {transport:'websocket', logLevel:'none'});
                 callbackAdded = true;
             },
 
@@ -38,7 +38,7 @@
             },
 
             unsubscribe:function () {
-                $.atmosphere.unsubscribe();
+                atmosphere.unsubscribe();
             }
         };
 

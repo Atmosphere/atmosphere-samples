@@ -3,13 +3,13 @@
     <parent>
         <groupId>org.atmosphere</groupId>
         <artifactId>atmosphere-samples-project</artifactId>
-        <version>2.4.1-SNAPSHOT</version>
+        <version>2.4.3-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.atmosphere.samples</groupId>
     <artifactId>atmosphere-samples</artifactId>
     <packaging>pom</packaging>
-    <version>2.4.1-SNAPSHOT</version>
+    <version>2.4.3-SNAPSHOT</version>
     <name>atmosphere-samples</name>
     <modules>
         <module>chat</module>
@@ -29,13 +29,14 @@
 
         <module>jersey-pubsub</module>
         <module>meteor-pubsub</module>
-        <module>jquery-websockethandler-pubsub</module>
+        <module>websockethandler-pubsub</module>
         <module>twitter-live-feed</module>
         <module>atmosphere-ee6</module>
         <module>channel</module>
         <module>async-annotation-pubsub</module>
         <module>all-api-pubsub</module>
         <module>websocket-chat</module>
+        <module>websocket-stream</module>
         <module>webrtc-atmospherehandler</module>
         <module>webrtc-jersey</module>
         <module>spring-boot-sample-atmosphere</module>
@@ -58,29 +59,6 @@
                 <directory>src/main/resources</directory>
             </resource>
         </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>${jetty9-version}</version>
-                <configuration>
-                    <webAppSourceDirectory>${project.build.directory}/${project.name}</webAppSourceDirectory>
-                    <scanIntervalSeconds>1</scanIntervalSeconds>
-                    <webAppConfig>
-                        <contextPath>/</contextPath>
-                    </webAppConfig>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
     <dependencyManagement>
         <dependencies>

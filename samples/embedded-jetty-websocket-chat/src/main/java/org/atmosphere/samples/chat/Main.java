@@ -58,7 +58,8 @@ public class Main {
         resource_handler.setDirectoriesListed(true);
         resource_handler.setWelcomeFiles(new String[]{ "index.html" });
 
-        resource_handler.setResourceBase(new File("./samples/embedded-jetty-websocket-chat/src/main/webapp").getAbsolutePath());
+        // this sample loads all resources from target/webapp
+        resource_handler.setResourceBase(new File("target/webapp").getAbsolutePath());
 
         ServletHolder atmosphereServletHolder = new ServletHolder(AtmosphereServlet.class);
 

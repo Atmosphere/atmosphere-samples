@@ -3,19 +3,19 @@
     <parent>
         <groupId>org.atmosphere.samples</groupId>
         <artifactId>atmosphere-samples</artifactId>
-        <version>2.4.1-SNAPSHOT</version>
+        <version>2.4.3-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.atmosphere.samples</groupId>
     <artifactId>atmosphere-annotation-pubsub</artifactId>
     <packaging>war</packaging>
-    <version>2.4.1-SNAPSHOT</version>
+    <version>2.4.3-SNAPSHOT</version>
     <name>atmosphere-annotation-pubsub</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
             <groupId>org.atmosphere.client</groupId>
-            <artifactId>jquery</artifactId>
+            <artifactId>javascript</artifactId>
             <version>${client-version}</version>
             <type>war</type>
         </dependency>

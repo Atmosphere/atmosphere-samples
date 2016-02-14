@@ -3,13 +3,13 @@
     <parent>
         <groupId>org.atmosphere</groupId>
         <artifactId>atmosphere-samples-project</artifactId>
-        <version>2.4.1-SNAPSHOT</version>
+        <version>2.4.3-SNAPSHOT</version>
         <relativePath>../../../</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.atmosphere.samples</groupId>
     <artifactId>atmosphere-spring-websocket</artifactId>
-    <version>2.4.1-SNAPSHOT</version>
+    <version>2.4.3-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <properties>
@@ -89,7 +89,7 @@
         </dependency>
         <dependency>
             <groupId>org.atmosphere.client</groupId>
-            <artifactId>jquery</artifactId>
+            <artifactId>javascript</artifactId>
             <version>${client-version}</version>
             <type>war</type>
         </dependency>
