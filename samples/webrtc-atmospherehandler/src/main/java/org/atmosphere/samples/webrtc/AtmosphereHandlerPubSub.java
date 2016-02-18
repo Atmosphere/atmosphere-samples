@@ -15,20 +15,19 @@
  */
 package org.atmosphere.samples.webrtc;
 
+import java.io.IOException;
+
 import org.atmosphere.config.service.AtmosphereHandlerService;
 import org.atmosphere.cpr.ApplicationConfig;
 import org.atmosphere.cpr.AtmosphereRequest;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResponse;
 import org.atmosphere.cpr.Broadcaster;
-import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.cpr.HeaderConfig;
 import org.atmosphere.handler.AbstractReflectorAtmosphereHandler;
 import org.atmosphere.websocket.WebSocketEventListenerAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
 
 @AtmosphereHandlerService
 public class AtmosphereHandlerPubSub extends AbstractReflectorAtmosphereHandler {
