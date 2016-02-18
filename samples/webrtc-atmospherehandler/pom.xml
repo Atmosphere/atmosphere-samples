@@ -21,7 +21,7 @@
         </dependency>
         <dependency>
             <groupId>org.atmosphere.client</groupId>
-            <artifactId>jquery</artifactId>
+            <artifactId>javascript</artifactId>
             <version>${client-version}</version>
             <type>war</type>
         </dependency>

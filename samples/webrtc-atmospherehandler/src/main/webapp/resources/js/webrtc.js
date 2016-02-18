@@ -385,8 +385,8 @@ function subscribeUrl(channel, call, transport) {
 }
 
 function subscribeAtmosphere(location, call, transport) {
-	var rq = $.atmosphere.subscribe(location, globalCallback,
-			$.atmosphere.request = {
+	var rq = atmosphere.subscribe(location, globalCallback,
+			atmosphere.request = {
 				logLevel : 'debug',
 				transport : transport,
 				callback : call

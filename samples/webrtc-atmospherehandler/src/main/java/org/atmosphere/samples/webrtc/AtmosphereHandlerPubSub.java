@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Jeanfrancois Arcand
+ * Copyright 2015 Async-IO.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -15,20 +15,19 @@
  */
 package org.atmosphere.samples.webrtc;
 
+import java.io.IOException;
+
 import org.atmosphere.config.service.AtmosphereHandlerService;
 import org.atmosphere.cpr.ApplicationConfig;
 import org.atmosphere.cpr.AtmosphereRequest;
 import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResponse;
 import org.atmosphere.cpr.Broadcaster;
-import org.atmosphere.cpr.BroadcasterFactory;
 import org.atmosphere.cpr.HeaderConfig;
 import org.atmosphere.handler.AbstractReflectorAtmosphereHandler;
 import org.atmosphere.websocket.WebSocketEventListenerAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
 
 @AtmosphereHandlerService
 public class AtmosphereHandlerPubSub extends AbstractReflectorAtmosphereHandler {
@@ -79,14 +78,14 @@ public class AtmosphereHandlerPubSub extends AbstractReflectorAtmosphereHandler 
     /**
      * Retrieve the {@link Broadcaster} based on the request's path info.
      *
-     * @param pathInfo
+     * @param ar
      * @return the {@link Broadcaster} based on the request's path info.
      */
     Broadcaster lookupBroadcaster(AtmosphereResource ar) {
 
         String pathInfo = ar.getRequest().getPathInfo();
         String[] decodedPath = pathInfo.split("/");
-        Broadcaster b = BroadcasterFactory.getDefault().lookup(
+		Broadcaster b = ar.getAtmosphereConfig().getBroadcasterFactory().lookup(
                 decodedPath[decodedPath.length - 1], true);
         return b;
     }
