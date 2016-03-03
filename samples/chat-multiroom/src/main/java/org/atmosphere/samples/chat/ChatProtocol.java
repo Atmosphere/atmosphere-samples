@@ -79,7 +79,7 @@ public class ChatProtocol implements JacksonEncoder.Encodable {
         return users;
     }
 
-    public void setUsers(Collection<String> users) {
+    public void addUsers(Collection<String> users) {
         this.users.addAll(users);
     }
 
