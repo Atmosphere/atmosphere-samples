@@ -57,6 +57,17 @@ request.onMessage = function (response) {
     prompt.prompt();
 };
 
+request.onReconnect = function(response) {
+    console.log('Reconnecting ...');
+}
+
+request.onReopen = function(response) {
+    isopen = true;
+    console.log('Reconnected using ' + response.transport);
+    prompt.setPrompt("> ", 2);
+    prompt.prompt();
+}
+
 request.onClose = function(response) {
     isopen = false;
 }
