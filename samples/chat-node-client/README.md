@@ -23,6 +23,8 @@ At another console, execute the following shell commands.
 % node chat-client.js
 ```
 
+This chat-client program supports websocket, sse, and long-polling and allows
+you to select your preferred protocol.
 
 Note the old npm package atmosphere-client has been migrated to npm package atmosphere.js.
 For further information, see https://www.npmjs.com/package/atmosphere.js
