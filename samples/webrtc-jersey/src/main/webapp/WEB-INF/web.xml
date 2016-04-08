@@ -7,12 +7,9 @@
     <servlet-class>org.atmosphere.cpr.AtmosphereServlet</servlet-class>
     <init-param>
       <param-name>com.sun.jersey.config.property.packages</param-name>
-      <param-value>it.ad.videochat</param-value>
+      <param-value>it.ad.videochat,org/atmosphere/samples/webrtc</param-value>
     </init-param>
-    <init-param>
-      <param-name>org.atmosphere.useNative</param-name>
-      <param-value>true</param-value>
-    </init-param>
+    <async-supported>true</async-supported>
     <load-on-startup>0</load-on-startup>
   </servlet>
   <servlet-mapping>
