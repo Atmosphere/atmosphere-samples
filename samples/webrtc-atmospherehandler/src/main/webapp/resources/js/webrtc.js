@@ -1,6 +1,11 @@
 window.URL = window.URL || window.webkitURL;
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia
         || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+var RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+var RTCSessionDescription = window.RTCSessionDescription || window.mozRTCSessionDescription;
+var mediaConstraints = (typeof window.webkitRTCPeerConnection !== 'undefined') 
+    ? {'mandatory': {'OfferToReceiveAudio':true, 'OfferToReceiveVideo':true}}
+    : {'OfferToReceiveAudio':true, 'OfferToReceiveVideo':true};
 
 var socket;
 var request;
@@ -230,17 +235,7 @@ function createPeerConnection(id) {
         } ]
     };
     try {
-        if (typeof RTCPeerConnection !== 'undefined') {
-            console.log("Hello Mozila! RTCPeerConnection detected")
-            peerConn = new RTCPeerConnection(peerConn_config);
-        } else if (typeof mozRTCPeerConnection !== 'undefined') {
-            console.log("Hello Older Mozilla mozRTCPeerConnection detected")
-            peerConn = new mozRTCPeerConnection(peerConn_config);
-        } else if (typeof webkitRTCPeerConnection !== 'undefined') {
-            console.log("Hello Chrome webkitRTCPeerConnection detected")
-            peerConn = new webkitRTCPeerConnection(peerConn_config);
-        }
-
+        peerConn = new RTCPeerConnection(peerConn_config);
         peerConn.onicecandidate = function(event) {
             if (event.candidate) {
                 sendMessage({
@@ -301,9 +296,6 @@ function connect(id) {
 
 function doCall(id) {
     console.log("Send offer to peer");
-    var mediaConstraints = (typeof webkitRTCPeerConnection !== 'undefined') 
-        ? {'mandatory': {'OfferToReceiveAudio':true, 'OfferToReceiveVideo':true}}
-        : {'OfferToReceiveAudio':true, 'OfferToReceiveVideo':true};
     streams[id].stream.createOffer(function(session) {
         streams[id].stream.setLocalDescription(session);
         sendMessage({
@@ -317,9 +309,6 @@ function doCall(id) {
 
 function doAnswer(id, data) {
     console.log("Send answer to peer");
-    var mediaConstraints = (typeof webkitRTCPeerConnection !== 'undefined') 
-        ? {'mandatory': {'OfferToReceiveAudio':true, 'OfferToReceiveVideo':true}}
-        : {'OfferToReceiveAudio':true, 'OfferToReceiveVideo':true};
     streams[id].stream.setRemoteDescription(new RTCSessionDescription(
             data.offer));
     streams[id].stream.createAnswer(function(session) {
