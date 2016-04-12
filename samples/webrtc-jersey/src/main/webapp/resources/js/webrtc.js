@@ -231,7 +231,7 @@ function createPeerConnection(id) {
     var peerConn = null;
     var peerConn_config = {
         "iceServers" : [ {
-            "urls" : "stun:stun.services.mozilla.com"
+            "urls" : ["stun:stun.l.google.com:19302", "stun:stun.services.mozilla.com"]
         } ]
     };
     try {
