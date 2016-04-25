@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.2.1.RELEASE</version>
+  </parent>
+
+  <groupId>org.atmosphere.samples</groupId>
+  <artifactId>streaming-stress</artifactId>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <tomcat.version>7.0.57</tomcat.version>
+
+    <atmosphere-runtime.version>2.4.3</atmosphere-runtime.version>
+    <atmosphere-spring.version>2.4.2</atmosphere-spring.version>
+    <atmosphere-javascript.version>2.2.11</atmosphere-javascript.version>
+  </properties>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-websocket</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.atmosphere</groupId>
+      <artifactId>atmosphere-runtime</artifactId>
+      <version>${atmosphere-runtime.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.atmosphere</groupId>
+      <artifactId>atmosphere-spring</artifactId>
+      <version>${atmosphere-spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+      <version>1</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>atmosphere-tester</finalName>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
