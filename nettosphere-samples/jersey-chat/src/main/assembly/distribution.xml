@@ -36,5 +36,12 @@
 			</includes>
 			<outputDirectory>bin</outputDirectory>
 		</fileSet>
+		<fileSet>
+			<directory>target/classes/javascript</directory>
+			<includes>
+				<include>atmosphere.js</include>
+			</includes>
+			<outputDirectory>webapps/javascript</outputDirectory>
+		</fileSet>
 	</fileSets>
 </assembly>
