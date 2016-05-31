@@ -16,8 +16,8 @@
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<script type="text/javascript" src="https://rawgithub.com/Atmosphere/atmosphere-javascript/master/modules/jquery/src/main/webapp/jquery/jquery-2.0.3.js"></script>
-<script type="text/javascript" src="https://rawgithub.com/Atmosphere/atmosphere-javascript/master/modules/jquery/src/main/webapp/jquery/jquery.atmosphere.js"></script>
+<script type="text/javascript" src="javascript/jquery-2.0.3.js"></script>
+<script type="text/javascript" src="javascript/atmosphere.js"></script>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -207,7 +207,7 @@ Game.connect = (function (host) {
     };
 
     request.onTransportFailure = function (errorMsg, request) {
-        jQuery.atmosphere.info(errorMsg);
+        atmosphere.info(errorMsg);
         if (window.EventSource) {
             request.fallbackTransport = "sse";
         } else {
@@ -249,7 +249,7 @@ Game.connect = (function (host) {
                 break;
         }
     };
-    Game.socket = $.atmosphere.subscribe(request)
+    Game.socket = atmosphere.subscribe(request)
 
 });
 
