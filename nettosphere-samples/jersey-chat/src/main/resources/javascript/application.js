@@ -7,7 +7,7 @@ $(function () {
     var myName = false;
     var author = null;
     var logged = false;
-    var socket = $.atmosphere;
+    var socket = atmosphere;
     var request = { url: document.location.toString() + 'chat',
                     contentType : "application/json",
                     logLevel : 'debug',
@@ -63,7 +63,7 @@ $(function () {
                 author = msg;
             }
 
-            subSocket.push(JSON.stringify({ author: author, message: msg }));
+            subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: msg }));
             $(this).val('');
 
             input.attr('disabled', 'disabled');
