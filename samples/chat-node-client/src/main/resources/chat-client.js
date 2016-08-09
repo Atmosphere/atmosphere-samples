@@ -9,12 +9,20 @@
 
 "use strict";
 
+var HOST_URL = 'http://localhost:8080/chat';
+
+if (process.argv.length >= 3) {
+    HOST_URL = process.argv[2]
+}
+
+console.log("Host URL: " + HOST_URL)
+
 var reader = require('readline');
 var prompt = reader.createInterface(process.stdin, process.stdout);
 
 var atmosphere = require('atmosphere.js');
 
-var request = { url: 'http://localhost:8080/chat',
+var request = { url: HOST_URL,
                 contentType : "application/json",
                 transport : 'websocket',
                 trackMessageLength: true,
