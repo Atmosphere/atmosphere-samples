@@ -23,6 +23,8 @@
         <module>sse-rest-chat</module>
         <module>chat-multiroom</module>
         <module>chat-node-client</module>
+        <module>cxf-chat</module>
+        <module>cxf-chat-osgi</module>
         <module>pubsub</module>
         <module>atmospherehandler-pubsub</module>
         <module>jersey2-chat</module>
