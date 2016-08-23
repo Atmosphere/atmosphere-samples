@@ -20,6 +20,7 @@
         <module>gwt</module>
         <module>hazelcast</module>
         <module>jgroups</module>
+        <module>kafka/jersey-pubsub</module>
         <module>rabbitmq/jersey-pubsub</module>
         <module>redis</module>
         <module>rmi</module>
