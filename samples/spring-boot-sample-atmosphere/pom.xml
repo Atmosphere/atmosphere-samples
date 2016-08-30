@@ -10,7 +10,7 @@
     <name>Spring Boot Atmosphere Sample</name>
     <description>Spring Boot Atmosphere Sample</description>
     <url>http://projects.spring.io/spring-boot/</url>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <organization>
         <name>Pivotal Software, Inc.</name>
         <url>http://www.spring.io</url>
@@ -20,6 +20,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${springboot-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>${springboot-version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.inject</groupId>
@@ -34,12 +40,13 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>atmosphere-javascript</artifactId>
-            <version>2.2.8</version>
+            <version>2.3.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${springboot-version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -50,6 +57,13 @@
     </dependencies>
     <build>
         <plugins>
+			<plugin>
+			  <artifactId>maven-war-plugin</artifactId>
+			  <version>2.6</version>
+			  <configuration>
+			    <failOnMissingWebXml>false</failOnMissingWebXml>
+			  </configuration>
+			</plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
