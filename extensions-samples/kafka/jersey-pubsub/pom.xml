@@ -9,9 +9,6 @@
     <artifactId>atmosphere-kafka-demo</artifactId>
     <packaging>war</packaging>
     <name>atmosphere-kafka-demo</name>
-    <properties>
-        <extensions-version>2.4.3-SNAPSHOT</extensions-version>
-    </properties>
     <build>
         <defaultGoal>install</defaultGoal>
         <plugins>
