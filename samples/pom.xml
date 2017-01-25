@@ -46,6 +46,7 @@
             <module>websocketd</module>
         -->
         <module>embedded-jetty-websocket-chat</module>
+        <module>streaming-stress</module>
     </modules>
     <build>
         <finalName>${project.artifactId}</finalName>
