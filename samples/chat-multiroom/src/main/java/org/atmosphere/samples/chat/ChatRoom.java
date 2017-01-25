@@ -121,7 +121,7 @@ public class ChatRoom {
             return new ChatProtocol(message.getAuthor(), " entered room " + chatroomName, users.keySet(), getRooms(factory.lookupAll()));
         }
 
-        message.setUsers(users.keySet());
+        message.addUsers(users.keySet());
         logger.info("{} just send {}", message.getAuthor(), message.getMessage());
         return new ChatProtocol(message.getAuthor(), message.getMessage(), users.keySet(), getRooms(factory.lookupAll()));
     }
