@@ -20,13 +20,16 @@ import org.atmosphere.cpr.AtmosphereServlet;
 import org.atmosphere.cpr.ContainerInitializer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.ServletContextInitializer;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -34,7 +37,7 @@ import java.util.Collections;
 
 @Configuration
 @EnableAutoConfiguration
-public class AtmosphereApplication {
+public class AtmosphereApplication extends SpringBootServletInitializer {
 
 	@Bean
 	public EmbeddedAtmosphereInitializer atmosphereInitializer() {
@@ -43,8 +46,8 @@ public class AtmosphereApplication {
 
 	@Bean
 	public ServletRegistrationBean atmosphereServlet() {
-		// Dispatcher servlet is mapped to '/home' to allow the AtmosphereServlet
-		// to be mapped to '/chat'
+		// Dispatcher servlet is mapped to 'servlet-path' to allow the AtmosphereServlet
+		// to be mapped to 'servlet-path/chat'
 		ServletRegistrationBean registration = new ServletRegistrationBean(
 				new AtmosphereServlet(), "/chat/*");
 		registration.addInitParameter("org.atmosphere.cpr.packages", "sample");
@@ -61,7 +64,7 @@ public class AtmosphereApplication {
 
 		@Override
 		public void addViewControllers(ViewControllerRegistry registry) {
-			registry.addViewController("/").setViewName("forward:/home/home.html");
+			registry.addViewController("/").setViewName("forward:home.html");
 		}
 
 	}
@@ -74,6 +77,12 @@ public class AtmosphereApplication {
 			onStartup(Collections.<Class<?>> emptySet(), servletContext);
 		}
 
+	}
+
+	//For deployment to a standalone servlet container
+	@Override
+	protected final SpringApplicationBuilder configure(final SpringApplicationBuilder application) {
+	    return application.sources(AtmosphereApplication.class);
 	}
 
 	public static void main(String[] args) throws Exception {

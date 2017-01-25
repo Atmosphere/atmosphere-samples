@@ -14,7 +14,7 @@ $(function() {
 
 	// We are now ready to cut the request
 	var request = {
-		url : '/chat',
+		url : location.pathname.substr(0, location.pathname.lastIndexOf('/')) + '/chat',
 		contentType : "application/json",
 		logLevel : 'debug',
 		transport : transport,
