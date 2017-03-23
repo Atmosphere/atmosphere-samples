@@ -579,7 +579,7 @@
             }
 
             /**
-             * Check if server side events (SSE) is supported (check for custom implementation provided by request object or browser implementation).
+             * Check if server sent events (SSE) is supported (check for custom implementation provided by request object or browser implementation).
              *
              * @returns {boolean} True if web socket is supported, false otherwise.
              * @private
@@ -650,7 +650,7 @@
                     }
                 } else if (_request.transport === 'sse') {
                     if (!_supportSSE()) {
-                        _reconnectWithFallbackTransport("Server Side Events(SSE) is not supported, using request.fallbackTransport ("
+                        _reconnectWithFallbackTransport("Server Sent Events(SSE) is not supported, using request.fallbackTransport ("
                         + _request.fallbackTransport + ")");
                     } else {
                         _executeSSE(false);

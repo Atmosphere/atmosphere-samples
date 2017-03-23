@@ -28,7 +28,7 @@ import java.io.IOException;
 import java.util.Date;
 
 /**
- * Simple AtmosphereHandler that implement the logic to build a Server Side Events Chat application.
+ * Simple AtmosphereHandler that implement the logic to build a Server Sent Events Chat application.
  *
  * @author Jeanfrancois Arcand
  */

@@ -32,7 +32,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 
 /**
- * Extremely simple chat application supporting WebSocket, Server Side-Events, Long-Polling and Streaming.
+ * Extremely simple chat application supporting WebSocket, Server Sent-Events, Long-Polling and Streaming.
  *
  * @author Jeanfrancois Arcand
  */
