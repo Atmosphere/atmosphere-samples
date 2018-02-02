@@ -15,7 +15,6 @@
         <module>chat</module>
         <module>jersey-chat</module>
         <module>games</module>
-        <module>socketio-chat</module>
     </modules>
     <dependencyManagement>
         <dependencies>
