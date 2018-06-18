@@ -13,7 +13,7 @@
     <name>atmosphere-rest-chat</name>
     <url>http://maven.apache.org</url>
     <properties>
-        <cxf-version>3.1.7</cxf-version>
+        <cxf-version>3.2.4</cxf-version>
     </properties>
     <dependencies>
         <dependency>

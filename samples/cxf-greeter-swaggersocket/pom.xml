@@ -7,10 +7,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.atmosphere.samples</groupId>
-    <artifactId>atmosphere-cxf-chat</artifactId>
+    <artifactId>atmosphere-cxf-greeter-swaggersocket</artifactId>
     <packaging>war</packaging>
     <version>2.4.27-SNAPSHOT</version>
-    <name>atmosphere-rest-chat</name>
+    <name>atmosphere-cxf-greeter-swaggersocket</name>
     <url>http://maven.apache.org</url>
     <properties>
         <cxf-version>3.2.4</cxf-version>
@@ -41,6 +41,11 @@
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
             <artifactId>jackson-jaxrs-json-provider</artifactId>
             <version>${jackson-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180130</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
