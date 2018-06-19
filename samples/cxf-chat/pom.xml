@@ -10,7 +10,7 @@
     <artifactId>atmosphere-cxf-chat</artifactId>
     <packaging>war</packaging>
     <version>2.5.4-SNAPSHOT</version>
-    <name>atmosphere-rest-chat</name>
+    <name>atmosphere-cxf-chat</name>
     <url>http://maven.apache.org</url>
     <properties>
         <cxf-version>3.2.4</cxf-version>

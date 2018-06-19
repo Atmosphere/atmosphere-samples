@@ -10,7 +10,7 @@
     <artifactId>atmosphere-cxf-chat-osgi</artifactId>
     <packaging>bundle</packaging>
     <version>2.5.4-SNAPSHOT</version>
-    <name>atmosphere-rest-chat</name>
+    <name>atmosphere-cxf-chat-osgi</name>
     <url>http://maven.apache.org</url>
     <properties>
         <cxf-version>3.2.4</cxf-version>
