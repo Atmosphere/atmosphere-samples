@@ -3,13 +3,13 @@
     <parent>
         <groupId>org.atmosphere.samples</groupId>
         <artifactId>nettosphere-samples</artifactId>
-        <version>2.4.28</version>
+        <version>2.4.29-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.atmosphere.nettosphere.samples</groupId>
     <artifactId>nettosphere-jersey-chat</artifactId>
     <packaging>jar</packaging>
-    <version>2.4.28</version>
+    <version>2.4.29-SNAPSHOT</version>
     <name>Nettosphere Jersey Chat</name>
     <url>http://maven.apache.org</url>
 
