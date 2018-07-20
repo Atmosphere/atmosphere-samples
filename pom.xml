@@ -399,7 +399,7 @@
     </repositories>
     <properties>
         <jetty-version>6.1.22</jetty-version>
-        <jersey-version>1.19</jersey-version>
+        <jersey-version>1.19.4</jersey-version>
         <jaxb-version>2.1</jaxb-version>
         <jackson-version>2.4.1</jackson-version>
         <junit-version>3.8.1</junit-version>
