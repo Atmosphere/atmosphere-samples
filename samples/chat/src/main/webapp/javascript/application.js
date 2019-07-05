@@ -33,7 +33,7 @@ $(function () {
 
     request.onClientTimeout = function(r) {
         content.html($('<p>', { text: 'Client closed the connection after a timeout. Reconnecting in ' + request.reconnectInterval }));
-        subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: 'is inactive and closed the connection. Will reconnect in ' + request.reconnectInterval }));
+        subSocket.push(JSON.stringify({ author: author, message: 'is inactive and closed the connection. Will reconnect in ' + request.reconnectInterval }));
         input.attr('disabled', 'disabled');
         setTimeout(function (){
             subSocket = socket.subscribe(request);
@@ -56,7 +56,7 @@ $(function () {
 
         var message = response.responseBody;
         try {
-            var json = atmosphere.util.parseJSON(message);
+            var json = JSON.parse(message);
         } catch (e) {
             console.log('This doesn\'t look like a valid JSON: ', message);
             return;
@@ -76,7 +76,7 @@ $(function () {
     request.onClose = function(response) {
         content.html($('<p>', { text: 'Server closed the connection after a timeout' }));
         if (subSocket) {
-            subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: 'disconnecting' }));
+            subSocket.push(JSON.stringify({ author: author, message: 'disconnecting' }));
         }
         input.attr('disabled', 'disabled');
     };
@@ -103,7 +103,7 @@ $(function () {
                 author = msg;
             }
 
-            subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: msg }));
+            subSocket.push(JSON.stringify({ author: author, message: msg }));
             $(this).val('');
 
             input.attr('disabled', 'disabled');

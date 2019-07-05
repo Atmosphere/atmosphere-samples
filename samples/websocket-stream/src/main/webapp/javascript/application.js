@@ -37,7 +37,7 @@ $(function () {
         var message = response.responseBody;
         try {
             console.log("message: " + message);
-            var json = atmosphere.util.parseJSON(message);
+            var json = JSON.parse(message);
             status.html(message);
         } catch (e) {
             console.log('This doesn\'t look like a valid JSON: ', message);

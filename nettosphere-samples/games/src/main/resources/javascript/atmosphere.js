@@ -678,10 +678,10 @@
                         var storage = window.localStorage,
                             get = function (key) {
                                 var item = storage.getItem(name + "-" + key);
-                                return item === null ? [] : atmosphere.util.parseJSON(item);
+                                return item === null ? [] : JSON.parse(item);
                             },
                             set = function (key, value) {
-                                storage.setItem(name + "-" + key, atmosphere.util.stringifyJSON(value));
+                                storage.setItem(name + "-" + key, JSON.stringify(value));
                             };
 
                         return {
@@ -691,7 +691,7 @@
                                 return get("opened");
                             },
                             signal: function (type, data) {
-                                storage.setItem(name, atmosphere.util.stringifyJSON({
+                                storage.setItem(name, JSON.stringify({
                                     target: "p",
                                     type: type,
                                     data: data
@@ -724,7 +724,7 @@
                             },
                             signal: function (type, data) {
                                 if (!win.closed && win.fire) {
-                                    win.fire(atmosphere.util.stringifyJSON({
+                                    win.fire(JSON.stringify({
                                         target: "p",
                                         type: type,
                                         data: data
@@ -757,7 +757,7 @@
 
                 // Receives open, close and message command from the parent
                 function listener(string) {
-                    var command = atmosphere.util.parseJSON(string), data = command.data;
+                    var command = JSON.parse(string), data = command.data;
 
                     if (command.target === "c") {
                         switch (command.type) {
@@ -794,7 +794,7 @@
                 function findTrace() {
                     var matcher = new RegExp("(?:^|; )(" + encodeURIComponent(name) + ")=([^;]*)").exec(document.cookie);
                     if (matcher) {
-                        return atmosphere.util.parseJSON(decodeURIComponent(matcher[2]));
+                        return JSON.parse(decodeURIComponent(matcher[2]));
                     }
                 }
 
@@ -820,7 +820,7 @@
                             trace = findTrace();
                             if (!trace || oldTrace.ts === trace.ts) {
                                 // Simulates a close signal
-                                listener(atmosphere.util.stringifyJSON({
+                                listener(JSON.stringify({
                                     target: "c",
                                     type: "close",
                                     data: {
@@ -844,7 +844,7 @@
                         connector.signal("send", event);
                     },
                     localSend: function (event) {
-                        connector.signal("localSend", atmosphere.util.stringifyJSON({
+                        connector.signal("localSend", JSON.stringify({
                             id: guid,
                             event: event
                         }));
@@ -884,17 +884,17 @@
                                 atmosphere.util.on(window, "storage", onstorage);
                             },
                             signal: function (type, data) {
-                                storage.setItem(name, atmosphere.util.stringifyJSON({
+                                storage.setItem(name, JSON.stringify({
                                     target: "c",
                                     type: type,
                                     data: data
                                 }));
                             },
                             get: function (key) {
-                                return atmosphere.util.parseJSON(storage.getItem(name + "-" + key));
+                                return JSON.parse(storage.getItem(name + "-" + key));
                             },
                             set: function (key, value) {
-                                storage.setItem(name + "-" + key, atmosphere.util.stringifyJSON(value));
+                                storage.setItem(name + "-" + key, JSON.stringify(value));
                             },
                             close: function () {
                                 atmosphere.util.off(window, "storage", onstorage);
@@ -937,7 +937,7 @@
                             },
                             signal: function (type, data) {
                                 if (!win.closed && win.fire) {
-                                    win.fire(atmosphere.util.stringifyJSON({
+                                    win.fire(JSON.stringify({
                                         target: "c",
                                         type: type,
                                         data: data
@@ -960,7 +960,7 @@
 
                 // Receives send and close command from the children
                 function listener(string) {
-                    var command = atmosphere.util.parseJSON(string), data = command.data;
+                    var command = JSON.parse(string), data = command.data;
 
                     if (command.target === "p") {
                         switch (command.type) {
@@ -985,7 +985,7 @@
                     document.cookie = _sharingKey + "=" +
                         // Opera's JSON implementation ignores a number whose a last digit of 0 strangely
                         // but has no problem with a number whose a last digit of 9 + 1
-                    encodeURIComponent(atmosphere.util.stringifyJSON({
+                    encodeURIComponent(JSON.stringify({
                         ts: atmosphere.util.now() + 1,
                         heir: (storageService.get("children") || [])[0]
                     })) + "; path=/";
@@ -2591,7 +2591,7 @@
                     if (_localStorageService) {
                         _localStorageService.localSend(message);
                     } else if (_storageService) {
-                        _storageService.signal("localMessage", atmosphere.util.stringifyJSON({
+                        _storageService.signal("localMessage", JSON.stringify({
                             id: guid,
                             event: message
                         }));
@@ -2725,7 +2725,7 @@
             }
 
             function _localMessage(message) {
-                var m = atmosphere.util.parseJSON(message);
+                var m = JSON.parse(message);
                 if (m.id !== guid) {
                     if (typeof (_request.onLocalMessage) !== 'undefined') {
                         _request.onLocalMessage(m.event);

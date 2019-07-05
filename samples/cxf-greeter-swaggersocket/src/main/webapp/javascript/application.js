@@ -66,7 +66,7 @@ $(function () {
         }
         var headers;
         try {
-            headers = atmosphere.util.parseJSON(message.substring(0, bpos));
+            headers = JSON.parse(message.substring(0, bpos));
         } catch (e) {
             console.log('This doesn\'t look like a valid swagger message: ', message);
             return;
@@ -94,7 +94,7 @@ $(function () {
         var headers = { "id": getNextId(), "method": "GET", "path": "/v1/ping"};
         var body = "";
         addRequestMessage(headers, body);
-        var req = atmosphere.util.stringifyJSON(headers);
+        var req = JSON.stringify(headers);
         subSocket.push(req);
     });
 
@@ -103,18 +103,18 @@ $(function () {
         var body = textecho.val();
         textecho.val("");
         addRequestMessage(headers, body);
-        var req = atmosphere.util.stringifyJSON(headers) + body;
+        var req = JSON.stringify(headers) + body;
         subSocket.push(req);
     });
 
     buttongreet.click(function() {
         var headers = { "id": getNextId(), "method": "POST", "path": "/v1/greet/" + namegreet.val(), "type": "application/json"};
-        var body = atmosphere.util.stringifyJSON({ "name": namegreeter.val(), "text": textgreeter.val()});
+        var body = JSON.stringify({ "name": namegreeter.val(), "text": textgreeter.val()});
         namegreet.val("");
         namegreeter.val("");
         textgreeter.val("");
         addRequestMessage(headers, body);
-        var req = atmosphere.util.stringifyJSON(headers) + body;
+        var req = JSON.stringify(headers) + body;
         subSocket.push(req);
     });
 
@@ -122,7 +122,7 @@ $(function () {
         var headers = { "id": getNextId(), "method": "GET", "path": "/v1/greet/" + namegreetstatus.val()};
         var body = "";
         addRequestMessage(headers, body);
-        var req = atmosphere.util.stringifyJSON(headers);
+        var req = JSON.stringify(headers);
         subSocket.push(req);
     });
 
@@ -130,23 +130,23 @@ $(function () {
         var headers = { "id": getNextId(), "method": "GET", "path": "/v1/greet"};
         var body = "";
         addRequestMessage(headers, body);
-        var req = atmosphere.util.stringifyJSON(headers);
+        var req = JSON.stringify(headers);
         subSocket.push(req);
     });
 
     function addRequestMessage(headers, body) {
-        content.append('<p>req[' + headers.id +  ']: <span style="color:blue">' + atmosphere.util.stringifyJSON(headers) + '</span> ' +
+        content.append('<p>req[' + headers.id +  ']: <span style="color:blue">' + JSON.stringify(headers) + '</span> ' +
                        '<span style="color:green">' + body + '</span></p>');
     }
 
     function addResponseMessage(headers, body) {
         if (headers.heartbeat != undefined) {
-            content.append('<p>ctr: <span style="color:gray">' + atmosphere.util.stringifyJSON(headers) + '</span></p>');
+            content.append('<p>ctr: <span style="color:gray">' + JSON.stringify(headers) + '</span></p>');
             return;
         }
 
         var color = headers.code == 200 ? "blue": "red";
-        content.append('<p>res[' + headers.id +  ']: <span style="color:' + color + '">' + atmosphere.util.stringifyJSON(headers) + '</span> ' +
+        content.append('<p>res[' + headers.id +  ']: <span style="color:' + color + '">' + JSON.stringify(headers) + '</span> ' +
                        '<span style="color:green">' + body + '</span></p>');
     }
 

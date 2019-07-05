@@ -25,7 +25,7 @@ $(function () {
     request.onMessage = function (response) {
         var message = response.responseBody;
         try {
-            var json = atmosphere.util.parseJSON(message);
+            var json = JSON.parse(message);
         } catch (e) {
             console.log('This doesn\'t look like a valid JSON: ', message);
             return;
@@ -63,7 +63,7 @@ $(function () {
                 author = msg;
             }
 
-            subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: msg }));
+            subSocket.push(JSON.stringify({ author: author, message: msg }));
             $(this).val('');
 
             input.attr('disabled', 'disabled');

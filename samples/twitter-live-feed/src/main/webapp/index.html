@@ -43,7 +43,7 @@
                     var data = response.responseBody;
 
                     try {
-                        var result = atmosphere.util.parseJSON(data);
+                        var result = JSON.parse(data);
 
                         var i = 0;
                         for (i = result.statuses.length - 1; i > -1; i--) {
@@ -70,7 +70,7 @@
             socket.publish(request);
             // if we can push it this way for websocket but this cannot work either
             // as it won't find the target operation "stop"
-            // subSocket.push(atmosphere.util.stringifyJSON(request));
+            // subSocket.push(JSON.stringify(request));
         }
 
         getElementById('connect').onclick = function(event) {

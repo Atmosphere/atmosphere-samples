@@ -32,7 +32,7 @@ $(function () {
 
         var message = response.responseBody;
         try {
-            var json = atmosphere.util.parseJSON(message);
+            var json = JSON.parse(message);
         } catch (e) {
             console.log('This doesn\'t look like a valid JSON: ', message);
             return;
@@ -57,7 +57,7 @@ $(function () {
             if (author == null) {
                 author = msg;
             }
-            socket.subscribe(jQuery.extend({data: atmosphere.util.stringifyJSON({ author: author, message: msg }) }, request));
+            socket.subscribe(jQuery.extend({data: JSON.stringify({ author: author, message: msg }) }, request));
             $(this).val('');
 
             input.attr('disabled', 'disabled');

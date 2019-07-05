@@ -41,9 +41,9 @@ $(function () {
             // Private message
             if (msg.indexOf(":") !== -1) {
                 var a = msg.split(":")[0];
-                subSocket.push(atmosphere.util.stringifyJSON({ user: a, message: msg}));
+                subSocket.push(JSON.stringify({ user: a, message: msg}));
             } else {
-                subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: msg, uuid: uuid }));
+                subSocket.push(JSON.stringify({ author: author, message: msg, uuid: uuid }));
             }
 
             if (myName === false) {
@@ -79,7 +79,7 @@ $(function () {
 
             var message = response.responseBody;
             try {
-                var json = atmosphere.util.parseJSON(message);
+                var json = JSON.parse(message);
             } catch (e) {
                 console.log('This doesn\'t look like a valid JSON: ', message);
                 return;
@@ -117,7 +117,7 @@ $(function () {
         };
 
         request.onClose = function (response) {
-            subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: 'disconnecting' }));
+            subSocket.push(JSON.stringify({ author: author, message: 'disconnecting' }));
         };
 
         request.onError = function (response) {

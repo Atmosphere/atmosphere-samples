@@ -81,7 +81,7 @@ $(function () {
                 author = msg;
             }
 
-            subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: msg }));
+            subSocket.push(JSON.stringify({ author: author, message: msg }));
             $(this).val('');
 
             input.attr('disabled', 'disabled');

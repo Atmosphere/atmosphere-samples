@@ -111,7 +111,7 @@ on('line', function(line) {
     } else if (author == null) {
         author = msg;
     } else {
-        subSocket.push(atmosphere.util.stringifyJSON({ author: author, message: msg }));
+        subSocket.push(JSON.stringify({ author: author, message: msg }));
     }
     prompt.setPrompt("> ", 2);
     prompt.prompt();
