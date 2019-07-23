@@ -23,26 +23,27 @@
       background-color:lightblue;
     }
     #content {padding: 5px; background: #ddd; border-radius: 5px; border: 1px solid #CCC; margin-top: 10px;}
+    #command {padding: 5px; background: #ddd; border-radius: 5px; border: 1px solid #CCC; margin-top: 10px;}
     #header {padding: 5px; background: #f5deb3; border-radius: 5px; border: 1px solid #CCC; margin-top: 10px;}
     #textecho {border-radius: 2px; border: 1px solid #ccc; margin-top: 10px; padding: 5px; width: 400px;}
     #namegreet {border-radius: 2px; border: 1px solid #ccc; margin-top: 10px; padding: 5px; width: 60px;}
     #namegreeter {border-radius: 2px; border: 1px solid #ccc; margin-top: 10px; padding: 5px; width: 60px;}
-    #textgreeter {border-radius: 2px; border: 1px solid #ccc; margin-top: 10px; padding: 5px; width: 240px;}
+    #textgreet {border-radius: 2px; border: 1px solid #ccc; margin-top: 10px; padding: 5px; width: 240px;}
     #namegreetstatus {border-radius: 2px; border: 1px solid #ccc; margin-top: 10px; padding: 5px; width: 60px;}
-    #status {width: 200px; display: block; margin-top: 15px;}
+    #status {width: 150px; display: block; float: left; margin-top: 15px;}
     </style>
 </head>
 <body>
     <div id="header"><h3>Atmosphere SwaggerSocket for CXF Greeter</h3></div>
     <div>
-        <span id="status">Connecting...</span>
+        <span id="status">Connecting...</span><input type="text" id="namegreeter"/>
         <div id="operations">
           <table style="width:100%">
             <tr>
               <th>operation</th>
             </tr>
             <tr>
-              <td><button id="buttonping" value="ping">ping</button></td>
+              <td><button id="buttonping" value="ping" disabled="disabled">ping</button></td>
             </tr>
           </table>
           <table style="width:100%">
@@ -51,7 +52,7 @@
               <th>text</th>
             </tr>
             <tr>
-              <td><button id="buttonecho">echo</button></td>
+              <td><button id="buttonecho" disabled="disabled">echo</button></td>
               <td><input type="text" id="textecho"/></td>
             </tr>
           </table>
@@ -59,14 +60,12 @@
             <tr>
               <th>operation</th>
               <th>name</th>
-              <th>greeter</th>
               <th>text</th>
             </tr>
             <tr>
-              <td><button id="buttongreet">greet</button></td>
+              <td><button id="buttongreet" disabled="disabled">greet</button></td>
               <td><input type="text" id="namegreet"/></td>
-              <td><input type="text" id="namegreeter"/></td>
-              <td><input type="text" id="textgreeter"/></td>
+              <td><input type="text" id="textgreet"/></td>
             </tr>
           </table>
           <table style="width:100%">
@@ -75,7 +74,7 @@
               <th>name</th>
             </tr>
             <tr>
-              <td><button id="buttongreetstatus">greetstatus</button></td>
+              <td><button id="buttongreetstatus" disabled="disabled">greetstatus</button></td>
               <td><input type="text" id="namegreetstatus"/></td>
             </tr>
           </table>
@@ -84,9 +83,26 @@
               <th>operation</th>
             </tr>
             <tr>
-              <td><button id="buttongreetsummary">greetsummary</button></td>
+              <td><button id="buttongreetsummary" disabled="disabled">greetsummary</button></td>
             </tr>
-          </table>
+         </table>
+         <table style="width:100%">
+            <tr>
+              <th>operation</th>
+            </tr>
+            <tr>
+              <td><button id="buttonsubscribe" disabled="disabled">subscribe</button></td>
+            </tr>
+         </table>
+         <table style="width:100%">
+            <tr>
+              <th>operation</th>
+            </tr>
+            <tr>
+              <td><button id="buttonunsubscribe" disabled="disabled">unsubscribe</button></td>
+              <td><input type="text" id="subid"/></td>
+            </tr>
+         </table>
         </div>
     </div>
     <div id="content"></div>

@@ -11,12 +11,16 @@ $(function () {
     var buttongreet = $('#buttongreet');
     var namegreet = $('#namegreet');
     var namegreeter = $('#namegreeter');
-    var textgreeter = $('#textgreeter');
+    var textgreet = $('#textgreet');
 
     var buttongreetstatus = $('#buttongreetstatus');
     var namegreetstatus = $('#namegreetstatus');
 
     var buttongreetsummary = $('#buttongreetsummary');
+
+    var buttonsubscribe = $('#buttonsubscribe');
+    var buttonunsubscribe = $('#buttonunsubscribe');
+    var subid = $('#subid');
 
     var status = $('#status');
 
@@ -24,12 +28,15 @@ $(function () {
     var socket = atmosphere;
     var count = 0;
 
+    var trackingid = createtrackingid();
+
     var request = { url: document.location.toString().split("index.html")[0] + 'greeter',
                     contentType : "application/json",
                     logLevel : 'debug',
                     transport : 'websocket',
                     enableProtocol: false,
                     trackMessageLength : false,
+                    uuid: trackingid,
                     reconnectInterval : 5000};
 
     request.onOpen = function(response) {
@@ -39,7 +46,7 @@ $(function () {
         }
         content.html($('<p>', { text: 'Atmosphere connected using ' + response.transport }));
         logged = true;
-        status.text('Invoke some operation:');
+        status.text('Choose name:');
     };
     
     request.onReopen = function(response) {
@@ -49,12 +56,14 @@ $(function () {
         }
         content.html($('<p>', { text: 'Atmosphere reconnected using ' + response.transport }));
         logged = true;
-        status.text('Invoke some operation:');
+        status.text('('+namegreeter.val()+') Invoke some operation');
+        enableButtons();
     }
 
     request.onReconnect = function(response) {
         content.html($('<p>', { text: 'Atmosphere reconnecting using ' + response.transport + ' ...'}));
         status.text('Connecting...');
+        disableButtons();
     }
 
     request.onMessage = function (response) {
@@ -90,6 +99,15 @@ $(function () {
 
     var subSocket = socket.subscribe(request);
 
+    namegreeter.keydown(function(e) {
+        if (e.keyCode === 13) {
+            namegreeter.attr('disabled', 'disabled');
+            $(this).hide();
+            status.text('('+namegreeter.val()+') Invoke some operation');
+            enableButtons();
+        }
+    });
+
     buttonping.click(function() {
         var headers = { "id": getNextId(), "method": "GET", "path": "/v1/ping"};
         var body = "";
@@ -108,11 +126,10 @@ $(function () {
     });
 
     buttongreet.click(function() {
-        var headers = { "id": getNextId(), "method": "POST", "path": "/v1/greet/" + namegreet.val(), "type": "application/json"};
-        var body = JSON.stringify({ "name": namegreeter.val(), "text": textgreeter.val()});
+        var headers = { "id": getNextId(), "method": "POST", "path": "/v1/greet/" + namegreeter.val(), "type": "application/json"};
+        var body = JSON.stringify({ "name": namegreet.val(), "text": textgreet.val()});
         namegreet.val("");
-        namegreeter.val("");
-        textgreeter.val("");
+        textgreet.val("");
         addRequestMessage(headers, body);
         var req = JSON.stringify(headers) + body;
         subSocket.push(req);
@@ -133,6 +150,42 @@ $(function () {
         var req = JSON.stringify(headers);
         subSocket.push(req);
     });
+
+    buttonsubscribe.click(function() {
+        var headers = { "id": getNextId(), "method": "GET", "path": "/v1/subscribe/" + namegreeter.val()};
+        var body = "";
+        addRequestMessage(headers, body);
+        var req = JSON.stringify(headers);
+        subSocket.push(req);
+    });
+
+    buttonunsubscribe.click(function() {
+        var headers = { "id": getNextId(), "method": "DELETE", "path": "/v1/unsubscribe/" + subid.val()};
+        var body = "";
+        addRequestMessage(headers, body);
+        var req = JSON.stringify(headers);
+        subSocket.push(req);
+    });
+
+    function enableButtons() {
+        buttonping.removeAttr('disabled');
+        buttonecho.removeAttr('disabled');
+        buttongreet.removeAttr('disabled');
+        buttongreetstatus.removeAttr('disabled');
+        buttongreetsummary.removeAttr('disabled');
+        buttonsubscribe.removeAttr('disabled');
+        buttonunsubscribe.removeAttr('disabled');
+    }
+
+    function disableButtons() {
+        buttonping.attr('disabled', 'disabled');
+        buttonecho.attr('disabled', 'disabled');
+        buttongreet.attr('disabled', 'disabled');
+        buttongreetstatus.attr('disabled', 'disabled');
+        buttongreetsummary.attr('disabled', 'disabled');
+        buttonsubscribe.attr('disabled', 'disabled');
+        buttonunsubscribe.attr('disabled', 'disabled');
+    }
 
     function addRequestMessage(headers, body) {
         content.append('<p>req[' + headers.id +  ']: <span style="color:blue">' + JSON.stringify(headers) + '</span> ' +
@@ -194,5 +247,16 @@ $(function () {
         // no boundary found
         return -1;
     }
+
+    // for browser demo only as a replacement for npm uuid
+    function createtrackingid() {
+        const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var text = "";
+        for(var i = 0; i < 16; i++) {
+            text += possible.charAt(Math.floor(Math.random() *possible.length));
+        }
+        return text;
+    }
+
 });
 
