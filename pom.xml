@@ -422,7 +422,7 @@
 
         <client-version>2.3.9</client-version>
         <nettosphere-version>3.1.0</nettosphere-version>
-        <atmosphere-version>2.5.4</atmosphere-version>
+        <atmosphere-version>2.5.6</atmosphere-version>
         <extensions-version>2.5.2</extensions-version>
         <wasync-version>2.1.2</wasync-version>
 
