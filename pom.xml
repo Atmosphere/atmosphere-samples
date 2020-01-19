@@ -421,8 +421,8 @@
         <compat-version>2.0.1</compat-version>
 
         <client-version>3.0.0</client-version>
-        <nettosphere-version>3.1.2</nettosphere-version>
-        <atmosphere-version>2.5.10</atmosphere-version>
+        <nettosphere-version>3.1.4</nettosphere-version>
+        <atmosphere-version>2.5.13</atmosphere-version>
         <extensions-version>2.5.2</extensions-version>
         <wasync-version>2.1.2</wasync-version>
 
