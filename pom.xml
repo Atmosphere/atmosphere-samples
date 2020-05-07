@@ -405,7 +405,7 @@
         <junit-version>3.8.1</junit-version>
         <maven-plugin.version>1.0.0</maven-plugin.version>
         <grizzly10-version>1.0.31</grizzly10-version>
-        <jetty9-version>${jetty9_2-version}</jetty9-version>
+        <jetty9-version>9.4.28.v20200408</jetty9-version>
         <jetty9_2-version>9.2.13.v20150730</jetty9_2-version>
         <jetty9_3-version>9.3.5.v20151012</jetty9_3-version>
         <tomcat-version>6.0.35</tomcat-version>
@@ -422,7 +422,7 @@
 
         <client-version>3.0.0</client-version>
         <nettosphere-version>3.2.1</nettosphere-version>
-        <atmosphere-version>2.5.14</atmosphere-version>
+        <atmosphere-version>2.5.15</atmosphere-version>
         <extensions-version>2.5.2</extensions-version>
         <wasync-version>2.1.2</wasync-version>
 
