@@ -20,6 +20,10 @@ import org.atmosphere.util.SimpleBroadcaster;
 import org.atmosphere.websocket.WebSocket;
 import org.atmosphere.websocket.WebSocketHandler;
 import org.atmosphere.websocket.WebSocketHandlerAdapter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 
 /**
  * Simple PubSub resource that demonstrate many functionality supported by
@@ -30,12 +34,24 @@ import org.atmosphere.websocket.WebSocketHandlerAdapter;
  *
  * @author Jeanfrancois Arcand
  */
-@WebSocketHandlerService (path ="/pubsub", broadcaster = SimpleBroadcaster.class)
+@WebSocketHandlerService (path ="/pubsub/{topic: [a-zA-Z][a-zA-Z_0-9]*}", broadcaster = SimpleBroadcaster.class)
 public class WebSocketPubSub extends WebSocketHandlerAdapter {
+
+    private final Logger logger = LoggerFactory.getLogger(WebSocketPubSub.class);
+
+    @Override
+    public void onOpen(WebSocket webSocket) throws IOException {
+        logger.info("Opening {}", webSocket.resource().getBroadcaster().getID());
+    }
 
     @Override
     public void onTextMessage(WebSocket webSocket, String message) {
         webSocket.broadcast(message.substring("message=".length()));
+    }
+
+    @Override
+    public void onClose(WebSocket webSocket) {
+        logger.info("Closing {}", webSocket.resource().getBroadcaster().getID());
     }
 
 }
