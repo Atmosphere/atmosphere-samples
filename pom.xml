@@ -420,9 +420,9 @@
         <logback-version>1.0.13</logback-version>
         <compat-version>2.0.1</compat-version>
 
-        <client-version>3.0.5</client-version>
+        <client-version>3.0.6</client-version>
         <nettosphere-version>3.2.1</nettosphere-version>
-        <atmosphere-version>2.6.1</atmosphere-version>
+        <atmosphere-version>2.6.2</atmosphere-version>
         <extensions-version>2.5.2</extensions-version>
         <wasync-version>2.1.2</wasync-version>
 
