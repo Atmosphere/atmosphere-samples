@@ -30,6 +30,8 @@ import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.IOException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import static org.atmosphere.cpr.ApplicationConfig.MAX_INACTIVE;
 
@@ -63,6 +65,10 @@ public class Chat {
     @Inject
     private AtmosphereResourceEvent event;
 
+    private static boolean started = false;
+
+    private static long count = 0;
+
     @Heartbeat
     public void onHeartbeat(final AtmosphereResourceEvent event) {
         logger.trace("Heartbeat send by {}", event.getResource());
@@ -77,7 +83,13 @@ public class Chat {
         logger.info("Browser {} connected", r.uuid());
         logger.info("BroadcasterFactory used {}", factory.getClass().getName());
         logger.info("Broadcaster injected {}", broadcaster.getID());
-
+        if (!started) {
+            started = true;
+            Executors.newScheduledThreadPool(1).scheduleAtFixedRate(() -> {
+                broadcaster.broadcast(
+                       "{\"message\":\"" + count++ + "\",\"author\":\"test\",\"time\":" + System.currentTimeMillis() + "}");
+            }, 1, 1, TimeUnit.SECONDS);
+        }
     }
 
     /**

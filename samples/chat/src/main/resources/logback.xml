@@ -11,7 +11,7 @@
     <!--<logger name="org.atmosphere.cpr.AtmosphereResourceEventListener" level="INFO"/>-->
 
     <!--<logger name="org.atmosphere.cpr.AtmosphereResourceImpl" level="DEBUG"/>-->
-    <!--<logger name="org.atmosphere.cpr.AsyncSupportListenerAdapter" level="INFO"/>-->
+    <logger name="org.atmosphere.cache.UUIDBroadcasterCache" level="TRACE"/>
 
 
     <root>

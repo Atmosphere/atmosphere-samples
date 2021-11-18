@@ -18,6 +18,8 @@ $(function () {
         logLevel : 'debug',
         transport : transport ,
         trackMessageLength : true,
+        maxWebsocketErrorRetries: 0,
+        fallbackTransport: "long-polling",
         reconnectInterval : 5000 };
 
 
