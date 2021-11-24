@@ -17,7 +17,7 @@
 	    <module>sockjs/sockjs-chat</module>
 	    <module>sockjs/sockjs-demo</module>
         <module>guice/chat-guice</module>
-        <module>gwt</module>
+	<!--        <module>gwt</module> -->
         <module>hazelcast</module>
         <module>jgroups</module>
         <module>kafka/jersey-pubsub</module>
