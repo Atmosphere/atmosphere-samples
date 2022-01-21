@@ -27,8 +27,8 @@ import org.atmosphere.samples.chat.custom.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import java.io.IOException;
 
 import static org.atmosphere.cpr.ApplicationConfig.MAX_INACTIVE;
@@ -77,7 +77,6 @@ public class Chat {
         logger.info("Browser {} connected", r.uuid());
         logger.info("BroadcasterFactory used {}", factory.getClass().getName());
         logger.info("Broadcaster injected {}", broadcaster.getID());
-
     }
 
     /**

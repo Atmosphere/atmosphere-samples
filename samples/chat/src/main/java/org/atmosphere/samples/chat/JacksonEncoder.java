@@ -18,7 +18,7 @@ package org.atmosphere.samples.chat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.atmosphere.config.managed.Encoder;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import java.io.IOException;
 
 /**

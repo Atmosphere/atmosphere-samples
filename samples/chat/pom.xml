@@ -33,11 +33,12 @@
         <dependency>
             <groupId>org.atmosphere</groupId>
             <artifactId>atmosphere-runtime</artifactId>
-            <version>${atmosphere-version}</version>
+            <version>3.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-servlet_3.0_spec</artifactId>
+            <groupId>jakarta.inject</groupId>
+            <artifactId>jakarta.inject-api</artifactId>
+            <version>2.0.1</version>
         </dependency>
         <!-- Uncomment to use Atmosphere Pro: http://async-io.org/AtmospherePro.html -->
         <!--<dependency>-->
@@ -55,11 +56,6 @@
         <!--<artifactId>atmosphere-postman</artifactId>-->
         <!--<version>1.0.0</version>-->
         <!--</dependency>-->
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>1</version>
-        </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
