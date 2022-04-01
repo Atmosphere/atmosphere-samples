@@ -17,12 +17,32 @@ package controllers;
 
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.api.inject.ApplicationLifecycle;
 import views.html.index;
+
+import javax.inject.Inject;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
+
+import org.atmosphere.samples.play.Chat;
+import org.atmosphere.play.AtmosphereCoordinator;
 
 public class Application extends Controller {
 
-	public static Result index() {
-		return ok(index.render());
-	}
+    public Result index() {
+        return ok(index.render());
+    }
 
+    @Inject
+    public Application(ApplicationLifecycle lifecycle) {
+        AtmosphereCoordinator.instance().discover(Chat.class).ready();
+
+        lifecycle.addStopHook(new Callable<CompletableFuture<Object>>() {
+            @Override
+            public CompletableFuture<Object> call() throws Exception {
+                AtmosphereCoordinator.instance().shutdown();
+                return CompletableFuture.completedFuture(null);
+            }
+        });
+    }
 }
