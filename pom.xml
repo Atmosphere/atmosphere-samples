@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
-        <version>5</version>
+        <version>9</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -11,7 +11,7 @@
     <artifactId>atmosphere-samples-project</artifactId>
     <packaging>pom</packaging>
     <name>atmosphere-samples-project</name>
-    <version>2.7.0-SNAPSHOT</version>
+    <version>3.0.0-SNAPSHOT</version>
     <url>http://github.com/Atmosphere/atmosphere-samples</url>
     <scm>
         <connection>scm:git:git@github.com:Atmosphere/atmosphere-samples.git</connection>
@@ -19,9 +19,6 @@
         <url>http://github.com/Atmosphere/atmosphere-samples</url>
       <tag>HEAD</tag>
   </scm>
-    <prerequisites>
-        <maven>2.2.0</maven>
-    </prerequisites>
     <developers>
         <developer>
             <id>jfarcand</id>
@@ -33,21 +30,7 @@
         <system>bugzilla</system>
         <url>https://github.com/Atmosphere/atmosphere/issues</url>
     </issueManagement>
-    <mailingLists>
-        <mailingList>
-            <name>atmosphere Dev List</name>
-            <archive>https://groups.google.com/group/atmosphere-framework</archive>
-        </mailingList>
-        <mailingList>
-            <name>atmosphere Support List</name>
-            <archive>https://groups.google.com/group/atmosphere-framework</archive>
-        </mailingList>
-    </mailingLists>
     <licenses>
-        <license>
-            <name>CDDL</name>
-            <url>https://glassfish.dev.java.net/public/CDDLv1.0.html</url>
-        </license>
         <license>
             <name>Apache License 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
@@ -61,140 +44,6 @@
         <testSourceDirectory>src/test/java</testSourceDirectory>
         <outputDirectory>target/classes</outputDirectory>
         <testOutputDirectory>target/test-classes</testOutputDirectory>
-        <extensions>
-            <extension>
-                <groupId>org.jvnet.wagon-svn</groupId>
-                <artifactId>wagon-svn</artifactId>
-                <version>1.8</version>
-            </extension>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ssh-external</artifactId>
-                <version>1.0-alpha-6</version>
-            </extension>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-webdav</artifactId>
-                <version>1.0-beta-1</version>
-            </extension>
-        </extensions>
-        <defaultGoal>install</defaultGoal>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
-        <testResources>
-            <testResource>
-                <directory>src/test/resources</directory>
-            </testResource>
-        </testResources>
-        <directory>target</directory>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>${jetty9-version}</version>
-                <configuration>
-                    <webAppSourceDirectory>${project.build.directory}/${project.name}</webAppSourceDirectory>
-                    <scanIntervalSeconds>1</scanIntervalSeconds>
-                    <webAppConfig>
-                        <contextPath>/</contextPath>
-                        <!-- workaround to avoid spring-web collision -->
-                        <allowDuplicateFragmentNames>true</allowDuplicateFragmentNames>
-                    </webAppConfig>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    <warSourceDirectory>${project.build.directory}/${project.artifactId}</warSourceDirectory>
-                    <port>8080</port>
-                    <path>/</path>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>run-tomcat</id>
-                        <configuration>
-                            <fork>true</fork>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <archive>
-                        <manifestEntries>
-                            <mode>development</mode>
-                            <url>${project.url}</url>
-                            <implementation-version>${project.version}</implementation-version>
-                            <package>org.atmosphere</package>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>2.1</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.5</version>
-            </plugin>
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <filesets>
-                        <fileset>
-                            <directory>${project.basedir}/work</directory>
-                        </fileset>
-                         <fileset>
-                            <directory>${project.basedir}/overlays</directory>
-                        </fileset>
-                        <fileset>
-                            <directory>${project.basedir}</directory>
-                            <includes>
-                                <include>*.log</include>
-                            </includes>
-                        </fileset>
-                        <fileset>
-                            <directory>${project.basedir}</directory>
-                            <includes>
-                                <include>depencency-reduced-pom.xml</include>
-                            </includes>
-                        </fileset>
-                    </filesets>
-                </configuration>
-            </plugin>
-        </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-eclipse-plugin</artifactId>
-                    <version>2.6</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
     <profiles>
         <profile>
@@ -204,44 +53,6 @@
             </properties>
             <build>
                 <plugins>
-                    <plugin>
-                        <inherited>true</inherited>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <version>2.1.2</version>
-                        <executions>
-                            <execution>
-                                <id>attach-sources</id>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.9</version>
-                        <configuration>
-                            <aggregate>true</aggregate>
-                            <source>1.7</source>
-                            <encoding>UTF-8</encoding>
-                            <maxmemory>1g</maxmemory>
-                            <links>
-                                <link>http://java.sun.com/javase/6/docs/api/</link>
-                            </links>
-<additionalparam>-Xdoclint:none</additionalparam>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>build-helper-maven-plugin</artifactId>
@@ -291,151 +102,15 @@
                 </plugins>
             </build>
         </profile>
-        <profile>
-            <id>jetty9_3</id>
-            <properties>
-                <jetty9-version>${jetty9_3-version}</jetty9-version>
-            </properties>
-        </profile>
     </profiles>
     <modules>
-        <module>samples</module>
-        <module>extensions-samples</module>
-        <module>nettosphere-samples</module>
-        <module>wasync-samples</module>
-        <module>stomp</module>
-<!--
-        <module>vertx-samples</module>
-        <module>play-samples</module>
-	-->
-
+        <module>samples/chat</module>
     </modules>
-    <reporting>
-        <outputDirectory>target/site</outputDirectory>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.8</version>
-                <configuration>
-                    <aggregate>true</aggregate>
-                    <debug>true</debug>
-                    <links>
-                        <link>http://download.oracle.com/javaee/6/api/</link>
-                        <link>http://download.oracle.com/javase/6/docs/api/</link>
-                    </links>
-                    <excludePackageNames>cometedgwt:org.gwtcomet:com.sun:org.apache:weblogic:org.jboss
-                    </excludePackageNames>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <version>2.3</version>
-                <configuration>
-                    <aggregate>true</aggregate>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.4</version>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>project-team</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-        </plugins>
-    </reporting>
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.apache.maven</groupId>
-                <artifactId>maven-plugin-tools-api</artifactId>
-                <version>2.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <version>${felix-version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>sonatype releases</id>
-            <url>https://oss.sonatype.org/content/repositories/releases</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-    <repositories>
-        <repository>
-            <id>oss.sonatype.org</id>
-            <url>http://oss.sonatype.org/content/repositories/releases</url>
-        </repository>
-        <repository>
-            <id>oss.sonatype.org-snapshot</id>
-            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
-        </repository>
-        <!-- <repository>
-            <id>scala-tools.org</id>
-            <name>Scala-Tools Maven2 Repository</name>
-            <url>http://scala-tools.org/repo-releases</url>
-        </repository> -->
-        <repository>
-            <id>jboss</id>
-            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>maven.java.net</id>
-            <url>https://maven.java.net/content/groups/public/</url>
-        </repository>
-    </repositories>
     <properties>
-        <jetty-version>6.1.22</jetty-version>
-        <jersey-version>1.19.4</jersey-version>
-        <jaxb-version>2.1</jaxb-version>
-        <jackson-version>2.8.11</jackson-version>
-        <junit-version>3.8.1</junit-version>
-        <maven-plugin.version>1.0.0</maven-plugin.version>
-        <grizzly10-version>1.0.31</grizzly10-version>
-        <jetty9-version>11.0.7</jetty9-version>
-        <jetty9_2-version>9.2.13.v20150730</jetty9_2-version>
-        <jetty9_3-version>9.3.5.v20151012</jetty9_3-version>
-        <tomcat-version>6.0.35</tomcat-version>
-        <tomcat7-version>7.0.47</tomcat7-version>
-        <common-logging-version>1.1.1</common-logging-version>
-        <scala.version>2.11.12</scala.version>
-        <shade-version>1.2.1</shade-version>
-        <felix-version>2.3.7</felix-version>
-        <ahc.version>1.9.27</ahc.version>
-        <slf4j-impl-version>1.6.1</slf4j-impl-version>
-        <slf4j-version>1.6.1</slf4j-version>
-        <logback-version>1.0.13</logback-version>
-        <compat-version>2.0.1</compat-version>
-
         <client-version>3.1.0</client-version>
-        <nettosphere-version>3.2.1</nettosphere-version>
-        <atmosphere-version>2.7.6</atmosphere-version>
-        <extensions-version>2.6.6-SNAPSHOT</extensions-version>
+        <nettosphere-version>4.0.0</nettosphere-version>
+        <atmosphere-version>3.0.4</atmosphere-version>
+        <extensions-version>3.0.0</extensions-version>
         <wasync-version>2.1.2</wasync-version>
-
-        <vertx-version>3.5.0</vertx-version>
-        <atmosphere-vertx-version>3.0.0</atmosphere-vertx-version>
-        <atmosphere-play-version>2.3.0</atmosphere-play-version>
-        <stomp-version>0.4</stomp-version>
-        <compat-version>2.0.1</compat-version>
-        <jgroups-version>3.1.0.Final</jgroups-version>
-        <jms-version>1.1</jms-version>
-        <guice-version>3.0</guice-version>
-        <spring-version>4.2.5.RELEASE</spring-version>
-        <springboot-version>1.3.3.RELEASE</springboot-version>
-        <jedis.version>2.0.0</jedis.version>
     </properties>
 </project>
