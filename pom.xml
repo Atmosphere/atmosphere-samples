@@ -109,7 +109,7 @@
     <properties>
         <client-version>3.1.0</client-version>
         <nettosphere-version>4.0.0</nettosphere-version>
-        <atmosphere-version>3.0.4</atmosphere-version>
+        <atmosphere-version>3.0.5</atmosphere-version>
         <extensions-version>3.0.0</extensions-version>
         <wasync-version>2.1.2</wasync-version>
     </properties>
