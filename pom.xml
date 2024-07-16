@@ -105,12 +105,18 @@
     </profiles>
     <modules>
         <module>samples/chat</module>
+        <module>samples/embedded-jetty-websocket-chat</module>
+
     </modules>
     <properties>
         <client-version>3.1.0</client-version>
         <nettosphere-version>4.0.0</nettosphere-version>
         <atmosphere-version>3.0.5</atmosphere-version>
-        <extensions-version>3.0.0</extensions-version>
+        <extensions-version>3.0.8</extensions-version>
+        <jetty-version>12.0.11</jetty-version>
+        <websocket-version>2.0.0</websocket-version>
         <wasync-version>2.1.2</wasync-version>
+        <logback-version>1.4.14</logback-version>
+        <jackson-version>2.16.1</jackson-version>
     </properties>
 </project>
