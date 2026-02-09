@@ -106,7 +106,7 @@
     <modules>
         <module>samples/chat</module>
         <module>samples/embedded-jetty-websocket-chat</module>
-
+        <module>samples/spring-boot-chat</module>
     </modules>
     <properties>
         <client-version>3.1.0</client-version>
